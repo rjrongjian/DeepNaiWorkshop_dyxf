@@ -13,6 +13,9 @@
 </script>
 
 <style>
+	
+	
+	
 	.content {
 		flex: 1;
 		justify-content: center;
