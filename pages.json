@@ -42,12 +42,16 @@
 						"navigationBarTextStyle":"white"//导航栏标题颜色
 					}
         },
-				{
-					"path": "pages/tabbar/tabbar",
-					"style": {
-						"navigationBarTitleText": "顶部选项卡"
+        {
+            "path" : "pages/tabbar/tabbar",
+            "style" : {
+						"navigationBarTitleText":"官方测试",
+						"navigationBarBackgroundColor":"#79E8D0",
+						"enablePullDownRefresh":true,//是否开启下拉刷新
+						//"backgroundTextStyle":"light",//下拉刷新样式,
+						"navigationBarTextStyle":"white"//导航栏标题颜色
 					}
-				}
+        }
     ],
     "globalStyle" : {
         "navigationBarTextStyle" : "white",
@@ -79,18 +83,18 @@
                 "pagePath" : "pages/onlineTV/onlineTV",
                 "text" : "卫星电视"
             },
-						{
-								"iconPath" : "static/bottom/live.png",
-								"selectedIconPath" : "static/bottom/live_fill.png",
-								"pagePath" : "pages/tabbar/tabbar",
-								"text" : "官方测试"
-						},
             {
                 "iconPath" : "static/bottom/people.png",
                 "selectedIconPath" : "static/bottom/people_fill.png",
                 "pagePath" : "pages/my/my",
                 "text" : "我的"
-            }
+            },
+						{
+								"iconPath" : "static/bottom/people.png",
+								"selectedIconPath" : "static/bottom/people_fill.png",
+								"pagePath" : "pages/tabbar/tabbar",
+								"text" : "官方测试"
+						}
         ]
     }
 }

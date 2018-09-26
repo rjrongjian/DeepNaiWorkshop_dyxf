@@ -14,11 +14,7 @@
 </script>
 
 <style>
-	/*每个页面公共css */
-	/**/
-	
-	
-	/* 这是页面的公用css */
+	/* 这是页面的公用css 为了最新电影引过来的选项卡css样式*/
 	
 		page {
 			background-color: #F8F8F8;

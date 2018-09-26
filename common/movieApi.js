@@ -1,8 +1,30 @@
 /*和电影有关的内容在此定义
  *采用海洋cms的电影资源站都可以通过此方式使用接口
  */
-const SEA_CMS = 'seaCms';
-const API_TYPE = 'kuYun';
+
+
+//需通过接口动态配置的选项---------------------------------------------------------
+/**
+ * 当前选择的影视资源使用哪种cms解析
+ */
+var selectedCmsType = 'seaCms';
+/**
+ * 当前选择的影视资源适配的哪个资源网站
+ */
+var selectedApiType = 'kuYun';
+
+/**
+ * 当前cms和资源下，屏蔽的电影分类,对应分类的电影还是能搜的到
+ */
+var shieldingCatIds = {"catId_40":"伦理"};
+
+
+
+
+//无需动态配置的选项-----------------------------------------------------------------
+
+var CMS_TYPE_SEA = 'seaCms';
+var API_TYPE_KUYUN = 'kuYun';
 
 var apiConfig = {
 	"seaCms":{
@@ -14,52 +36,41 @@ var apiConfig = {
 	
 }
 
+
 /**
- * 获取电影分类，同步方式
+ * 获取当前选择的api接口
  */
-var getMovieType = function(cmsType,apiType,userAgent){
-	let result = "";
-	if(SEA_CMS==cmsType){
-		var apiUrl = apiConfig[cmsType][apiType];
-		console.log("获取的api："+apiUrl['movieTypeApi']);
-		if(apiUrl){
-			uni.XMLHttpRequest()
-			uni.request({
-				url:apiUrl['movieTypeApi'], //
-				//url:apiUrlTemp+'/inc/s_ldg_kkm3u8.asp',
-				data() {//请求的参数
-					return {
-						/*
-						ac: 'list',
-						rid:'sheser.com',
-						t:'1110'
-						*/
-					};
-				},
-				header: {
-					'User-Agent': userAgent //自定义请求头信息
-				},
-				success: (res) => {
-					console.log(res.data);
-					this.text = 'request success';
-				},
-				fail:function(){
-					
-				}
-			});
-		}else{
-			console.log("不能识别的api类型"+cmsType+","+apiType);
-			return [];
-		}
+var getMovieApi = function(){
+	var apiJson = apiConfig[selectedCmsType][selectedApiType];
+	if(!apiJson){
+		return null;
 	}else{
-		console.log("不能识别的cms类别"+cmsType);
-		return [];
+		return apiJson;
 	}
-	
+}
+
+var isShieldingCatId = function(catId){
+	try{
+		var temp = shieldingCatIds["catId_"+catId];
+		if(temp){
+			return true;
+		}else{
+			return false;
+		
+		}
+	}catch(err){
+		console.log("解析catId失败，原因"+err);
+		//console.log("无效的catId值："+catId);
+		return false;
+	}
 	
 	
 }
 
 export default {
-    getMovieType
+    selectedCmsType,
+	selectedApiType,
+	getMovieApi,
+	shieldingCatIds,
+	isShieldingCatId
 }

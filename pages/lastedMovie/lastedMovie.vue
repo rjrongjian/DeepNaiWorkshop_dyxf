@@ -5,66 +5,17 @@
 				<view :class="['swiper-tab-list',currentTab==index ? 'on' : '']" :id="tab.id" :data-current="index" @tap="swichNav">{{tab.name}}</view>
 			</block>
 		</scroll-view>
-		
-		
-		<swiper class="swiper-box">
-			<block>
-				<swiper-item class="color1">
-					A
-					
-				</swiper-item>
-			</block>
-			<block>
-				<swiper-item class="color2">
-					b
-				</swiper-item>
-			</block>
-			<block>
-				<swiper-item class="color3">
-					c
-				</swiper-item>
-			</block>
-		</swiper>
-		
-		<!--
-		<swiper class="swiper-box" duration="300">
-			<block>
+		<swiper :current="currentTab" class="swiper-box" duration="300" @change="bindChange">
+			<block v-for="(tab,index1) in newsitems" :key="index1">
 				<swiper-item>
-					<scroll-view class="product-list">
-						<view class="product">
-							<image class="product-image" src="http://via.placeholder.com/150x200"></image>
-							<view class="product-title">我是标题</view>
-							<view class="product-price">
-								<text class="product-price-favour">￥55</text>
-								<text class="product-price-original">￥66</text>
-								<text class="product-tip">自营</text>
-							</view>
-						</view>
-						<view class="product">
-							<image class="product-image" src="http://via.placeholder.com/150x200"></image>
-							<view class="product-title">我是标题</view>
-							<view class="product-price">
-								<text class="product-price-favour">￥55</text>
-								<text class="product-price-original">￥66</text>
-								<text class="product-tip">自营</text>
-							</view>
-						</view>
-						<view class="product">
-							<image class="product-image" src="http://via.placeholder.com/150x200"></image>
-							<view class="product-title">我是标题</view>
-							<view class="product-price">
-								<text class="product-price-favour">￥55</text>
-								<text class="product-price-original">￥66</text>
-								<text class="product-tip">自营</text>
-							</view>
-						</view>
-						
+					<scroll-view class="index-bd" scroll-y @scrolltolower="loadMore(index1)">
+						<block v-for="(newsitem,index2) in tab" :key="index2">
+							<view class="tab-list">{{newsitem.name}}-{{newsitem.label}}</view>
+						</block>
 					</scroll-view>
 				</swiper-item>
 			</block>
-			
 		</swiper>
-		-->
 	</view>
 </template>
 <script>
@@ -75,40 +26,16 @@
 				scrollLeft: 0,
 				isClickChange: false,
 				currentTab: 0,
-				tabs: [{
-					name: '关注啊啊',
-					id: 'guanzhu'
-				}, {
-					name: '推荐',
-					id: 'tuijian'
-				}, {
-					name: '体育',
-					id: 'tiyu'
-				}, {
-					name: '热点',
-					id: 'redian'
-				}, {
-					name: '财经',
-					id: 'caijing'
-				}, {
-					name: '娱乐',
-					id: 'yule'
-				}, {
-					name: '军事',
-					id: 'junshi'
-				}, {
-					name: '历史',
-					id: 'lishi'
-				}, {
-					name: '本地',
-					id: 'bendi'
-				}],
-				newsitems: [[{"name":"测试","label":1},{"name":"测试1","label":2}]]
+				tabs: [],
+				newsitems: []
 			}
 		},
 		onLoad: function () {
-			console.log("onload函数触发");
-			//this.newsitems = this.randomfn()
+			//加载电影分类
+			this.getMovieCat();
+			
+			
+			this.newsitems = this.randomfn()
 		},
 		onUnload:function(){
 			this.scrollLeft = 0,
@@ -117,7 +44,6 @@
 		},
 		methods: {
 			bindChange: async function (e) {
-				console.log("开始切换样式...");
 				let index = e.target.current;
 				if (this.isClickChange) {
 					this.currentTab = index;
@@ -181,7 +107,7 @@
 					});
 				}
 			},
-			randomfn:function() {
+			randomfn() {
 				let ary = [];
 				for (let i = 0, length = this.tabs.length; i < length; i++) {
 					let aryItem = [];
@@ -191,16 +117,54 @@
 							label: j
 						});
 					}
-					console.log("获取的元素："+this.tabs[i].name);
 					ary.push(aryItem);
 				}
 				return ary;
+			},
+			getMovieCat:function(){//获取电影分类,
+				try{
+					var movieApiConfig = this.$myMovieApi.getMovieApi();
+					if(movieApiConfig){
+						var movieTypeApiUrl = movieApiConfig['movieTypeApi'];
+						uni.request({
+							url: movieTypeApiUrl,
+							success: (ret) => {
+								if (ret.statusCode !== 200) {
+									console.log("获取电影分类失败", ret)
+								} else {
+									console.log("获取的电影分类数据："+ret.data);
+									//解析xml数据
+									var jsonObj = this.$myXml2Json.xml_str2json(ret.data);
+									var allCatArr = this.$myXml2Json.asArray(jsonObj.rss.class.ty);
+									console.log("解析出的class"+allCatArr[0]);
+									let tabsTemp = [];
+									for(var i = 0;i<allCatArr.length;i++){
+										if(!this.$myMovieApi.isShieldingCatId(allCatArr[i]._id)){
+											var movieJson = {name:allCatArr[i].__text,id:allCatArr[i]._id};
+											tabsTemp.push(movieJson);
+										}
+										
+									}
+									this.tabs = tabsTemp;
+								}
+							}
+						});
+					}else{
+						console.log("加载电影分类失败");
+					}
+				}catch(e){
+					console.log("加载电影分类出现异常",e);
+				}
+				
 			}
 		}
 	}
 </script>
 
 <style>
+	page {
+		display: flex;
+	}
 
 	.index {
 		display: flex;
@@ -238,10 +202,8 @@
 
 	.swiper-box {
 		flex: 1;
-		/*
 		width: 100%;
 		height: 100%;
-		*/
 	}
 
 	.swiper-box view {
@@ -255,15 +217,4 @@
 		text-align: left;
 		border-bottom: 2px solid #EFEFF4;
 	}
-	/*自定义swiper实验*/
-	.color1{
-		background-color: #007AFF;
-	}
-	.color2{
-		background-color:#4CD964;
-	}
-	.color3{
-		background-color:#8A6DE9;
-	}
-	
 </style>
