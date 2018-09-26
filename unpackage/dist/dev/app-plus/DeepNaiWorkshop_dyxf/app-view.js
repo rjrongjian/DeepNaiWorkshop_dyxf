@@ -1077,29 +1077,13 @@ Z([[7],[3,'index']])
 Z([[2,'+'],[1,'0-'],[[7],[3,'index']]])
 Z(z[9])
 Z([a,[[6],[[7],[3,'tab']],[3,'name']]])
-Z(z[10])
 Z([3,'_swiper data-v-171f3ea2 swiper-box'])
-Z([[7],[3,'currentTab']])
-Z(z[12])
-Z([1,'2'])
-Z([3,'300'])
-Z([3,'index1'])
-Z(z[6])
-Z([[7],[3,'newsitems']])
-Z(z[23])
-Z([[7],[3,'index1']])
-Z([3,'_swiper-item data-v-171f3ea2'])
-Z(z[10])
-Z([3,'_scroll-view data-v-171f3ea2 index-bd'])
-Z(z[12])
-Z([[2,'+'],[1,'1-'],[[7],[3,'index1']]])
-Z([3,'index2'])
-Z([3,'newsitem'])
-Z([[7],[3,'tab']])
-Z(z[33])
-Z([[7],[3,'index2']])
-Z([3,'_view data-v-171f3ea2 tab-list'])
-Z([a,[[6],[[7],[3,'newsitem']],[3,'name']],[3,'-'],[[6],[[7],[3,'newsitem']],[3,'label']]])
+Z([3,'_swiper-item data-v-171f3ea2 color1'])
+Z([3,' A '])
+Z([3,'_swiper-item data-v-171f3ea2 color2'])
+Z([3,' b '])
+Z([3,'_swiper-item data-v-171f3ea2 color3'])
+Z([3,' c '])
 })(__WXML_GLOBAL__.ops_cached.$gwx_1);return __WXML_GLOBAL__.ops_cached.$gwx_1
 }
 function gz$gwx_2(){
@@ -1115,8 +1099,30 @@ if( __WXML_GLOBAL__.ops_cached.$gwx_3)return __WXML_GLOBAL__.ops_cached.$gwx_3
 __WXML_GLOBAL__.ops_cached.$gwx_3=[];
 (function(z){var a=11;function Z(ops){z.push(ops)}
 Z([3,'461a1416'])
-Z([3,'_view data-v-6a5141ac'])
-Z([3,' 直播盒子 '])
+Z([3,'_view data-v-6a5141ac index'])
+Z([3,'handleProxy'])
+Z([3,'_swiper data-v-6a5141ac swiper-box'])
+Z([[7],[3,'currentTab']])
+Z([[7],[3,'$k']])
+Z([1,'1'])
+Z([3,'300'])
+Z([3,'index1'])
+Z([3,'tab'])
+Z([[7],[3,'newsitems']])
+Z(z[8])
+Z([[7],[3,'index1']])
+Z([3,'_swiper-item data-v-6a5141ac'])
+Z(z[2])
+Z([3,'_scroll-view data-v-6a5141ac index-bd'])
+Z(z[5])
+Z([[2,'+'],[1,'0-'],[[7],[3,'index1']]])
+Z([3,'index2'])
+Z([3,'newsitem'])
+Z([[7],[3,'tab']])
+Z(z[18])
+Z([[7],[3,'index2']])
+Z([3,'_view data-v-6a5141ac tab-list'])
+Z([a,[[6],[[7],[3,'newsitem']],[3,'name']],[3,'-'],[[6],[[7],[3,'newsitem']],[3,'label']]])
 })(__WXML_GLOBAL__.ops_cached.$gwx_3);return __WXML_GLOBAL__.ops_cached.$gwx_3
 }
 function gz$gwx_4(){
@@ -1169,11 +1175,44 @@ Z([[9],[[10],[[6],[[7],[3,'$root']],[1,'0']]],[[8],'$root',[[7],[3,'$root']]]])
 Z([3,'0de36f94'])
 })(__WXML_GLOBAL__.ops_cached.$gwx_8);return __WXML_GLOBAL__.ops_cached.$gwx_8
 }
+function gz$gwx_9(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_9)return __WXML_GLOBAL__.ops_cached.$gwx_9
+__WXML_GLOBAL__.ops_cached.$gwx_9=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+Z([3,'760d32d6'])
+Z([3,'_view data-v-371b8caa swiper-box'])
+Z([3,'_view data-v-371b8caa item color1'])
+Z([3,'元素一'])
+Z([3,'_view data-v-371b8caa item color2'])
+Z([3,'元素二'])
+Z(z[2])
+Z(z[3])
+Z(z[4])
+Z(z[5])
+Z(z[2])
+Z(z[3])
+Z(z[4])
+Z(z[5])
+Z([3,'handleProxy'])
+Z([3,'_button data-v-371b8caa'])
+Z([[7],[3,'$k']])
+Z([1,'0'])
+Z([3,'测试'])
+})(__WXML_GLOBAL__.ops_cached.$gwx_9);return __WXML_GLOBAL__.ops_cached.$gwx_9
+}
+function gz$gwx_10(){
+if( __WXML_GLOBAL__.ops_cached.$gwx_10)return __WXML_GLOBAL__.ops_cached.$gwx_10
+__WXML_GLOBAL__.ops_cached.$gwx_10=[];
+(function(z){var a=11;function Z(ops){z.push(ops)}
+Z([[9],[[10],[[6],[[7],[3,'$root']],[1,'0']]],[[8],'$root',[[7],[3,'$root']]]])
+Z([3,'760d32d6'])
+})(__WXML_GLOBAL__.ops_cached.$gwx_10);return __WXML_GLOBAL__.ops_cached.$gwx_10
+}
 __WXML_GLOBAL__.ops_set.$gwx=z;
 __WXML_GLOBAL__.ops_init.$gwx=true;
 var nv_require=function(){var nnm={};var nom={};return function(n){return function(){if(!nnm[n]) return undefined;try{if(!nom[n])nom[n]=nnm[n]();return nom[n];}catch(e){e.message=e.message.replace(/nv_/g,'');var tmp = e.stack.substring(0,e.stack.lastIndexOf(n));e.stack = tmp.substring(0,tmp.lastIndexOf('\n'));e.stack = e.stack.replace(/\snv_/g,' ');e.stack = $gstack(e.stack);e.stack += '\n    at ' + n.substring(2);throw e;}
 }}}()
-var x=['./pages/lastedMovie/lastedMovie.vue.wxml','./pages/lastedMovie/lastedMovie.wxml','/pages/lastedMovie/lastedMovie.vue.wxml','./pages/live/live.vue.wxml','./pages/live/live.wxml','/pages/live/live.vue.wxml','./pages/my/my.vue.wxml','./pages/my/my.wxml','/pages/my/my.vue.wxml','./pages/onlineTV/onlineTV.vue.wxml','./pages/onlineTV/onlineTV.wxml','/pages/onlineTV/onlineTV.vue.wxml'];d_[x[0]]={}
+var x=['./pages/lastedMovie/lastedMovie.vue.wxml','./pages/lastedMovie/lastedMovie.wxml','/pages/lastedMovie/lastedMovie.vue.wxml','./pages/live/live.vue.wxml','./pages/live/live.wxml','/pages/live/live.vue.wxml','./pages/my/my.vue.wxml','./pages/my/my.wxml','/pages/my/my.vue.wxml','./pages/onlineTV/onlineTV.vue.wxml','./pages/onlineTV/onlineTV.wxml','/pages/onlineTV/onlineTV.vue.wxml','./pages/tabbar/tabbar.vue.wxml','./pages/tabbar/tabbar.wxml','/pages/tabbar/tabbar.vue.wxml'];d_[x[0]]={}
 d_[x[0]]["6fc8f654"]=function(e,s,r,gg){
 var z=gz$gwx_1()
 var b=x[0]+':6fc8f654'
@@ -1207,44 +1246,34 @@ cs.pop()
 cs.pop()
 _(oB,xC)
 cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:swiper:8:6")
-var aL=_mz(z,'swiper',['bindchange',17,'class',1,'current',2,'data-comkey',3,'data-eventid',4,'duration',5],[],e,s,gg)
-var tM=_v()
-_(aL,tM)
-cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:block:9:8")
-var eN=function(oP,bO,xQ,gg){
+var aL=_n('swiper')
+_rz(z,aL,'class',17,e,s,gg)
 cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:block:9:8")
 cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:swiper-item:10:10")
-var fS=_n('swiper-item')
-_rz(z,fS,'class',28,oP,bO,gg)
-cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:scroll-view:11:12")
-var cT=_mz(z,'scroll-view',['scrollY',-1,'bindscrolltolower',29,'class',1,'data-comkey',2,'data-eventid',3],[],oP,bO,gg)
-var hU=_v()
-_(cT,hU)
-cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:block:12:14")
-var oV=function(oX,cW,lY,gg){
-cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:block:12:14")
-cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:view:13:16")
-var t1=_n('view')
-_rz(z,t1,'class',38,oX,cW,gg)
-var e2=_oz(z,39,oX,cW,gg)
-_(t1,e2)
+var tM=_n('swiper-item')
+_rz(z,tM,'class',18,e,s,gg)
+var eN=_oz(z,19,e,s,gg)
+_(tM,eN)
 cs.pop()
-_(lY,t1)
+_(aL,tM)
 cs.pop()
-return lY
-}
-hU.wxXCkey=2
-_2z(z,35,oV,oP,bO,gg,hU,'newsitem','index2','index2')
+cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:block:12:8")
+cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:swiper-item:13:10")
+var bO=_n('swiper-item')
+_rz(z,bO,'class',20,e,s,gg)
+var oP=_oz(z,21,e,s,gg)
+_(bO,oP)
 cs.pop()
+_(aL,bO)
 cs.pop()
-_(fS,cT)
+cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:block:15:8")
+cs.push("./pages/lastedMovie/lastedMovie.vue.wxml:swiper-item:16:10")
+var xQ=_n('swiper-item')
+_rz(z,xQ,'class',22,e,s,gg)
+var oR=_oz(z,23,e,s,gg)
+_(xQ,oR)
 cs.pop()
-_(xQ,fS)
-cs.pop()
-return xQ
-}
-tM.wxXCkey=2
-_2z(z,25,eN,e,s,gg,tM,'tab','index1','index1')
+_(aL,xQ)
 cs.pop()
 cs.pop()
 _(oB,aL)
@@ -1297,7 +1326,47 @@ try{
 cs.push("./pages/live/live.vue.wxml:view:2:4")
 var oB=_n('view')
 _rz(z,oB,'class',1,e,s,gg)
-var xC=_oz(z,2,e,s,gg)
+cs.push("./pages/live/live.vue.wxml:swiper:3:6")
+var xC=_mz(z,'swiper',['bindchange',2,'class',1,'current',2,'data-comkey',3,'data-eventid',4,'duration',5],[],e,s,gg)
+var oD=_v()
+_(xC,oD)
+cs.push("./pages/live/live.vue.wxml:block:4:8")
+var fE=function(hG,cF,oH,gg){
+cs.push("./pages/live/live.vue.wxml:block:4:8")
+cs.push("./pages/live/live.vue.wxml:swiper-item:5:10")
+var oJ=_n('swiper-item')
+_rz(z,oJ,'class',13,hG,cF,gg)
+cs.push("./pages/live/live.vue.wxml:scroll-view:6:12")
+var lK=_mz(z,'scroll-view',['scrollY',-1,'bindscrolltolower',14,'class',1,'data-comkey',2,'data-eventid',3],[],hG,cF,gg)
+var aL=_v()
+_(lK,aL)
+cs.push("./pages/live/live.vue.wxml:block:7:14")
+var tM=function(bO,eN,oP,gg){
+cs.push("./pages/live/live.vue.wxml:block:7:14")
+cs.push("./pages/live/live.vue.wxml:view:8:16")
+var oR=_n('view')
+_rz(z,oR,'class',23,bO,eN,gg)
+var fS=_oz(z,24,bO,eN,gg)
+_(oR,fS)
+cs.pop()
+_(oP,oR)
+cs.pop()
+return oP
+}
+aL.wxXCkey=2
+_2z(z,20,tM,hG,cF,gg,aL,'newsitem','index2','index2')
+cs.pop()
+cs.pop()
+_(oJ,lK)
+cs.pop()
+_(oH,oJ)
+cs.pop()
+return oH
+}
+oD.wxXCkey=2
+_2z(z,10,fE,e,s,gg,oD,'tab','index1','index1')
+cs.pop()
+cs.pop()
 _(oB,xC)
 cs.pop()
 _(r,oB)
@@ -1449,6 +1518,103 @@ oX.pop()
 return r
 }
 e_[x[10]]={f:m7,j:[],i:[],ti:[x[11]],ic:[]}
+d_[x[12]]={}
+d_[x[12]]["760d32d6"]=function(e,s,r,gg){
+var z=gz$gwx_9()
+var b=x[12]+':760d32d6'
+r.wxVkey=b
+gg.f=$gdc(f_["./pages/tabbar/tabbar.vue.wxml"],"",1)
+if(p_[b]){_wl(b,x[12]);return}
+p_[b]=true
+try{
+cs.push("./pages/tabbar/tabbar.vue.wxml:view:2:4")
+var oB=_n('view')
+_rz(z,oB,'class',1,e,s,gg)
+cs.push("./pages/tabbar/tabbar.vue.wxml:view:3:6")
+var xC=_n('view')
+_rz(z,xC,'class',2,e,s,gg)
+var oD=_oz(z,3,e,s,gg)
+_(xC,oD)
+cs.pop()
+_(oB,xC)
+cs.push("./pages/tabbar/tabbar.vue.wxml:view:4:6")
+var fE=_n('view')
+_rz(z,fE,'class',4,e,s,gg)
+var cF=_oz(z,5,e,s,gg)
+_(fE,cF)
+cs.pop()
+_(oB,fE)
+cs.push("./pages/tabbar/tabbar.vue.wxml:view:5:6")
+var hG=_n('view')
+_rz(z,hG,'class',6,e,s,gg)
+var oH=_oz(z,7,e,s,gg)
+_(hG,oH)
+cs.pop()
+_(oB,hG)
+cs.push("./pages/tabbar/tabbar.vue.wxml:view:6:6")
+var cI=_n('view')
+_rz(z,cI,'class',8,e,s,gg)
+var oJ=_oz(z,9,e,s,gg)
+_(cI,oJ)
+cs.pop()
+_(oB,cI)
+cs.push("./pages/tabbar/tabbar.vue.wxml:view:7:6")
+var lK=_n('view')
+_rz(z,lK,'class',10,e,s,gg)
+var aL=_oz(z,11,e,s,gg)
+_(lK,aL)
+cs.pop()
+_(oB,lK)
+cs.push("./pages/tabbar/tabbar.vue.wxml:view:8:6")
+var tM=_n('view')
+_rz(z,tM,'class',12,e,s,gg)
+var eN=_oz(z,13,e,s,gg)
+_(tM,eN)
+cs.pop()
+_(oB,tM)
+cs.push("./pages/tabbar/tabbar.vue.wxml:button:9:6")
+var bO=_mz(z,'button',['bindtap',14,'class',1,'data-comkey',2,'data-eventid',3],[],e,s,gg)
+var oP=_oz(z,18,e,s,gg)
+_(bO,oP)
+cs.pop()
+_(oB,bO)
+cs.pop()
+_(r,oB)
+}catch(err){
+p_[b]=false
+throw err
+}
+p_[b]=false
+return r
+}
+var m8=function(e,s,r,gg){
+var z=gz$gwx_9()
+return r
+}
+e_[x[12]]={f:m8,j:[],i:[],ti:[],ic:[]}
+d_[x[13]]={}
+var m9=function(e,s,r,gg){
+var z=gz$gwx_10()
+var x5=e_[x[13]].i
+_ai(x5,x[14],e_,x[13],1,1)
+var o6=_v()
+_(r,o6)
+cs.push("./pages/tabbar/tabbar.wxml:template:1:47")
+var f7=_oz(z,1,e,s,gg)
+var c8=_gd(x[13],f7,e_,d_)
+if(c8){
+var h9=_1z(z,0,e,s,gg) || {}
+var cur_globalf=gg.f
+o6.wxXCkey=3
+c8(h9,h9,o6,gg)
+gg.f=cur_globalf
+}
+else _w(f7,x[13],1,59)
+cs.pop()
+x5.pop()
+return r
+}
+e_[x[13]]={f:m9,j:[],i:[],ti:[x[14]],ic:[]}
 if(path&&e_[path]){
 window.__wxml_comp_version__=0.02
 return function(env,dd,global){$gwxc=0;var root={"tag":"wx-page"};root.children=[]
@@ -1507,7 +1673,7 @@ var setCssToHead = function(file, _xcInvalid, info) {
 var Ca = {};
 var css_id;
 var info = info || {};
-var _C= [["body, wx-view { display: -webkit-box; display: -webkit-flex; display: flex; }\nbody { min-height: 100%; }\n",],];
+var _C= [["body { background-color: #F8F8F8; height: 100%; font-size: ",[0,32],"; line-height: 1.6; }\nwx-checkbox, wx-radio { margin-right: ",[0,10],"; }\n.",[1],"_button { margin-top: ",[0,20],"; margin-bottom: ",[0,20],"; }\n.",[1],"_form { width: 100%; }\n.",[1],"container { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; min-height: 100%; -webkit-box-pack: justify; -webkit-justify-content: space-between; justify-content: space-between; font-size: ",[0,32],"; font-family: -apple-system-font, Helvetica Neue, Helvetica, sans-serif; }\n.",[1],"page-head { padding: ",[0,60]," ",[0,50]," ",[0,80],"; text-align: center; line-height: initial; height: ",[0,60],"; }\n.",[1],"page-head-title { display: inline-block; padding: 0 ",[0,40],"; font-size: ",[0,30],"; height: ",[0,60],"; line-height: ",[0,60],"; color: #BEBEBE; box-sizing: border-box; border-bottom: ",[0,2]," solid #D8D8D8; }\n.",[1],"page-head-desc { padding-top: ",[0,20],"; color: #9B9B9B; font-size: ",[0,32],"; }\n.",[1],"page-body { width: 100%; -webkit-box-flex: 1; -webkit-flex-grow: 1; flex-grow: 1; overflow-x: hidden; }\n.",[1],"page-body-wrapper { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; -webkit-box-align: center; -webkit-align-items: center; align-items: center; width: 100%; }\n.",[1],"page-body-wording { text-align: center; padding: ",[0,200]," ",[0,100],"; }\n.",[1],"page-body-info { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; -webkit-box-align: center; -webkit-align-items: center; align-items: center; background-color: #fff; width: 100%; padding: ",[0,50]," 0 ",[0,150]," 0; }\n.",[1],"page-body-title { margin-bottom: ",[0,100],"; font-size: ",[0,32],"; }\n.",[1],"page-body-text { font-size: ",[0,30],"; line-height: ",[0,52],"; color: #ccc; }\n.",[1],"page-body-text-small { font-size: ",[0,24],"; color: #000; margin-bottom: ",[0,100],"; }\n.",[1],"page-foot { margin: ",[0,100]," 0 ",[0,30]," 0; text-align: center; color: #1aad19; font-size: 0; }\n.",[1],"icon-foot { width: ",[0,152],"; height: ",[0,23],"; }\n.",[1],"page-section { width: 100%; margin-bottom: ",[0,60],"; }\n.",[1],"page-section_center { display: -webkit-box; display: -webkit-flex; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -webkit-flex-direction: column; flex-direction: column; -webkit-box-align: center; -webkit-align-items: center; align-items: center; }\n.",[1],"page-section:last-child { margin-bottom: 0; }\n.",[1],"page-section-gap { box-sizing: border-box; padding: 0 ",[0,30],"; }\n.",[1],"page-section-spacing { box-sizing: border-box; padding: 0 ",[0,80],"; }\n.",[1],"page-section-title { font-size: ",[0,28],"; color: #999999; margin-top: ",[0,10],"; margin-bottom: ",[0,10],"; padding-left: ",[0,30],"; padding-right: ",[0,30],"; }\n.",[1],"page-section-gap .",[1],"page-section-title { padding-left: 0; padding-right: 0; }\n.",[1],"index-hd { padding: ",[0,90],"; text-align: center; }\n.",[1],"index-logo { width: ",[0,140],"; height: ",[0,140],"; }\n.",[1],"btn-area { margin-top: ",[0,60],"; box-sizing: border-box; width: 100%; padding: 0 ",[0,30],"; }\n.",[1],"image-plus { width: ",[0,150],"; height: ",[0,150],"; border: ",[0,2]," solid #D9D9D9; position: relative; }\n.",[1],"image-plus-nb { border: 0; }\n.",[1],"image-plus-text { color: #888888; font-size: ",[0,28],"; }\n.",[1],"image-plus-horizontal { position: absolute; top: 50%; left: 50%; background-color: #d9d9d9; width: ",[0,4],"; height: ",[0,80],"; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); }\n.",[1],"image-plus-vertical { position: absolute; top: 50%; left: 50%; background-color: #d9d9d9; width: ",[0,80],"; height: ",[0,4],"; transform: translate(-50%, -50%); -webkit-transform: translate(-50%, -50%); }\n.",[1],"color1 { background-color: #1AAD19; color: #FFFFFF; }\n.",[1],"color2 { background-color: #2782D7; color: #FFFFFF; }\n.",[1],"color3 { background-color: #F1F1F1; color: #353535; }\n",],];
 function makeup(file, opt) {
 var _n = typeof(file) === "number";
 if ( _n && Ca.hasOwnProperty(file)) return "";

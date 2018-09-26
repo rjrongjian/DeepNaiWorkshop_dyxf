@@ -1,0 +1,21 @@
+
+.swiper-box {
+  width: 100%;
+  background-color: #8A6DE9;
+}
+.color1 {
+  background-color: #007AFF;
+}
+.color2 {
+  background-color: #4CD964;
+}
+.color3 {
+  background-color: #8A6DE9;
+}
+.item {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  flex-grow: 1;
+  width: 100%;
+  height: 100rpx;
+}

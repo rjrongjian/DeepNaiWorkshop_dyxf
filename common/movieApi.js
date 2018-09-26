@@ -18,10 +18,12 @@ var apiConfig = {
  * 获取电影分类，同步方式
  */
 var getMovieType = function(cmsType,apiType,userAgent){
+	let result = "";
 	if(SEA_CMS==cmsType){
 		var apiUrl = apiConfig[cmsType][apiType];
 		console.log("获取的api："+apiUrl['movieTypeApi']);
 		if(apiUrl){
+			uni.XMLHttpRequest()
 			uni.request({
 				url:apiUrl['movieTypeApi'], //
 				//url:apiUrlTemp+'/inc/s_ldg_kkm3u8.asp',

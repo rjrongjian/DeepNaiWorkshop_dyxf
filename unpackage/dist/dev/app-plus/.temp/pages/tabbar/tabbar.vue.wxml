@@ -1,0 +1,11 @@
+<template name="760d32d6">
+  <view class="_view data-v-371b8caa swiper-box">
+    <view class="_view data-v-371b8caa item color1">元素一</view>
+    <view class="_view data-v-371b8caa item color2">元素二</view>
+    <view class="_view data-v-371b8caa item color1">元素一</view>
+    <view class="_view data-v-371b8caa item color2">元素二</view>
+    <view class="_view data-v-371b8caa item color1">元素一</view>
+    <view class="_view data-v-371b8caa item color2">元素二</view>
+    <button bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_button data-v-371b8caa">测试</button>
+  </view>
+</template>

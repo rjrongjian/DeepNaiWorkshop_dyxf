@@ -1,9 +1,4 @@
 
-page {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-}
 .index {
   display: -webkit-box;
   display: -webkit-flex;
@@ -43,8 +38,6 @@ page {
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   flex: 1;
-  width: 100%;
-  height: 100%;
 }
 .swiper-box view {
   text-align: center;
@@ -55,4 +48,13 @@ page {
   line-height: 90rpx;
   text-align: left;
   border-bottom: 2rpx solid #EFEFF4;
+}
+.color1 {
+  background-color: #007AFF;
+}
+.color2 {
+  background-color: #4CD964;
+}
+.color3 {
+  background-color: #8A6DE9;
 }

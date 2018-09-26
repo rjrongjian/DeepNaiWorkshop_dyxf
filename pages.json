@@ -4,44 +4,50 @@
         {
             "path" : "pages/lastedMovie/lastedMovie",
             "style" : {
-				"navigationBarTitleText":"电影信封",//导航栏标题
-				"navigationBarBackgroundColor":"#79E8D0",//导航栏背景颜色
-				"enablePullDownRefresh":true,//是否开启下拉刷新
-				//"backgroundTextStyle":"light",//下拉刷新样式,
-				"navigationBarTextStyle":"white"//导航栏标题颜色
-				
-			}
+						"navigationBarTitleText":"电影信封",//导航栏标题
+						"navigationBarBackgroundColor":"#79E8D0",//导航栏背景颜色
+						"enablePullDownRefresh":true,//是否开启下拉刷新
+						//"backgroundTextStyle":"light",//下拉刷新样式,
+						"navigationBarTextStyle":"white"//导航栏标题颜色
+						
+					}
         },
         {
             "path" : "pages/my/my",
             "style" : {
-				"navigationBarTitleText":"个人中心",
-				"navigationBarBackgroundColor":"#79E8D0",
-				"enablePullDownRefresh":true,//是否开启下拉刷新
-				//"backgroundTextStyle":"light",//下拉刷新样式,
-				"navigationBarTextStyle":"white"//导航栏标题颜色
-			}
+						"navigationBarTitleText":"个人中心",
+						"navigationBarBackgroundColor":"#79E8D0",
+						"enablePullDownRefresh":true,//是否开启下拉刷新
+						//"backgroundTextStyle":"light",//下拉刷新样式,
+						"navigationBarTextStyle":"white"//导航栏标题颜色
+					}
         },
         {
             "path" : "pages/live/live",
             "style" : {
-				"navigationBarTitleText":"直播盒子",
-				"navigationBarBackgroundColor":"#79E8D0",
-				"enablePullDownRefresh":true,//是否开启下拉刷新
-				//"backgroundTextStyle":"light",//下拉刷新样式,
-				"navigationBarTextStyle":"white"//导航栏标题颜色
-			}
+						"navigationBarTitleText":"直播盒子",
+						"navigationBarBackgroundColor":"#79E8D0",
+						"enablePullDownRefresh":true,//是否开启下拉刷新
+						//"backgroundTextStyle":"light",//下拉刷新样式,
+						"navigationBarTextStyle":"white"//导航栏标题颜色
+					}
         },
         {
             "path" : "pages/onlineTV/onlineTV",
             "style" : {
-				"navigationBarTitleText":"网络电视",
-				"navigationBarBackgroundColor":"#79E8D0",
-				"enablePullDownRefresh":true,//是否开启下拉刷新
-				//"backgroundTextStyle":"light",//下拉刷新样式,
-				"navigationBarTextStyle":"white"//导航栏标题颜色
-			}
-        }
+						"navigationBarTitleText":"网络电视",
+						"navigationBarBackgroundColor":"#79E8D0",
+						"enablePullDownRefresh":true,//是否开启下拉刷新
+						//"backgroundTextStyle":"light",//下拉刷新样式,
+						"navigationBarTextStyle":"white"//导航栏标题颜色
+					}
+        },
+				{
+					"path": "pages/tabbar/tabbar",
+					"style": {
+						"navigationBarTitleText": "顶部选项卡"
+					}
+				}
     ],
     "globalStyle" : {
         "navigationBarTextStyle" : "white",
@@ -61,18 +67,24 @@
                 "pagePath" : "pages/lastedMovie/lastedMovie",
                 "text" : "最新电影"
             },
-           //{
-           //     "iconPath" : "static/bottom/video.png",
-           //     "selectedIconPath" : "static/bottom/video_fill.png",
-           //     "pagePath" : "pages/live/live",
-           //     "text" : "直播盒子"
-           // }, 
+           {
+                "iconPath" : "static/bottom/video.png",
+                "selectedIconPath" : "static/bottom/video_fill.png",
+                "pagePath" : "pages/live/live",
+                "text" : "直播盒子"
+            }, 
             {
                 "iconPath" : "static/bottom/live.png",
                 "selectedIconPath" : "static/bottom/live_fill.png",
                 "pagePath" : "pages/onlineTV/onlineTV",
                 "text" : "卫星电视"
             },
+						{
+								"iconPath" : "static/bottom/live.png",
+								"selectedIconPath" : "static/bottom/live_fill.png",
+								"pagePath" : "pages/tabbar/tabbar",
+								"text" : "官方测试"
+						},
             {
                 "iconPath" : "static/bottom/people.png",
                 "selectedIconPath" : "static/bottom/people_fill.png",
