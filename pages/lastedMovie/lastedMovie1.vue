@@ -7,25 +7,9 @@
 			</block>
 		</scroll-view>
 		-->
+		
 		<swiper :current="currentTab" class="swiper-box" duration="300" @change="bindChange">
-			<!--<block v-for="(movieInfo,index1) in movieList" :key="index1">-->
-			<!--<block>-->
-				<swiper-item>
-					<!--
-					<scroll-view class="index-bd" scroll-y @scrolltolower="loadMore(index1)">
-						<block v-for="(movieInfo,index2) in movieList" :key="index2">
-							<view class="product">
-								<image class="product-image" :src="movieInfo.image ? movieInfo.image : 'http://via.placeholder.com/150x200'"></image>
-								<view class="product-title">{{movieInfo.title}}</view>
-								<view class="product-price">
-									<text class="product-price-favour">￥{{movieInfo.originalPrice}}</text>
-									<text class="product-price-original">￥{{movieInfo.favourPrice}}</text>
-									<text class="product-tip">{{movieInfo.tip}}</text>
-								</view>
-							</view>
-						</block>
-					</scroll-view>
-					-->
+			
 					<view class="product-list">
 						
 							<!--<scroll-view class="index-bd">-->
@@ -44,8 +28,7 @@
 							</view>
 						
 					</view>
-				</swiper-item>
-			<!--</block>-->
+				
 		</swiper>
 		<!--
 		<view class="product-list">

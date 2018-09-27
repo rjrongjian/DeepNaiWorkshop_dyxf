@@ -1,0 +1,33 @@
+
+.swiper-box {
+  background-color: #4CD964;
+}
+.container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+}
+.swiper-item {
+  display: block;
+  height: 300rpx;
+  text-align: center;
+  background-color: #007AFF;
+}
+.color1 {
+  background-color: #FF0000;
+}
+.color2 {
+  background-color: #8A6DE9;
+}
+.movie-list {
+  padding: 0 0;
+  margin: 0;
+}

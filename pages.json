@@ -2,55 +2,67 @@
     "pages" : [
         //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
         {
-            "path" : "pages/lastedMovie/lastedMovie",
+            "path" : "pages/lastedMovie2/lastedMovie2",
             "style" : {
-						"navigationBarTitleText":"电影信封",//导航栏标题
-						"navigationBarBackgroundColor":"#79E8D0",//导航栏背景颜色
-						"enablePullDownRefresh":true,//是否开启下拉刷新
-						//"backgroundTextStyle":"light",//下拉刷新样式,
-						"navigationBarTextStyle":"white"//导航栏标题颜色
-						
-					}
+                "navigationBarTitleText" : "电影信封", //导航栏标题
+                "navigationBarBackgroundColor" : "#79E8D0", //导航栏背景颜色
+                "enablePullDownRefresh" : true, //是否开启下拉刷新
+
+                //"backgroundTextStyle":"light",//下拉刷新样式,
+                "navigationBarTextStyle" : "white" //导航栏标题颜色
+            }
         },
         {
             "path" : "pages/my/my",
             "style" : {
-						"navigationBarTitleText":"个人中心",
-						"navigationBarBackgroundColor":"#79E8D0",
-						"enablePullDownRefresh":true,//是否开启下拉刷新
-						//"backgroundTextStyle":"light",//下拉刷新样式,
-						"navigationBarTextStyle":"white"//导航栏标题颜色
-					}
+                "navigationBarTitleText" : "个人中心",
+                "navigationBarBackgroundColor" : "#79E8D0",
+                "enablePullDownRefresh" : true, //是否开启下拉刷新
+
+                //"backgroundTextStyle":"light",//下拉刷新样式,
+                "navigationBarTextStyle" : "white" //导航栏标题颜色
+            }
         },
         {
             "path" : "pages/live/live",
             "style" : {
-						"navigationBarTitleText":"直播盒子",
-						"navigationBarBackgroundColor":"#79E8D0",
-						"enablePullDownRefresh":true,//是否开启下拉刷新
-						//"backgroundTextStyle":"light",//下拉刷新样式,
-						"navigationBarTextStyle":"white"//导航栏标题颜色
-					}
+                "navigationBarTitleText" : "直播盒子",
+                "navigationBarBackgroundColor" : "#79E8D0",
+                "enablePullDownRefresh" : true, //是否开启下拉刷新
+
+                //"backgroundTextStyle":"light",//下拉刷新样式,
+                "navigationBarTextStyle" : "white" //导航栏标题颜色
+            }
         },
         {
             "path" : "pages/onlineTV/onlineTV",
             "style" : {
-						"navigationBarTitleText":"网络电视",
-						"navigationBarBackgroundColor":"#79E8D0",
-						"enablePullDownRefresh":true,//是否开启下拉刷新
-						//"backgroundTextStyle":"light",//下拉刷新样式,
-						"navigationBarTextStyle":"white"//导航栏标题颜色
-					}
+                "navigationBarTitleText" : "网络电视",
+                "navigationBarBackgroundColor" : "#79E8D0",
+                "enablePullDownRefresh" : true, //是否开启下拉刷新
+
+                //"backgroundTextStyle":"light",//下拉刷新样式,
+                "navigationBarTextStyle" : "white" //导航栏标题颜色
+            }
         },
         {
             "path" : "pages/tabbar/tabbar",
             "style" : {
-						"navigationBarTitleText":"官方测试",
-						"navigationBarBackgroundColor":"#79E8D0",
-						"enablePullDownRefresh":true,//是否开启下拉刷新
-						//"backgroundTextStyle":"light",//下拉刷新样式,
-						"navigationBarTextStyle":"white"//导航栏标题颜色
-					}
+                "navigationBarTitleText" : "官方测试",
+                "navigationBarBackgroundColor" : "#79E8D0",
+                "enablePullDownRefresh" : true, //是否开启下拉刷新
+
+                //"backgroundTextStyle":"light",//下拉刷新样式,
+                "navigationBarTextStyle" : "white" //导航栏标题颜色
+            }
+        },
+        {
+            "path" : "pages/lastedMovie2/lastedMovie2",
+            "style" : {}
+        },
+        {
+            "path" : "pages/lastedMovie2/lastedMovie2",
+            "style" : {}
         }
     ],
     "globalStyle" : {
@@ -68,15 +80,15 @@
             {
                 "iconPath" : "static/bottom/playon.png",
                 "selectedIconPath" : "static/bottom/playon_fill.png",
-                "pagePath" : "pages/lastedMovie/lastedMovie",
+                "pagePath" : "pages/lastedMovie2/lastedMovie2",
                 "text" : "最新电影"
             },
-           {
+            {
                 "iconPath" : "static/bottom/video.png",
                 "selectedIconPath" : "static/bottom/video_fill.png",
                 "pagePath" : "pages/live/live",
                 "text" : "直播盒子"
-            }, 
+            },
             {
                 "iconPath" : "static/bottom/live.png",
                 "selectedIconPath" : "static/bottom/live_fill.png",
@@ -89,12 +101,12 @@
                 "pagePath" : "pages/my/my",
                 "text" : "我的"
             },
-						{
-								"iconPath" : "static/bottom/people.png",
-								"selectedIconPath" : "static/bottom/people_fill.png",
-								"pagePath" : "pages/tabbar/tabbar",
-								"text" : "官方测试"
-						}
+            {
+                "iconPath" : "static/bottom/people.png",
+                "selectedIconPath" : "static/bottom/people_fill.png",
+                "pagePath" : "pages/tabbar/tabbar",
+                "text" : "官方测试"
+            }
         ]
     }
 }
