@@ -1,18 +1,73 @@
-<import src="/components/uni-icon.vue.wxml" />
 <import src="/components/uni-drawer.vue.wxml" />
-<template name="data-v-371b8caa-default-1">
-  <view class="_view data-v-371b8caa drawer-content">
-    <view class="_view data-v-371b8caa title">抽屉式导航</view>
-    <view class="_view data-v-371b8caa text"> 这是抽屉式导航组件使用示例，你可以在这里放置任何内容。关闭抽屉式导航有多种方式：1.点击本抽屉式导航之外的任意位置；2.点击如下红色按钮；
-      <text class="_text data-v-371b8caa">3.点击页面右上角的按钮；</text>
-    </view>
-    <button class="_button data-v-371b8caa button" type="warn" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">关闭抽屉式导航</button>
-    <view class="_view data-v-371b8caa uni-list">
-      <view class="_view data-v-371b8caa uni-list-cell" hover-class="uni-list-cell-hover">
-        <view class="_view data-v-371b8caa uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}"> Item1 </view>
+<template name="data-v-946297ec-default-1">
+  <view class="_view data-v-946297ec drawer-content">
+    <view class="_view data-v-946297ec title">电影分类</view>
+    <view class="_view data-v-946297ec uni-list">
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
       </view>
-      <view class="_view data-v-371b8caa uni-list-cell uni-list-cell-last" hover-class="uni-list-cell-hover">
-        <view class="_view data-v-371b8caa uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}"> Item2 </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'4'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'5'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'6'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'7'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'8'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'9'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'10'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'11'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'12'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'13'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'14'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'15'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'16'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'17'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'18'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'19'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'20'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'21'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'22'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
+      </view>
+      <view class="_view data-v-946297ec uni-list-cell" hover-class="uni-list-cell-hover">
+        <view class="_view data-v-946297ec uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'23'}}" data-comkey="{{$k}}"> Item1哈哈 </view>
       </view>
     </view>
   </view>

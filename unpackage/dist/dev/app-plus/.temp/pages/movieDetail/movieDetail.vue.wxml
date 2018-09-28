@@ -1,0 +1,50 @@
+<template name="2414ccc0">
+  <block wx:if="{{isLoadedMovieData}}">
+    <view class="_view data-v-d5683c24 container">
+      <view class="_view data-v-d5683c24 video-style">
+        <video id="myVideo" src="{{src}}" binderror="handleProxy" controls class="_video data-v-d5683c24 video-style-inner" data-eventid="{{'0'}}" data-comkey="{{$k}}"></video>
+      </view>
+      <view class="_view data-v-d5683c24 info">电影名称：</view>
+      <view class="_view data-v-d5683c24 info">电影简介：</view>
+      <view class="_view data-v-d5683c24 info">更新时间：</view>
+      <view class="_view data-v-d5683c24 info">上映时间：</view>
+      <view class="_view data-v-d5683c24 info">类型：</view>
+      <view class="_view data-v-d5683c24 info">地区：</view>
+      <view class="_view data-v-d5683c24 info">语言：</view>
+      <view class="_view data-v-d5683c24 info">
+        <view class="_view data-v-d5683c24">资源线路：</view>
+        <radio-group class="_radio-group data-v-d5683c24 radio-group" bindchange="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">
+          <label class="_label data-v-d5683c24 radio" wx:key="item" key="{{item}}" wx:for="{{items}}" wx:for-index="index" wx:for-item="item">
+            <radio value="{{item.value}}" checked="{{item.checked}}" class="_radio data-v-d5683c24 radio-color" color="#24D197" />{{item.name}} </label>
+        </radio-group>
+      </view>
+      <view class="_view data-v-d5683c24 uni-card uni-card-1">
+        <view class="_view data-v-d5683c24 uni-card-header-1">选集：</view>
+        <view class="_view data-v-d5683c24 uni-card-content uni-card-content-1">
+          <view class="_view data-v-d5683c24 label-list">
+            <view class="_view data-v-d5683c24 uni-label-1 res-selected">第一集</view>
+            <view class="_view data-v-d5683c24 uni-label-1 ">第二集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第三集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第四集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第五集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第六集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第七集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第八集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第九集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第十集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第十一集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第十二集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第十三集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第十四集</view>
+            <view class="_view data-v-d5683c24 uni-label-1">第十五集</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="_view data-v-d5683c24 container2">
+      <text class="_text data-v-d5683c24 loadMore loadMore-center">加载中...</text>
+    </view>
+  </block>
+</template>

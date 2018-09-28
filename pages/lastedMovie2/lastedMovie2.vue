@@ -25,12 +25,140 @@
 			</block>
 			<text class="loadMore">加载中...</text>
 		</view>
+		<uni-drawer :visible="rightDrawerVisible" mode="right" @close="closeRightDrawer" >
+			<view class="drawer-content">
+				<view class="title">电影分类</view>
+				
+				
+				
+				
+				<view class="uni-list">
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
+							Item1哈哈
+						</view>
+					</view>
+					
+				</view>
+			</view>
+		</uni-drawer>
 	</view>
 	
 </template>
 
 <script>
+	import uniDrawer from '../../components/uni-drawer.vue';
+	import uniIcon from '../../components/uni-icon.vue';
 	export default {
+		components: {
+			uniDrawer,
+			uniIcon
+		},
 		data() {
 			return {
 				itemList: [
@@ -44,7 +172,8 @@
 				duration: 1000,
 				refreshing: false,
 				lists: [],
-				fetchPageNum: 1
+				fetchPageNum: 1,
+				rightDrawerVisible: false
 			}
 		},
 		onLoad() {
@@ -90,6 +219,9 @@
 		},
 		onReachBottom() {
 			this.getData();
+		},
+		onNavigationBarButtonTap(e) {
+			this.rightDrawerVisible = !this.rightDrawerVisible
 		},
 		methods: {
 			getData() {
@@ -138,6 +270,7 @@
 					url:"../detail/detail?data=" + JSON.stringify(e)
 				})
 			},
+			
 			share(e) {
 				if (this.providerList.length === 0) {
 					uni.showModal({
@@ -172,6 +305,24 @@
 						});
 					}
 				})
+			},
+			closeRightDrawer() {
+				this.rightDrawerVisible = false;
+			},
+			showRightDrawer() {
+				this.rightDrawerVisible = true;
+			},
+			item1() {
+				this.rightDrawerVisible = false;
+				uni.showToast({
+					title: 'item1'
+				});
+			},
+			item2() {
+				this.rightDrawerVisible = false;
+				uni.showToast({
+					title: 'item2'
+				});
 			}
 		}
 	}
@@ -204,4 +355,35 @@
 		padding: 0px 0px;
 		margin: 0px;
 	}
+	
+	
+	/*drawer单独样式*/
+	.uni-list {
+		margin-top: 15px;
+	}
+
+	.drawer-content {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: wrap;
+		padding: 15px;
+		flex: 1;
+		background-color: #2782D7;
+		overflow: scroll;
+		
+	}
+
+	.drawer-content>.title {
+		font-size: 18px;
+	}
+
+	.drawer-content>.text {
+		font-size: 15px;
+	}
+
+	.drawer-content>.button {
+		font-size: 14px;
+	}
+	/*drawer单独样式结束*/
+	
 </style>

@@ -1,0 +1,101 @@
+
+.container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.container2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 100%;
+}
+.video-style {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+}
+.video-style-inner {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+.info {
+  color: #555;
+  padding: 10rpx 20rpx;
+  font-size: 28rpx;
+}
+.label-list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.uni-card-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.uni-label-1 {
+  word-wrap: break-word;
+  word-break: break-all;
+  border: 1rpx solid #555;
+  color: #555;
+  border-radius: 10rpx;
+  padding: 10rpx 15rpx;
+  margin: 10rpx;
+  font-size: 28rpx;
+}
+.res-selected {
+  color: #FFFFFF;
+  background-color: #24D197;
+  border: 1rpx solid #FFFFFF;
+}
+.uni-card-header-1 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  min-height: 50rpx;
+  padding: 10rpx 10rpx;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  color: #555;
+  border-bottom: 1rpx solid #555;
+}
+.uni-card-content-1 {
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
+}
+.radio-color {
+  color: #24D197;
+}

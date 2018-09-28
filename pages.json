@@ -6,10 +6,19 @@
             "style" : {
                 "navigationBarTitleText" : "电影信封", //导航栏标题
                 "navigationBarBackgroundColor" : "#79E8D0", //导航栏背景颜色
-                "enablePullDownRefresh" : true, //是否开启下拉刷新
 
+                //"enablePullDownRefresh" : true, //是否开启下拉刷新
                 //"backgroundTextStyle":"light",//下拉刷新样式,
-                "navigationBarTextStyle" : "white" //导航栏标题颜色
+                "navigationBarTextStyle" : "white", //导航栏标题颜色
+                "titleNView" : {
+                    "buttons" : [
+                        {
+                            "text" : "\ue563",
+                            "fontSrc" : "/static/uni.ttf",
+                            "fontSize" : "22px"
+                        }
+                    ]
+                }
             }
         },
         {
@@ -20,7 +29,7 @@
                 "enablePullDownRefresh" : true, //是否开启下拉刷新
 
                 //"backgroundTextStyle":"light",//下拉刷新样式,
-                "navigationBarTextStyle" : "white" //导航栏标题颜色
+                "navigationBarTextStyle" : "white" //导航栏标题颜色	
             }
         },
         {
@@ -57,12 +66,10 @@
             }
         },
         {
-            "path" : "pages/lastedMovie2/lastedMovie2",
-            "style" : {}
-        },
-        {
-            "path" : "pages/lastedMovie2/lastedMovie2",
-            "style" : {}
+            "path" : "pages/movieDetail/movieDetail",
+            "style" : {
+				"navigationBarTitleText":"详情页面"
+			}
         }
     ],
     "globalStyle" : {
@@ -104,8 +111,8 @@
             {
                 "iconPath" : "static/bottom/people.png",
                 "selectedIconPath" : "static/bottom/people_fill.png",
-                "pagePath" : "pages/tabbar/tabbar",
-                "text" : "官方测试"
+                "pagePath" : "pages/movieDetail/movieDetail",
+                "text" : "详情页面"
             }
         ]
     }

@@ -15,6 +15,7 @@
 
 <style>
 	@import './common/common.css';
+	@import './common/uni.css';
 	page,
 	view {
 		display: flex;

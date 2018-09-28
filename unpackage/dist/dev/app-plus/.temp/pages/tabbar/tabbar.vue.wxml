@@ -1,15 +1,33 @@
-<import src="/components/uni-icon.vue.wxml" />
-<import src="/components/uni-drawer.vue.wxml" />
 <template name="760d32d6">
-  <view class="_view data-v-371b8caa">
-    <view class="_view data-v-371b8caa header">
-      <view class="_view data-v-371b8caa input-view">
-        <template type="search" size="22" color="#666666" data="{{...$root[$kk+'0'], $root}}" is="60dcfc8e"></template>
-        <input class="_input data-v-371b8caa input" type="text" placeholder="输入搜索关键词" />
-      </view>
-    </view>
-    <view class="_view data-v-371b8caa page-content"> 这是抽屉式导航组件使用示例，可以指定菜单左侧或者右侧弹出（仅初始化生效），组件内部可以放置任何内容。点击页面右上角的按钮即可显示导航菜单。 </view>
-    <template mode="right" bindclose="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'1'], $root, $slotdefault:'data-v-371b8caa-default-1'}}"
-      is="136d31c6"></template>
+  <view class="_view data-v-371b8caa container">
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
+    <view class="_view data-v-371b8caa">范德萨放假撒看</view>
   </view>
 </template>

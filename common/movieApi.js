@@ -15,8 +15,9 @@ var selectedApiType = 'kuYun';
 
 /**
  * 当前cms和资源下，屏蔽的电影分类,对应分类的电影还是能搜的到
+ * 同时，由于分类导航页面最多只能有12个分类，这里也要屏蔽一些
  */
-var shieldingCatIds = {"catId_40":"伦理"};
+var shieldingCatIds = {"catId_40":"伦理","catId_41":"微电影","catId_42":"纪录片","catId_2":"香港剧","catdId_3":"台湾剧","catId_4":"日本剧","catId_30":"综艺节目","catId_37":"剧情片"};
 
 
 
