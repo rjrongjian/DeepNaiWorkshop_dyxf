@@ -19,7 +19,6 @@
   display: block;
   height: 300rpx;
   text-align: center;
-  background-color: #007AFF;
 }
 .color1 {
   background-color: #FF0000;
@@ -29,7 +28,7 @@
 }
 .movie-list {
   padding: 0 0;
-  margin: 0;
+  margin-top: 10rpx;
 }
 .uni-list {
   margin-top: 15rpx;
@@ -59,6 +58,25 @@
 }
 .drawer-content>.button {
   font-size: 14rpx;
+}
+.row-extra {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.card-extra {
+  padding-left: 0;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  margin-top: 5rpx;
+}
+.card-list2-num-view {
+  height: 27rpx;
+  border-radius: 8rpx;
+  padding-bottom: 5rpx;
 }
 .uni-drawer.data-v-b994e6e6 {
   display: block;

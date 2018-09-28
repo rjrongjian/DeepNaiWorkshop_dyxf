@@ -8,11 +8,11 @@
 		<view class="index movie-list">
 			
 			<block v-for="(list, index) in lists" :key="index">
-				<div class="row">
-					<div class="card card-list2" v-for="(item,key) in list" @click="goDetail(item)" :key="key">
+				<div class="row row-extra">
+					<div class="card card-list2 card-extra" v-for="(item,key) in list" @click="goDetail(item)" :key="key">
 						<image class="card-img card-list2-img" :src="item.img_src"></image>
 						<div class="card-num-view card-list2-num-view">
-							<text class="card-num card-list2-num">{{item.img_num}}P</text>
+							<text class="card-num card-list2-num-1">{{item.img_num}}P</text>
 						</div>
 						<div class="card-bottm row">
 							<div class="car-title-view row">
@@ -169,7 +169,7 @@
 				indicatorDots: false,
 				autoplay: false,
 				interval: 5000,
-				duration: 1000,
+				duration: 300,
 				refreshing: false,
 				lists: [],
 				fetchPageNum: 1,
@@ -323,6 +323,12 @@
 				uni.showToast({
 					title: 'item2'
 				});
+			},
+			getTodayMovies:function(){
+				
+			},
+			getMoviesBy:function(apiUrl){
+				
 			}
 		}
 	}
@@ -343,7 +349,7 @@
 		display: block;
 		height: 300px;
 		text-align: center;
-		background-color: #007AFF;
+		/*background-color: #007AFF;*/
 	}
 	.color1{
 		background-color: #FF0000;/*红色*/
@@ -353,7 +359,7 @@
 	}
 	.movie-list{
 		padding: 0px 0px;
-		margin: 0px;
+		margin-top: 10px;
 	}
 	
 	
@@ -386,4 +392,24 @@
 	}
 	/*drawer单独样式结束*/
 	
+	.row-extra{
+		display: flex;
+		justify-content:center;
+		/*background-color: #007AFF;*/
+		
+	}
+	.card-extra{
+		/*background-color: #8A6DE9;*/
+		padding-left: 0px;
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-top: 5px;
+	}
+	.card-list2-num-view {
+		height: 27px;
+		border-radius: 8px;
+		padding-bottom: 5px;
+		/*background-color: #86E65A;*/ /*右上角的颜色*/
+	}
+
 </style>
