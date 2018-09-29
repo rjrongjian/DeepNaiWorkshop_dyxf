@@ -8,23 +8,29 @@
 		
 		<view class="index movie-list">
 			
-			<block v-for="(list, index) in lists" :key="index">
+			<block v-for="(list, index) in currentMovieList" :key="index">
 				<div class="row row-extra">
 					<div class="card card-list2 card-extra" v-for="(item,key) in list" @click="goDetail(item)" :key="key">
-						<image class="card-img card-list2-img" :src="item.img_src"></image>
+						<image class="card-img card-list2-img" :src="item.pic"></image>
 						<div class="card-num-view card-list2-num-view">
-							<text class="card-num card-list2-num-1">{{item.img_num}}P</text>
+							<text class="card-num card-list2-num-1">{{item.type}}</text>
 						</div>
-						<div class="card-bottm row">
-							<div class="car-title-view row">
-								<text class="card-title card-list2-title">{{item.title}}</text>
+						<div class="card-bottm-1 column">
+							<div class="car-title-view-1 column">
+								<text class="card-title card-list2-title card-title-1">{{item.name}}[{{item.note}}]</span></text>
+								<text class="card-title card-list2-title-1">更新时间:{{item.updateTime}}</text>
 							</div>
-							<view @click.stop="share(item)" class="card-share-view"></view>
+							<!--
+							<div class="car-title-view-1 row">
+								<text class="card-title card-list2-title-1">更新时间:{{item.updateTime}}</text>
+							</div>
+							-->
+							<!--<view @click.stop="share(item)" class="card-share-view"></view>-->
 						</div>
 					</div>
 				</div>
 			</block>
-			<text class="loadMore">加载中...</text>
+			<text class="loadMore">{{loadMoreText}}</text>
 		</view>
 		<uni-drawer :visible="rightDrawerVisible" mode="right" @close="closeRightDrawer" :movieCatsIntoSon="movieCats" :getMoviesByCatInSon="getMoviesByCat">
 			
@@ -53,23 +59,41 @@
 				interval: 5000,
 				duration: 300,
 				refreshing: false,
-				lists: [],
-				fetchPageNum: 1,
+				//lists: [],
 				rightDrawerVisible: false,
-				movieCats:[]
+				movieCats:[],
+				loadMoreText:"",
+				currentMovieList:[],
+				fetchPageNum: 1,
+				totalPage:1,
+				currentCat:-1 //-1 代表查询今日更新
 			}
 		},
 		onLoad() {
+			
 			//加载电影分类
 			this.getMovieCat();
+			//加载电影，默认是今日电影
+			this.getMovies();
 		},
 		onPullDownRefresh() {
+			uni.setNavigationBarTitle({
+				title:"今日更新"
+			})
 			console.log("下拉刷新");
 			this.refreshing = true;
-			this.getData();
+			//下拉刷新，默认查得是最新电影,并且重新请求数据
+			this.loadMoreText = "";
+			this.currentMovieList = [];
+			this.fetchPageNum = 1;
+			this.totalPage = 1;
+			this.currentCat = -1; //-1 代表查询今日更新
+			
+			//加载电影，默认是今日电影
+			this.getMovies();
 		},
 		onReachBottom() {
-			this.getData();
+			this.getMovies();
 		},
 		onNavigationBarButtonTap(e) {
 			this.rightDrawerVisible = !this.rightDrawerVisible
@@ -176,13 +200,140 @@
 				});
 			},
 			getTodayMovies:function(){
-				
+				/*
+				uni.setNavigationBarTitle({
+					title: '今日更新',
+					fail:function(){
+						console.log("更新导航栏失败");
+					}
+				})*/
+				var movieApiConfig = this.$myMovieApi.getMovieApi();
+				if(movieApiConfig){
+					var todayMovieApiUrl = movieApiConfig['todayMovieApi']+this.fetchPageNum;
+					this.getMoviesBy(todayMovieApiUrl);
+				}
+				else{
+					console.log("不能获取电影列表接口");
+				}
 			},
-			getMoviesByCat:function(catId){
+			getMoviesByCat:function(catId,catName){
+				uni.setNavigationBarTitle({
+					title: '类型：'+catName,
+					fail:function(){
+						console.log("更新导航栏失败");
+					}
+				})
 				console.log("获取的catId："+catId);
 			},
 			getMoviesBy:function(apiUrl){
+				console.log("加载电影,抓取页码："+this.fetchPageNum+",总页数："+this.totalPage+",调用的api:"+apiUrl);
+				if(this.fetchPageNum>this.totalPage){
+					console.log("已经到最后一页,要抓取的页码："+this.fetchPageNum+",总页数:"+this.totalPage);
+					this.loadMoreText="已经到底了";
+					return;
+				}else{
+					this.loadMoreText="加载中...";
+					
+				}
+				uni.request({
+					url: apiUrl,
+					success: (ret) => {
+						if (ret.statusCode !== 200) {
+							console.log("获取今天更新的电影失败", ret)
+						} else {
+							
+							try{
+								//console.log("获取的电影分类数据："+ret.data);
+								//解析xml数据
+								var jsonObj = this.$myXml2Json.xml_str2json(ret.data);
+								
+								//解析所有电影信息
+								var allMoviesArr = this.$myXml2Json.asArray(jsonObj.rss.list.video);
+								
+								//let moviesTemp = [];
+								let moviesIn = [];
+								//TODO 待测，当返回的结果为空
+								for(var i = 0;i<allMoviesArr.length;i++){
+									//console.log("--------------------------------------------");
+									var movieXml = allMoviesArr[i];
+									if(!this.$myMovieApi.isShieldingMovieId(movieXml.id.__text)){
+										var updateTimeTemp = movieXml.last;
+										var idTemp = movieXml.id;
+										var nameTemp = movieXml.name;
+										var typeTemp = movieXml.type;
+										var picTemp = movieXml.pic;
+										var languageTemp = movieXml.lang;
+										var areaTemp = movieXml.area;
+										var yearTemp = movieXml.year;
+										var noteTemp = movieXml.note;
+										var actorTemp = movieXml.actor;
+										var directorTemp = movieXml.director;
+										var desTemp = movieXml.des;
+										var movieUrlArrTemp = this.$myXml2Json.asArray(movieXml.dl.dd);
+										/*
+										console.log("updateTime："+updateTimeTemp);
+										console.log("id:"+idTemp);
+										console.log("name:"+nameTemp);
+										console.log("type:"+typeTemp);
+										console.log("pic:"+picTemp);
+										console.log("language:"+languageTemp);
+										console.log("area:"+areaTemp);
+										console.log("year:"+yearTemp);
+										console.log("note:"+noteTemp);
+										console.log("actor:"+actorTemp);
+										console.log("director:"+directorTemp);
+										console.log("des"+desTemp);
+										*/
+										let resUrl = {};
+										for(var j = 0;j<movieUrlArrTemp.length;j++){
+											var isM3U8Temp = movieUrlArrTemp[j]._flag;
+											var resTemp = movieUrlArrTemp[j];
+											//console.log("flag:"+isM3U8Temp);
+											//console.log("res:"+resTemp);
+											if(isM3U8Temp&&isM3U8Temp.indexOf("m3u8")!=-1){
+												isM3U8Temp = "m3u8";
+											}
+											resUrl[isM3U8Temp] = resTemp;
+										}
+										var movieJson = {id:idTemp,updateTime:updateTimeTemp,name:nameTemp,type:typeTemp,pic:picTemp,language:languageTemp,area:areaTemp,year:yearTemp,note:noteTemp,actor:actorTemp,director:directorTemp,des:desTemp,resUrl:resUrl};
+										if(moviesIn.length>=2){
+											this.currentMovieList.push(moviesIn);
+											moviesIn = [];
+										}else{
+											moviesIn.push(movieJson);
+										}
+										
+										
+									}
+									
+								}
+								
+								//this.currentMovieList = moviesTemp;
+								var pageTemp = jsonObj.rss.list;//分页信息
+								this.fetchPageNum = this.fetchPageNum+1;
+								this.totalPage = pageTemp._pagecount;
+								
+								this.loadMoreText = "";
+								
+								
+							}catch(err){
+								console.log("解析电影列表失败，原因："+err);
+								this.loadMoreText = "获取电影失败，请刷新";
+							}
+							
+							
+							
+						}
+					}
+				});
 				
+			},
+			getMovies:function(){
+				if(this.currentCat==-1){ //今日最新
+					this.getTodayMovies();
+				}else{//按分类查找
+					this.getMoviesByCat();
+				}
 			},
 			getMovieCat:function(){//获取电影分类,
 				try{
@@ -195,7 +346,7 @@
 								if (ret.statusCode !== 200) {
 									console.log("获取电影分类失败", ret)
 								} else {
-									console.log("获取的电影分类数据："+ret.data);
+									//console.log("获取的电影分类数据："+ret.data);
 									//解析xml数据
 									var jsonObj = this.$myXml2Json.xml_str2json(ret.data);
 									var allCatArr = this.$myXml2Json.asArray(jsonObj.rss.class.ty);
@@ -302,6 +453,30 @@
 		border-radius: 8px;
 		padding-bottom: 5px;
 		/*background-color: #86E65A;*/ /*右上角的颜色*/
+	}
+	.card-bottm-1 {
+		justify-content:center;
+		align-items: center;
+	}
+	
+	.card-list2-title-1 {
+		font-size: 20px;
+		margin-top:5px;
+		/*background-color: #8A6DE9;*/
+		align-self:center;
+	}
+	
+	.card-title-1{
+		padding-bottom: 2px;
+		padding-left: 10px;
+		padding-right: 10px;
+		/*background-color: #4CD964;*/
+		width: 100%;
+	}
+	
+	.car-title-view-1 {
+		flex: 1;
+		padding: 14px 0px 14px 0px;
 	}
 
 </style>

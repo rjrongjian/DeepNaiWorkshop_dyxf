@@ -19,7 +19,14 @@ var selectedApiType = 'kuYun';
  */
 var shieldingCatIds = {"catId_40":"伦理","catId_41":"微电影","catId_42":"纪录片","catId_2":"香港剧","catdId_3":"台湾剧","catId_4":"日本剧","catId_30":"综艺节目","catId_37":"剧情片"};
 
+var shieldingCatIdsForToday = {"catIdForToday_40":"伦理"};
 
+/**
+ * 当前cms和资源下，屏蔽的电影编号
+ */
+//举例
+//var shieldingMovieId = {"movieId_123","色戒"}
+var shieldingMovieId = {}
 
 
 //无需动态配置的选项-----------------------------------------------------------------
@@ -31,7 +38,8 @@ var apiConfig = {
 	"seaCms":{
 		"kuYun":{//酷云 海洋cms资源api
 			"movieTypeApi":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=list&url=&rid=sheser.com&t=1101&h=&pg=&wd=",//电影类别
-			"searchApi":"www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com&pg=1&ids="//搜片获取到id后，通过此接口获取详情 ids处填写电影id
+			"searchApi":"www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com&pg=1&ids=",//搜片获取到id后，通过此接口获取详情 ids处填写电影id,
+			"todayMovieApi":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com&t=0&h=24&pg="//今日最新电影
 		}
 	}
 	
@@ -64,14 +72,47 @@ var isShieldingCatId = function(catId){
 		//console.log("无效的catId值："+catId);
 		return false;
 	}
-	
-	
 }
+
+var isShieldingCatIdForToday = function(catId){
+	try{
+		var temp = shieldingCatIdsForToday["catIdForToday_"+catId];
+		if(temp){
+			return true;
+		}else{
+			return false;
+		
+		}
+	}catch(err){
+		console.log("解析catId失败，原因"+err);
+		//console.log("无效的catId值："+catId);
+		return false;
+	}
+}
+
+var isShieldingMovieId = function(movieId){
+	try{
+		var temp = shieldingMovieId["movieId_"+movieId];
+		if(temp){
+			return true;
+		}else{
+			return false;
+		
+		}
+	}catch(err){
+		console.log("解析movieId失败，原因"+err);
+		//console.log("无效的catId值："+catId);
+		return false;
+	}
+}
+
 
 export default {
     selectedCmsType,
 	selectedApiType,
 	getMovieApi,
 	shieldingCatIds,
-	isShieldingCatId
+	isShieldingCatId,
+	isShieldingMovieId,
+	isShieldingCatIdForToday
 }

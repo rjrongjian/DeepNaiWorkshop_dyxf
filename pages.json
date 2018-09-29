@@ -4,7 +4,7 @@
         {
             "path" : "pages/lastedMovie2/lastedMovie2",
             "style" : {
-                "navigationBarTitleText" : "电影信封", //导航栏标题
+                "navigationBarTitleText" : "今日更新", //导航栏标题
                 "navigationBarBackgroundColor" : "#79E8D0", //导航栏背景颜色
 
                 //"enablePullDownRefresh" : true, //是否开启下拉刷新
