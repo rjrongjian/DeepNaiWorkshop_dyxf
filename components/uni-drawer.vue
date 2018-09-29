@@ -2,7 +2,19 @@
     <view class="uni-drawer" :class="{'uni-drawer-visible':visible,'uni-drawer-right':rightMode}">
         <view v-if="showMask" class="uni-drawer-mask" @tap="close"></view>
         <view class="uni-drawer-content">
-            <slot></slot>
+            <view class="drawer-content">
+            	<view class="title">电影分类</view>
+            	<view class="uni-list">
+            		<block v-for="(movieCat,index) in movieCatsIntoSon" :key="movieCat.id">
+            			
+            			<view class="uni-list-cell" hover-class="uni-list-cell-hover">
+            				<view class="uni-list-cell-navigate uni-navigate-right" @tap="getMoviesByCatInSon(movieCat.id)">
+            					{{movieCat.name}}
+            				</view>
+            			</view>
+            		</block>
+            	</view>
+            </view>
         </view>
     </view>
 </template>
@@ -27,7 +39,14 @@
             mask: {
                 type: [Boolean, String],
                 default: true
-            }
+            },
+			movieCatsIntoSon:{
+				type:Array
+			},
+			getMoviesByCatInSon:{
+				type:Function,
+				default:null
+			}
         },
         data() {
             return {

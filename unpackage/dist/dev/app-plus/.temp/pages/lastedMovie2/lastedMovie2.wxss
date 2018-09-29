@@ -19,6 +19,7 @@
   display: block;
   height: 300rpx;
   text-align: center;
+  background-color: #007AFF;
 }
 .color1 {
   background-color: #FF0000;
@@ -47,7 +48,6 @@
   -webkit-box-flex: 1;
   -webkit-flex: 1;
   flex: 1;
-  background-color: #2782D7;
   overflow: scroll;
 }
 .drawer-content>.title {

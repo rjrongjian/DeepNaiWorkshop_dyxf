@@ -1,10 +1,17 @@
-<import src="/components/slots" />
 <template name="136d31c6">
   <view class="_view data-v-b994e6e6 uni-drawer {{[visible ? 'uni-drawer-visible' : '', rightMode ? 'uni-drawer-right' : '']}}">
-    <template name="default"></template>
     <view wx:if="{{showMask}}" class="_view data-v-b994e6e6 uni-drawer-mask" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}"></view>
     <view class="_view data-v-b994e6e6 uni-drawer-content">
-      <template data="{{...$root[$k], $root}}" is="{{$slotdefault || 'default'}}"></template>
+      <view class="_view data-v-b994e6e6 drawer-content">
+        <view class="_view data-v-b994e6e6 title">电影分类</view>
+        <view class="_view data-v-b994e6e6 uni-list">
+          <block wx:key="movieCat.id" key="{{movieCat.id}}" wx:for="{{movieCatsIntoSon}}" wx:for-index="index" wx:for-item="movieCat">
+            <view class="_view data-v-b994e6e6 uni-list-cell" hover-class="uni-list-cell-hover">
+              <view class="_view data-v-b994e6e6 uni-list-cell-navigate uni-navigate-right" bindtap="handleProxy" data-eventid="{{'1-'+index}}" data-comkey="{{$k}}"> {{movieCat.name}} </view>
+            </view>
+          </block>
+        </view>
+      </view>
     </view>
   </view>
 </template>

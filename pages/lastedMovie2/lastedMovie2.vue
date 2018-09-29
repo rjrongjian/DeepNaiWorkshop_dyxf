@@ -5,6 +5,7 @@
                 <text>{{item}}</text>
             </swiper-item>
         </swiper>
+		
 		<view class="index movie-list">
 			
 			<block v-for="(list, index) in lists" :key="index">
@@ -25,127 +26,8 @@
 			</block>
 			<text class="loadMore">加载中...</text>
 		</view>
-		<uni-drawer :visible="rightDrawerVisible" mode="right" @close="closeRightDrawer" >
-			<view class="drawer-content">
-				<view class="title">电影分类</view>
-				
-				
-				
-				
-				<view class="uni-list">
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-						<view class="uni-list-cell-navigate uni-navigate-right" @tap="item1">
-							Item1哈哈
-						</view>
-					</view>
-					
-				</view>
-			</view>
+		<uni-drawer :visible="rightDrawerVisible" mode="right" @close="closeRightDrawer" :movieCatsIntoSon="movieCats" :getMoviesByCatInSon="getMoviesByCat">
+			
 		</uni-drawer>
 	</view>
 	
@@ -173,44 +55,13 @@
 				refreshing: false,
 				lists: [],
 				fetchPageNum: 1,
-				rightDrawerVisible: false
+				rightDrawerVisible: false,
+				movieCats:[]
 			}
 		},
 		onLoad() {
-			this.getData();
-			uni.getProvider({
-				service: "share",
-				success: (e) => {
-					let data = [];
-					for (let i = 0; i < e.provider.length; i++) {
-						switch (e.provider[i]) {
-							case 'weixin':
-								data.push({
-									name: '分享到微信好友',
-									id: 'weixin'
-								})
-								data.push({
-									name: '分享到微信朋友圈',
-									id: 'weixin',
-									type: 'WXSenceTimeline'
-								})
-								break;
-							case 'qq':
-								data.push({
-									name: '分享到QQ',
-									id: 'qq'
-								})
-								break;
-							default:
-								break;
-						}
-					}
-					this.providerList = data;
-				},
-				fail: (e) => {
-					console.log("获取登录通道失败", e);
-				}
-			});
+			//加载电影分类
+			this.getMovieCat();
 		},
 		onPullDownRefresh() {
 			console.log("下拉刷新");
@@ -327,8 +178,49 @@
 			getTodayMovies:function(){
 				
 			},
+			getMoviesByCat:function(catId){
+				console.log("获取的catId："+catId);
+			},
 			getMoviesBy:function(apiUrl){
 				
+			},
+			getMovieCat:function(){//获取电影分类,
+				try{
+					var movieApiConfig = this.$myMovieApi.getMovieApi();
+					if(movieApiConfig){
+						var movieTypeApiUrl = movieApiConfig['movieTypeApi'];
+						uni.request({
+							url: movieTypeApiUrl,
+							success: (ret) => {
+								if (ret.statusCode !== 200) {
+									console.log("获取电影分类失败", ret)
+								} else {
+									console.log("获取的电影分类数据："+ret.data);
+									//解析xml数据
+									var jsonObj = this.$myXml2Json.xml_str2json(ret.data);
+									var allCatArr = this.$myXml2Json.asArray(jsonObj.rss.class.ty);
+									
+									let tabsTemp = [];
+									for(var i = 0;i<allCatArr.length;i++){
+										if(!this.$myMovieApi.isShieldingCatId(allCatArr[i]._id)){
+											var movieJson = {name:allCatArr[i].__text,id:allCatArr[i]._id};
+											//console.log("解析出的分类名："+allCatArr[i].__text+",catId:"+allCatArr[i]._id);
+											tabsTemp.push(movieJson);
+											
+										}
+										
+									}
+									this.movieCats = tabsTemp;
+									
+								}
+							}
+						});
+					}else{
+						console.log("加载电影分类失败");
+					}
+				}catch(e){
+					console.log("加载电影分类出现异常",e);
+				}
 			}
 		}
 	}
@@ -349,7 +241,7 @@
 		display: block;
 		height: 300px;
 		text-align: center;
-		/*background-color: #007AFF;*/
+		background-color: #007AFF;
 	}
 	.color1{
 		background-color: #FF0000;/*红色*/
@@ -374,7 +266,7 @@
 		flex-wrap: wrap;
 		padding: 15px;
 		flex: 1;
-		background-color: #2782D7;
+		/*background-color: #2782D7;*/
 		overflow: scroll;
 		
 	}

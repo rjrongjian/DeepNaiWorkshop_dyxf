@@ -25,6 +25,6 @@
       </block>
       <text class="_text data-v-946297ec loadMore">加载中...</text>
     </view>
-    <template mode="right" bindclose="handleProxy" data-eventid="{{'24'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'1'], $root, $slotdefault:'data-v-946297ec-default-1'}}" is="136d31c6"></template>
+    <template mode="right" bindclose="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}" data="{{...$root[$kk+'1'], $root}}" is="136d31c6"></template>
   </view>
 </template>
