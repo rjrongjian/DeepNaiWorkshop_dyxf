@@ -8,7 +8,7 @@
             		<block v-for="(movieCat,index) in movieCatsIntoSon" :key="movieCat.id">
             			
             			<view class="uni-list-cell" hover-class="uni-list-cell-hover">
-            				<view class="uni-list-cell-navigate uni-navigate-right" @tap="getMoviesByCatInSon(movieCat.id)">
+            				<view class="uni-list-cell-navigate uni-navigate-right" @tap="loadMovieByCat(movieCat.id,movieCat.name)">
             					{{movieCat.name}}
             				</view>
             			</view>
@@ -64,7 +64,11 @@
         methods: {
             close() {
                 this.$emit('close')
-            }
+            },
+			loadMovieByCat(catId,catName){
+				this.close();//关闭弹出窗
+				this.getMoviesByCatInSon(catId,catName);
+			}
         }
     }
 </script>

@@ -32,7 +32,7 @@
 			</block>
 			<text class="loadMore">{{loadMoreText}}</text>
 		</view>
-		<uni-drawer :visible="rightDrawerVisible" mode="right" @close="closeRightDrawer" :movieCatsIntoSon="movieCats" :getMoviesByCatInSon="getMoviesByCat">
+		<uni-drawer :visible="rightDrawerVisible" mode="right" @close="closeRightDrawer" :movieCatsIntoSon="movieCats" :getMoviesByCatInSon="getMovies">
 			
 		</uni-drawer>
 	</view>
@@ -59,6 +59,7 @@
 				interval: 5000,
 				duration: 300,
 				refreshing: false,
+				isPullDownRefresh:false,
 				//lists: [],
 				rightDrawerVisible: false,
 				movieCats:[],
@@ -66,17 +67,29 @@
 				currentMovieList:[],
 				fetchPageNum: 1,
 				totalPage:1,
-				currentCat:-1 //-1 代表查询今日更新
+				currentCat:-1, //-1 代表查询今日更新,
+				currentCatName:null
 			}
 		},
 		onLoad() {
 			
 			//加载电影分类
-			this.getMovieCat();
+			setTimeout(() => { //防止app里由于渲染导致转场动画卡顿
+				this.getMovieCat();
+			}, 300)
+			
 			//加载电影，默认是今日电影
 			this.getMovies();
 		},
 		onPullDownRefresh() {
+			if(this.rightDrawerVisible){//下拉刷新时，如果分类列表展开，就关闭
+				this.rightDrawerVisible = false;
+			}
+			
+			if(this.isPullDownRefresh){//正在进行下拉刷新
+				return;
+			}
+			this.isPullDownRefresh = true;
 			uni.setNavigationBarTitle({
 				title:"今日更新"
 			})
@@ -88,9 +101,11 @@
 			this.fetchPageNum = 1;
 			this.totalPage = 1;
 			this.currentCat = -1; //-1 代表查询今日更新
+			this.currentCatName = null;
 			
 			//加载电影，默认是今日电影
 			this.getMovies();
+			console.log("下拉刷新结尾");
 		},
 		onReachBottom() {
 			this.getMovies();
@@ -141,8 +156,9 @@
 				});
 			},
 			goDetail(e) {
+				//console.log("看看传进来的值："+JSON.stringify(e));
 				uni.navigateTo({
-					url:"../detail/detail?data=" + JSON.stringify(e)
+					url:"../movieDetail/movieDetail?data=" + JSON.stringify(e)
 				})
 			},
 			
@@ -216,19 +232,21 @@
 					console.log("不能获取电影列表接口");
 				}
 			},
-			getMoviesByCat:function(catId,catName){
-				uni.setNavigationBarTitle({
-					title: '类型：'+catName,
-					fail:function(){
-						console.log("更新导航栏失败");
-					}
-				})
-				console.log("获取的catId："+catId);
+			getMoviesByCat:function(){
+				var movieApiConfig = this.$myMovieApi.getMovieApi();
+				if(movieApiConfig){
+					var movieApiUrlByCat = movieApiConfig['getMovieByCat']+"&pg="+this.fetchPageNum+"&t="+this.currentCat;
+					this.getMoviesBy(movieApiUrlByCat);
+				}
+				else{
+					console.log("不能获取按分类获取电影列表的接口");
+				}
+				console.log("获取的catId："+this.currentCat+",获取的catName:"+this.currentCatName);
 			},
 			getMoviesBy:function(apiUrl){
 				console.log("加载电影,抓取页码："+this.fetchPageNum+",总页数："+this.totalPage+",调用的api:"+apiUrl);
 				if(this.fetchPageNum>this.totalPage){
-					console.log("已经到最后一页,要抓取的页码："+this.fetchPageNum+",总页数:"+this.totalPage);
+					console.log("已经到最后一页,要抓取的页码："+this.fetchPageNum+",总页数:"+this.totalPage+"，抓取的分类id："+this.currentCat+",分类名称："+this.currentCatName);
 					this.loadMoreText="已经到底了";
 					return;
 				}else{
@@ -250,13 +268,18 @@
 								//解析所有电影信息
 								var allMoviesArr = this.$myXml2Json.asArray(jsonObj.rss.list.video);
 								
-								//let moviesTemp = [];
+								let moviesTemp = [];
 								let moviesIn = [];
 								//TODO 待测，当返回的结果为空
 								for(var i = 0;i<allMoviesArr.length;i++){
 									//console.log("--------------------------------------------");
 									var movieXml = allMoviesArr[i];
-									if(!this.$myMovieApi.isShieldingMovieId(movieXml.id.__text)){
+									
+									if(this.currentCat==-1&&this.$myMovieApi.isShieldingCatIdForToday(movieXml.tid)){//如果是加载当天最新资源，需要检查是否此分类电影需要过滤
+										continue;
+									}
+									
+									if(!this.$myMovieApi.isShieldingMovieId(movieXml.id)){//某个具体的电影过滤
 										var updateTimeTemp = movieXml.last;
 										var idTemp = movieXml.id;
 										var nameTemp = movieXml.name;
@@ -284,19 +307,35 @@
 										console.log("director:"+directorTemp);
 										console.log("des"+desTemp);
 										*/
+									   
+									   //以免转json报错  &mdash; 等以及html元素，会出现转义失败
+									   if(desTemp){
+									   	desTemp = desTemp.replace(new RegExp("<div>",'g'),"");
+									   	desTemp = desTemp.replace(new RegExp("</div>",'g'),"");
+									   	desTemp = desTemp.replace(new RegExp("&mdash;",'g'),"-");
+									   	desTemp = desTemp.replace(new RegExp("&",'g'),"");
+									   }
 										let resUrl = {};
 										for(var j = 0;j<movieUrlArrTemp.length;j++){
 											var isM3U8Temp = movieUrlArrTemp[j]._flag;
 											var resTemp = movieUrlArrTemp[j];
+											//console.log("isM3U8Temp:"+isM3U8Temp+",看dd:"+resTemp);
 											//console.log("flag:"+isM3U8Temp);
 											//console.log("res:"+resTemp);
 											if(isM3U8Temp&&isM3U8Temp.indexOf("m3u8")!=-1){
 												isM3U8Temp = "m3u8";
 											}
-											resUrl[isM3U8Temp] = resTemp;
+											var resTemp1 = resTemp.toString();
+											
+											
+											resUrl[isM3U8Temp] = resTemp1;
+											
+											
 										}
 										var movieJson = {id:idTemp,updateTime:updateTimeTemp,name:nameTemp,type:typeTemp,pic:picTemp,language:languageTemp,area:areaTemp,year:yearTemp,note:noteTemp,actor:actorTemp,director:directorTemp,des:desTemp,resUrl:resUrl};
 										if(moviesIn.length>=2){
+											//this.currentMovieList.push(moviesIn);//不实时刷新已经加载的数据
+											//moviesTemp.push(moviesIn);
 											this.currentMovieList.push(moviesIn);
 											moviesIn = [];
 										}else{
@@ -307,7 +346,7 @@
 									}
 									
 								}
-								
+								this.refreshing = false;
 								//this.currentMovieList = moviesTemp;
 								var pageTemp = jsonObj.rss.list;//分页信息
 								this.fetchPageNum = this.fetchPageNum+1;
@@ -318,20 +357,60 @@
 								
 							}catch(err){
 								console.log("解析电影列表失败，原因："+err);
-								this.loadMoreText = "获取电影失败，请刷新";
+								this.loadMoreText = "获取电影失败，请下拉刷新";
+								this.refreshing = false;
 							}
 							
-							
+							if(this.isPullDownRefresh){
+								this.isPullDownRefresh = false;
+								uni.stopPullDownRefresh();
+							}
 							
 						}
 					}
 				});
 				
 			},
-			getMovies:function(){
+			getMovies:function(catId=null,catName=null){
+				if(this.isPullDownRefresh){//在发送底部刷新时，允许进行下拉刷新，因为可能因为网络，导致过慢，可通过下拉加载，不过这样有个问题就是下拉刷新和底部加载的数据互相影响，非安全
+					
+				}else{
+					if(this.refreshing){//当前页面正在刷新电影列表，不会再去请求
+						return;
+					}
+				}
+				
+				this.refreshing = true;
+				console.log("调用getMovies传进来的值，catId:"+catId+",catName:"+catName);
+				if(catId){
+					try{
+						var gotCatId = parseInt(catId);
+						if(this.currentCat!=gotCatId){//与当前加载的列表数据不同时，需要清空数据
+							this.loadMoreText = "";
+							this.currentMovieList = [];
+							this.fetchPageNum = 1;
+							this.totalPage = 1;
+							this.currentCat = gotCatId; //-1 代表查询今日更新
+							this.currentCatName = catName;
+						}
+						
+					}catch(err){
+						console.log("获取catId失败，获取的值"+catId);
+					}
+				}
+				
 				if(this.currentCat==-1){ //今日最新
 					this.getTodayMovies();
 				}else{//按分类查找
+					if(catName&&""!=catName.trim()){
+						this.currentCatName = catName;
+						uni.setNavigationBarTitle({
+							title: '专题：'+catName,
+							fail:function(){
+								console.log("更新导航栏失败");
+							}
+						})
+					}
 					this.getMoviesByCat();
 				}
 			},

@@ -10,6 +10,7 @@
                 //"enablePullDownRefresh" : true, //是否开启下拉刷新
                 //"backgroundTextStyle":"light",//下拉刷新样式,
                 "navigationBarTextStyle" : "white", //导航栏标题颜色
+				"enablePullDownRefresh" : true,
                 "titleNView" : {
                     "buttons" : [
                         {
@@ -107,12 +108,6 @@
                 "selectedIconPath" : "static/bottom/people_fill.png",
                 "pagePath" : "pages/my/my",
                 "text" : "我的"
-            },
-            {
-                "iconPath" : "static/bottom/people.png",
-                "selectedIconPath" : "static/bottom/people_fill.png",
-                "pagePath" : "pages/movieDetail/movieDetail",
-                "text" : "详情页面"
             }
         ]
     }

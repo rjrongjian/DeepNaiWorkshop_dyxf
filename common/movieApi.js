@@ -28,6 +28,15 @@ var shieldingCatIdsForToday = {"catIdForToday_40":"伦理"};
 //var shieldingMovieId = {"movieId_123","色戒"}
 var shieldingMovieId = {}
 
+var m3u8OrOtherRes = "m3u8";//使用哪种资源 目前酷云只有一种
+
+//资源用哪种协议，http https null（代表资源本身是什么就是什么）
+//注意：通过接口获取的最新的资源，也有可能播放不了，因为在转码
+//注意：（1）video组件，切换同一个资源的不同协议（http和https）会报错
+//     （2）不是每个资源都有http和https，所以最好选择资源返回的是什么协议就是什么
+var currentSelectedHttpOrHttps = null;
+
+var qqQun = {"qunNum":"807164767","qunName":"最新电影分享"};
 
 //无需动态配置的选项-----------------------------------------------------------------
 
@@ -38,8 +47,9 @@ var apiConfig = {
 	"seaCms":{
 		"kuYun":{//酷云 海洋cms资源api
 			"movieTypeApi":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=list&url=&rid=sheser.com&t=1101&h=&pg=&wd=",//电影类别
-			"searchApi":"www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com&pg=1&ids=",//搜片获取到id后，通过此接口获取详情 ids处填写电影id,
-			"todayMovieApi":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com&t=0&h=24&pg="//今日最新电影
+			"getMovieById":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com&pg=1&ids=",//搜片获取到id后，通过此接口获取详情 ids处填写电影id,
+			"todayMovieApi":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com&t=0&h=24&pg=",//今日最新电影,
+			"getMovieByCat":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com"//获取指定电影分类下的所有电影
 		}
 	}
 	
@@ -58,6 +68,9 @@ var getMovieApi = function(){
 	}
 }
 
+/**
+ * 过滤某个指定的电影分类以便不在分类列表显示
+ */
 var isShieldingCatId = function(catId){
 	try{
 		var temp = shieldingCatIds["catId_"+catId];
@@ -73,7 +86,9 @@ var isShieldingCatId = function(catId){
 		return false;
 	}
 }
-
+/**
+ * 加载今天更新的电影时，过滤指定的分类的电影
+ */
 var isShieldingCatIdForToday = function(catId){
 	try{
 		var temp = shieldingCatIdsForToday["catIdForToday_"+catId];
@@ -89,7 +104,9 @@ var isShieldingCatIdForToday = function(catId){
 		return false;
 	}
 }
-
+/**
+ * 过滤掉指定电影，防止版权问题，搜索电影里也要加这个
+ */
 var isShieldingMovieId = function(movieId){
 	try{
 		var temp = shieldingMovieId["movieId_"+movieId];
@@ -114,5 +131,8 @@ export default {
 	shieldingCatIds,
 	isShieldingCatId,
 	isShieldingMovieId,
-	isShieldingCatIdForToday
+	isShieldingCatIdForToday,
+	m3u8OrOtherRes,
+	currentSelectedHttpOrHttps,
+	qqQun
 }

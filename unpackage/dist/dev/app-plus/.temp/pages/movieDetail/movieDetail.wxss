@@ -71,7 +71,7 @@
   margin: 10rpx;
   font-size: 28rpx;
 }
-.res-selected {
+.resSelected {
   color: #FFFFFF;
   background-color: #24D197;
   border: 1rpx solid #FFFFFF;
