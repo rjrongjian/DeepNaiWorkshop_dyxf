@@ -10,7 +10,7 @@
                 //"enablePullDownRefresh" : true, //是否开启下拉刷新
                 //"backgroundTextStyle":"light",//下拉刷新样式,
                 "navigationBarTextStyle" : "white", //导航栏标题颜色
-				"enablePullDownRefresh" : true,
+                "enablePullDownRefresh" : true,
                 "titleNView" : {
                     "buttons" : [
                         {
@@ -69,7 +69,25 @@
         {
             "path" : "pages/movieDetail/movieDetail",
             "style" : {
-				"navigationBarTitleText":"详情页面"
+                "navigationBarTitleText" : "详情页面"
+            }
+        },
+        {
+            "path" : "pages/login/login",
+            "style" : {
+				"navigationBarTitleText" : "登录"
+			}
+        },
+        {
+            "path" : "pages/pwd/pwd",
+            "style" : {
+				"navigationBarTitleText" : "修改密码"
+			}
+        },
+        {
+            "path" : "pages/reg/reg",
+            "style" : {
+				"navigationBarTitleText" : "注册"
 			}
         }
     ],

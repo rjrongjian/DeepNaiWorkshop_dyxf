@@ -1,28 +1,44 @@
 <template>
-	<view>
-		个人中心a a 
-		<view>
-			<button class="btn" type="default" @click="test" size="default">我是按钮</button>
-		</view>
-	</view>
+    <view class="content">
+        <view class="btn-row">
+            <button v-if="!hasLogin" type="primary" class="primary" @tap="bindLogin">登录</button>
+            <button v-if="hasLogin" type="default" @tap="bindLogout">退出登录</button>
+        </view>
+    </view>
 </template>
 
 <script>
-	import myUtil from '../../common/util.js';
-	import movieApi from '../../common/movieApi.js';
-	export default {
-		methods:{
-			test:function(){
-				//console.log("获取的随机值："+myUtil.myUserAgent.getRandomUserAgent());
-				movieApi.getMovieType("seaCms","kuYun",myUtil.myUserAgent.getRandomUserAgent());
-				console.log("执行完了");
-			}
-		}
-	}
+    import {
+        mapState,
+        mapMutations
+    } from 'vuex'
+
+    export default {
+        computed: {
+            ...mapState(['hasLogin', 'forcedLogin'])
+        },
+        methods: {
+            ...mapMutations(['logout']),
+            bindLogin() {
+                uni.navigateTo({
+                    url: '../login/login',
+                });
+            },
+            bindLogout() {
+                this.logout();
+                /**
+                 * 如果需要强制登录跳转回登录页面
+                 */
+                if (this.forcedLogin) {
+                    uni.reLaunch({
+                        url: '../login/login',
+                    });
+                }
+            }
+        }
+    }
 </script>
 
 <style>
-.btn{
-	height: 30upx;
-}
+
 </style>

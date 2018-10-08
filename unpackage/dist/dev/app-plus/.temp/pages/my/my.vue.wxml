@@ -1,7 +1,8 @@
 <template name="78d70dd4">
-  <view class="_view data-v-4987b52c"> 个人中心a a
-    <view class="_view data-v-4987b52c">
-      <button class="_button data-v-4987b52c btn" type="default" bindtap="handleProxy" size="default" data-eventid="{{'0'}}" data-comkey="{{$k}}">我是按钮</button>
+  <view class="_view data-v-4987b52c content">
+    <view class="_view data-v-4987b52c btn-row">
+      <button wx:if="{{!hasLogin}}" type="primary" class="_button data-v-4987b52c primary" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">登录</button>
+      <button wx:if="{{hasLogin}}" type="default" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}" class="_button data-v-4987b52c">退出登录</button>
     </view>
   </view>
 </template>

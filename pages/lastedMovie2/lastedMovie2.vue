@@ -457,6 +457,9 @@
 </script>
 
 <style>
+	view{
+		display: flex;
+	}
 	.swiper-box{
 		background-color: #4CD964;
 	}

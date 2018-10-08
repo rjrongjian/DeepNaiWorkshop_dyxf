@@ -200,6 +200,9 @@
 </script>
 
 <style>
+	view{
+		display: flex;
+	}
 	.container{
 		display: flex;
 		flex-direction: column;

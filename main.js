@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App'
+import store from './store'
 
 //xml转json工具
 //详细使用见https://github.com/abdmob/x2js
@@ -10,9 +11,9 @@ Vue.prototype.$myXml2Json = new Xml2Json();
 import MovieApi from './common/movieApi';
 Vue.prototype.$myMovieApi = MovieApi;
 
+Vue.prototype.$store = store
 
-
-Vue.config.productionTip = false
+//Vue.config.productionTip = false
 
 App.mpType = 'app'
 

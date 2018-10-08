@@ -35,7 +35,7 @@ var m3u8OrOtherRes = "m3u8";//使用哪种资源 目前酷云只有一种
 //注意：（1）video组件，切换同一个资源的不同协议（http和https）会报错
 //     （2）不是每个资源都有http和https，所以最好选择资源返回的是什么协议就是什么
 var currentSelectedHttpOrHttps = null;
-
+//提示中使用的qq群
 var qqQun = {"qunNum":"807164767","qunName":"最新电影分享"};
 
 //无需动态配置的选项-----------------------------------------------------------------
