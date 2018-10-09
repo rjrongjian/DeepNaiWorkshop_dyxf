@@ -11,7 +11,11 @@ Vue.prototype.$myXml2Json = new Xml2Json();
 import MovieApi from './common/movieApi';
 Vue.prototype.$myMovieApi = MovieApi;
 
-Vue.prototype.$store = store
+//yiyou config
+import YiYouApi from './common/yiYouApi';
+Vue.prototype.$myYiYouApi = YiYouApi;
+
+Vue.prototype.$store = store;
 
 //Vue.config.productionTip = false
 

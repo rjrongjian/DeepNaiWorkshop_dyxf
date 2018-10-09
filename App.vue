@@ -114,6 +114,6 @@
 	    }
 	
 	    button.primary {
-	        background-color: #0faeff;
+	        background-color: #24D197;
 	    }
 </style>

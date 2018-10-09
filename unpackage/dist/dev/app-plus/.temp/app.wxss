@@ -1245,5 +1245,5 @@ page {
   padding: 20rpx;
 }
 ._button.primary {
-  background-color: #0faeff;
+  background-color: #24D197;
 }
