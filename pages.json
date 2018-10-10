@@ -27,7 +27,7 @@
             "style" : {
                 "navigationBarTitleText" : "个人中心",
                 "navigationBarBackgroundColor" : "#79E8D0",
-                "enablePullDownRefresh" : true, //是否开启下拉刷新
+                "enablePullDownRefresh" : false, //是否开启下拉刷新
 
                 //"backgroundTextStyle":"light",//下拉刷新样式,
                 "navigationBarTextStyle" : "white" //导航栏标题颜色	

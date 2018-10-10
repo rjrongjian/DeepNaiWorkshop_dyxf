@@ -10,7 +10,7 @@
                 <input type="text" password="true" v-model="password" placeholder="请输入密码">
             </view>
         </view>
-        <view class="btn-row">
+        <view class="btn-row-1">
             <button type="primary" class="primary" @tap="bindLogin">登录</button>
         </view>
         <view class="action-row">
@@ -196,4 +196,9 @@
         height: 60px;
         margin: 20px;
     }
+	
+	.btn-row-1 {
+		margin-top: 50px;
+		/*padding: 20px;*/
+	}
 </style>
