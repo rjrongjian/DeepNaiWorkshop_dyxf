@@ -1,8 +1,13 @@
 <script>
+	import {
+		
+		mapMutations
+	} from 'vuex'
 	export default {
 		onLaunch: function () {
 			//加载本地的登陆数据到内存
-			this.$myLocalStore.syncLocalStoreDataToMemory();
+			let loginData = this.$myLocalStore.getLocalStoreData();
+			this.syncLocalStoreToMemory(loginData);
 			console.log("加载本地登陆数据完成");
 			console.log('app launch');
 			
@@ -14,6 +19,9 @@
 		},
 		onHide: function () {
 			console.log('App Hide')
+		},
+		methods:{
+			...mapMutations(['syncLocalStoreToMemory'])
 		}
 	}
 </script>

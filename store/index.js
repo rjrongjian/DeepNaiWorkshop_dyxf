@@ -11,10 +11,12 @@ const store = new Vuex.Store({
         hasLogin:false
     },
     mutations: {
-        login(state, userName,statusCode,expireTime) {
-            state.userName = userName || '游客';
-			state.statusCode = statusCode || "";
-			state.expireTime = expireTime || "";
+        login(state, loginData) {//只能一个参数
+			
+			//console.log("要存入的数据："+loginData.username+","+loginData.statusCode+","+loginData.expireTime);
+            state.username = loginData.username || '游客';
+			state.statusCode = loginData.statusCode || "";
+			state.expireTime = loginData.expireTime || "";
             state.hasLogin = true;
         },
         logout(state) {
@@ -28,6 +30,13 @@ const store = new Vuex.Store({
 			state.statusCode = "";
 			state.expireTime = "";
 			state.hasLogin = false;
+		},
+		syncLocalStoreToMemory(state,loginData){
+			
+			state.username = loginData.username || '游客';
+			state.statusCode = loginData.statusCode || "";
+			state.expireTime = loginData.expireTime || "";
+			state.hasLogin = loginData.hasLogin || false;
 		}
     }
 })

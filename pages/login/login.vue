@@ -76,7 +76,7 @@
                 this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
             },
             bindLogin() {
-                console.log("获取的账号名："+this.account.length);
+                //console.log("获取的账号名："+this.account.length);
                 if (this.account.length < 6) {
                     uni.showToast({
                         icon: 'none',
@@ -162,7 +162,7 @@
 					}
 				});
             },
-			bindLogin2(statusCode){
+			bindLogin2(statusCodeStr){
 				//获取 超时时间url
 				let GetExpiredUrl = this.$myYiYouApi.yiYouApiUrl.GetExpired[this.$myYiYouApi.yiYouApiSelected];
 				console.log("获取的超时接口地址："+GetExpiredUrl);
@@ -191,19 +191,27 @@
 							});
 
 						} else {
-							console.log("看看获取的结果："+ret.data);
+							//console.log("看看获取的结果："+ret.data);
 							if(ret.data&&ret.data.length>8){//说明获取超时时间成功
 								
 								//登录成功做一些数据的存储
 								//将用户名、返回的状态码、过期时间、是否登录的标记存到本地
-								this.$myLocalStore.updateToMemoryDataAndLocalStore(this.UserName,statusCode,ret.data,true);
+								
+								this.$myLocalStore.updateToLocalStore(this.account,statusCodeStr,ret.data,true);
+								//console.log("要存入的数据："+this.account+","+statusCodeStr+","+ret.data);
+								let loginDataTemp = {"username":this.account,"statusCode":statusCodeStr,"expireTime":ret.data};
+								this.login(loginDataTemp);
 								//隐藏加载提示框
 								uni.hideLoading();
 								//给用户展示一段时间注册成功的提示后，在跳转页面
+								/*
 								uni.navigateBack({
 									delta: 1
 								});
-								
+								*/
+								uni.reLaunch({
+									url: '../my/my',
+								});
 								
 							}else{
 								//加载错误码对应的错误描述
