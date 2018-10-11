@@ -11,16 +11,18 @@
 		<view class="header-1">
 			<view class="header-1-login">
 				<!--<navigator url="../reg/reg">登录</navigator>-->
-				<view class="header-1-login-button" >登录</view>
+				
+				<view class="header-1-login-button" v-if="!hasLogin" @tap="goLoginPage">登录</view>
+				<view class="header-1-login-button" v-if="hasLogin" @tap="bindLogout">登出</view>
 			</view>
 			<view class="header-1-image-card">
-				<image class="header-1-image" src="../../static/header.jpg" mode="widthFix"></image>
+				<image class="header-1-image" :src="headStr" mode="widthFix" @error="loadImgErr"></image>
 				
 			</view>
 			
 			<!--登录成功显示的内容，这里不做逻辑判断 haslogin=true -->
-			<view class="header-1-account">我是谁</view>
-			<view class="header-1-expire-time">过期时间：2018-12-31 21:21:21</view>
+			<view class="header-1-account">欢迎,{{username}}</view>
+			<view class="header-1-expire-time" v-if="hasLogin">过期时间：{{expireTime}}</view>
 			<!--未登录显示的内容，这里不做逻辑判断 haslogin=false-->
 			<!--<view class="header-1-no-login"></view>-->
 			
@@ -29,7 +31,7 @@
 			
 			
 			<view class="uni-list-cell" hover-class="uni-list-cell-hover" >
-				<view class="uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color"> 去充值 </view>
+				<view class="uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" @tap="goRechargePage"> 去充值 </view>
 			</view>
 			<view class="uni-list-cell" hover-class="uni-list-cell-hover" >
 				<view class="uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color"> 联系我?! </view>
@@ -46,34 +48,66 @@
 </template>
 
 <script>
-    import {
-        mapState,
-        mapMutations
-    } from 'vuex'
+    
 
     export default {
-        computed: {
-            ...mapState(['hasLogin', 'forcedLogin'])
-        },
+        data(){
+			return {
+				username:this.$myLocalStore.loginData.username,
+				statusCode:this.$myLocalStore.loginData.statusCode,
+				expireTime:this.$myLocalStore.loginData.expireTime,
+				hasLogin:this.$myLocalStore.loginData.hasLogin,
+				headStr:"../../static/header.jpg"
+				
+			}
+		},
         methods: {
-            ...mapMutations(['logout']),
+            loadImgErr:function(e){
+				 console.error('image发生error事件，携带值为' + e.detail.errMsg)
+			},
             bindLogin() {
                 uni.navigateTo({
                     url: '../login/login',
                 });
             },
             bindLogout() {
+				
+				uni.showModal({
+					title: '温馨提示',
+					content: '确定要登出当前账号吗？',
+					success: function (res) {
+						if (res.confirm) {
+							console.log('用户点击确定');
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
+				/*
                 this.logout();
-                /**
-                 * 如果需要强制登录跳转回登录页面
-                 */
+                
+                //如果需要强制登录跳转回登录页面
+                
                 if (this.forcedLogin) {
                     uni.reLaunch({
                         url: '../login/login',
                     });
 					
                 }
-            }
+				*/
+            },
+			goRechargePage(){
+				
+				uni.navigateTo({
+					url:"../recharge/recharge"
+				});
+				
+			},
+			goLoginPage(){
+				uni.navigateTo({
+					url:"../login/login"
+				});
+			}
         }
     }
 </script>

@@ -29,11 +29,7 @@
 </template>
 
 <script>
-    import service from '../../service.js';
-    import {
-        mapState,
-        mapMutations
-    } from 'vuex'
+    
 
     export default {
         data() {
@@ -45,9 +41,7 @@
                 positionTop: 0
             }
         },
-        computed: mapState(['forcedLogin']),
         methods: {
-            ...mapMutations(['login']),
             initProvider() {
                 const filters = ['weixin', 'qq', 'sinaweibo'];
                 uni.getProvider({
@@ -78,14 +72,11 @@
                 this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
             },
             bindLogin() {
-                /**
-                 * 客户端对账号信息进行一些必要的校验。
-                 * 实际开发中，根据业务需要进行处理，这里仅做示例。
-                 */
-                if (this.account.length < 5) {
+                
+                if (this.account.length < 7) {
                     uni.showToast({
                         icon: 'none',
-                        title: '账号最短为 5 个字符'
+                        title: '账号最短为 6 个字符'
                     });
                     return;
                 }
@@ -96,26 +87,85 @@
                     });
                     return;
                 }
-                /**
-                 * 下面简单模拟下服务端的处理
-                 * 检测用户账号密码是否在已注册的用户列表中
-                 * 实际开发中，使用 uni.request 将账号信息发送至服务端，客户端在回调函数中获取结果信息。
-                 */
-                const data = {
-                    account: this.account,
-                    password: this.password
-                };
-                const validUser = service.getUsers().some(function (user) {
-                    return data.account === user.account && data.password === user.password;
-                });
-                if (validUser) {
-                    this.toMain(this.account);
-                } else {
-                    uni.showToast({
-                        icon: 'none',
-                        title: '用户账号或密码不正确',
-                    });
-                }
+                this.account
+				this.password
+                //获取登录接口url
+				let loginUrl = this.$myYiYouApi.yiYouApiUrl.UserLogin[this.$myYiYouApi.yiYouApiSelected];
+				console.log("获取的注册接口地址："+loginUrl);
+				//调用易游登录接口
+				
+				uni.request({
+					url: loginUrl,
+					method:'POST',
+					header:{
+						'content-type':'application/x-www-form-urlencoded'
+					},
+					data:{
+						//return {
+						'UserName': this.account,
+						'UserPwd':this.password
+						//}
+					},
+					success: (ret) => {
+						
+						if (ret.statusCode !== 200) {
+							//隐藏加载提示框
+							uni.hideLoading();
+							
+							
+							uni.showModal({
+								title: "温馨提示",
+								content: '登录失败['+ret.statusCode+']，请加QQ群联系群主',
+								showCancel: false,
+								confirmText: "确定"
+							});
+							
+							
+							
+							
+						} else {
+							if(ret.data&&ret.data.length==32){//说明登录成功
+								//service.addUser(data);
+								//隐藏加载提示框
+								uni.hideLoading();
+								//登录成功做一些数据的存储
+								//将用户名、返回的状态码、过期时间、是否登录的标记存到本地
+								
+								
+								//给用户展示一段时间注册成功的提示后，在跳转页面
+								setTimeout(function(){
+									uni.navigateBack({
+										delta: 1
+									});
+								},1200)
+								
+								
+							}else{
+								//加载错误码对应的错误描述
+								let errInfo = "";
+								if(ret.data){
+									errInfo = this.$myYiYouApi.yiYouErrInfo[ret.data];
+									if(!errInfo){
+										errInfo = "未知错误";
+									}
+								}else{
+									errInfo == "未知错误";
+								}
+								console.log("获取的错误信息["+ret.data+"]:"+errInfo);
+								//隐藏加载提示框
+								uni.hideLoading();
+								
+								
+								uni.showToast({
+									title: errInfo,
+									duration: 2000,
+									icon:'none'
+								});
+							}
+							
+						}
+					}
+				});
             },
             oauth(value) {
                 uni.login({

@@ -63,7 +63,7 @@
 											//获取接口地址
 							let reginUrl = this.$myYiYouApi.yiYouApiUrl.UserRegin[this.$myYiYouApi.yiYouApiSelected];
 							console.log("获取的注册接口地址："+reginUrl);
-							console.log("注册信息,用户名："+this.account+",密码："+this.password+"，email:"+this.email);
+							/*console.log("注册信息,用户名："+this.account+",密码："+this.password+"，email:"+this.email);*/
 							
 							//调用易游注册接口
 							

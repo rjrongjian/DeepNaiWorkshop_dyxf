@@ -15,6 +15,10 @@ Vue.prototype.$myMovieApi = MovieApi;
 import YiYouApi from './common/yiYouApi';
 Vue.prototype.$myYiYouApi = YiYouApi;
 
+//
+import LocalStore from './common/localStoreAndConfig';
+Vue.prototype.$myLocalStore = LocalStore;
+
 Vue.prototype.$store = store;
 
 //Vue.config.productionTip = false

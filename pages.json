@@ -75,20 +75,24 @@
         {
             "path" : "pages/login/login",
             "style" : {
-				"navigationBarTitleText" : "登录"
-			}
+                "navigationBarTitleText" : "登录"
+            }
         },
         {
             "path" : "pages/pwd/pwd",
             "style" : {
-				"navigationBarTitleText" : "修改密码"
-			}
+                "navigationBarTitleText" : "修改密码"
+            }
         },
         {
             "path" : "pages/reg/reg",
             "style" : {
-				"navigationBarTitleText" : "注册"
-			}
+                "navigationBarTitleText" : "注册"
+            }
+        },
+        {
+            "path" : "pages/recharge/recharge",
+            "style" : {}
         }
     ],
     "globalStyle" : {

@@ -2,17 +2,18 @@
   <view class="_view data-v-4987b52c content-1">
     <view class="_view data-v-4987b52c header-1">
       <view class="_view data-v-4987b52c header-1-login">
-        <view class="_view data-v-4987b52c header-1-login-button">登录</view>
+        <view class="_view data-v-4987b52c header-1-login-button" wx:if="{{!hasLogin}}" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">登录</view>
+        <view class="_view data-v-4987b52c header-1-login-button" wx:if="{{hasLogin}}" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">登出</view>
       </view>
       <view class="_view data-v-4987b52c header-1-image-card">
-        <image class="_image data-v-4987b52c header-1-image" src="../../static/header.jpg" mode="widthFix"></image>
+        <image class="_image data-v-4987b52c header-1-image" src="{{headStr}}" mode="widthFix" binderror="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}"></image>
       </view>
-      <view class="_view data-v-4987b52c header-1-account">我是谁</view>
-      <view class="_view data-v-4987b52c header-1-expire-time">过期时间：2018-12-31 21:21:21</view>
+      <view class="_view data-v-4987b52c header-1-account">欢迎,{{username}}</view>
+      <view class="_view data-v-4987b52c header-1-expire-time" wx:if="{{hasLogin}}">过期时间：{{expireTime}}</view>
     </view>
     <view class="_view data-v-4987b52c bottom-1 uni-card-1">
       <view class="_view data-v-4987b52c uni-list-cell" hover-class="uni-list-cell-hover">
-        <view class="_view data-v-4987b52c uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color"> 去充值 </view>
+        <view class="_view data-v-4987b52c uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" bindtap="handleProxy" data-eventid="{{'3'}}" data-comkey="{{$k}}"> 去充值 </view>
       </view>
       <view class="_view data-v-4987b52c uni-list-cell" hover-class="uni-list-cell-hover">
         <view class="_view data-v-4987b52c uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color"> 联系我?! </view>
