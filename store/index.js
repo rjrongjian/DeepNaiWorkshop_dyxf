@@ -5,22 +5,30 @@ Vue.use(Vuex)
 
 const store = new Vuex.Store({
     state: {
-        /**
-         * 是否需要强制登录
-         */
-        forcedLogin: false,
-        hasLogin: false,
-        userName: ""
+        username:"游客",
+        statusCode:"",
+        expireTime:"",
+        hasLogin:false
     },
     mutations: {
-        login(state, userName) {
-            state.userName = userName || '新用户';
+        login(state, userName,statusCode,expireTime) {
+            state.userName = userName || '游客';
+			state.statusCode = statusCode || "";
+			state.expireTime = expireTime || "";
             state.hasLogin = true;
         },
         logout(state) {
-            state.userName = "";
+            state.userName = '游客';
+            state.statusCode = "";
+            state.expireTime = "";
             state.hasLogin = false;
-        }
+        },
+		clearMemory(state){
+			state.userName = '游客';
+			state.statusCode = "";
+			state.expireTime = "";
+			state.hasLogin = false;
+		}
     }
 })
 

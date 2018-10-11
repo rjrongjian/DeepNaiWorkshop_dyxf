@@ -29,7 +29,10 @@
 </template>
 
 <script>
-    
+    import {
+    	mapState,
+    	mapMutations
+    } from 'vuex'
 
     export default {
         data() {
@@ -42,6 +45,7 @@
             }
         },
         methods: {
+			...mapMutations(['login']),
             initProvider() {
                 const filters = ['weixin', 'qq', 'sinaweibo'];
                 uni.getProvider({
