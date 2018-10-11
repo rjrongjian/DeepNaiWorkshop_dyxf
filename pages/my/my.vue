@@ -12,8 +12,8 @@
 			<view class="header-1-login">
 				<!--<navigator url="../reg/reg">登录</navigator>-->
 				
-				<view class="header-1-login-button" v-if="!hasLogin" @tap="goLoginPage">登录</view>
-				<view class="header-1-login-button" v-if="hasLogin" @tap="bindLogout">登出</view>
+				<view class="header-1-login-button" v-if="!this.$myLocalStore.loginData.hasLogin" @tap="goLoginPage">登录</view>
+				<view class="header-1-login-button" v-if="this.$myLocalStore.loginData.hasLogin" @tap="bindLogout">登出</view>
 			</view>
 			<view class="header-1-image-card">
 				<image class="header-1-image" :src="headStr" mode="widthFix" @error="loadImgErr"></image>
@@ -21,8 +21,8 @@
 			</view>
 			
 			<!--登录成功显示的内容，这里不做逻辑判断 haslogin=true -->
-			<view class="header-1-account">欢迎,{{username}}</view>
-			<view class="header-1-expire-time" v-if="hasLogin">过期时间：{{expireTime}}</view>
+			<view class="header-1-account">欢迎,{{this.$myLocalStore.loginData.username}}</view>
+			<view class="header-1-expire-time" v-if="this.$myLocalStore.loginData.hasLogin">过期时间：{{this.$myLocalStore.loginData.expireTime}}</view>
 			<!--未登录显示的内容，这里不做逻辑判断 haslogin=false-->
 			<!--<view class="header-1-no-login"></view>-->
 			
@@ -53,10 +53,13 @@
     export default {
         data(){
 			return {
+				//如果不用vuex，只能把这个全局变量写在标签里使用，要不还得刷新这几个变量的状态
+				/*
 				username:this.$myLocalStore.loginData.username,
 				statusCode:this.$myLocalStore.loginData.statusCode,
 				expireTime:this.$myLocalStore.loginData.expireTime,
 				hasLogin:this.$myLocalStore.loginData.hasLogin,
+				*/
 				headStr:"../../static/header.jpg"
 				
 			}

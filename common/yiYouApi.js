@@ -2,14 +2,16 @@
 //启用的接口线路(在登录界面选择)
 let apiSelect="1";
 
+//目前不用版本相关接口和数据，在代码中写死了，不要改
+let version = "1.1";
 let apiUrl = {
 	"UserLogin":{
-		"1":"http://w.eydata.net/839c03e916a2a8e5",
-		"2":"http://w1.eydata.net/839c03e916a2a8e5",
-		"3":"http://w4.eydata.net/839c03e916a2a8e5",
-		"4":"http://w2.eydata.net/839c03e916a2a8e5",
-		"5":"http://w3.eydata.net/839c03e916a2a8e5",
-		"6":"http://w5.eydata.net/839c03e916a2a8e5"
+		"1":"http://w.eydata.net/ecbbfd6f94a0ab84",
+		"2":"http://w1.eydata.net/ecbbfd6f94a0ab84",
+		"3":"http://w4.eydata.net/ecbbfd6f94a0ab84",
+		"4":"http://w2.eydata.net/ecbbfd6f94a0ab84",
+		"5":"http://w3.eydata.net/ecbbfd6f94a0ab84",
+		"6":"http://w5.eydata.net/ecbbfd6f94a0ab84"
 	},
 	"UserRegin":{
 		"1":"http://w.eydata.net/970b34c066389489",
@@ -20,55 +22,55 @@ let apiUrl = {
 		"6":"http://w5.eydata.net/970b34c066389489"
 	},
 	"UserRecharge":{
-		"1":"http://w.eydata.net/b6af9bff0a8a373c",
-		"2":"http://w1.eydata.net/b6af9bff0a8a373c",
-		"3":"http://w4.eydata.net/b6af9bff0a8a373c",
-		"4":"http://w2.eydata.net/b6af9bff0a8a373c",
-		"5":"http://w3.eydata.net/b6af9bff0a8a373c",
-		"6":"http://w5.eydata.net/b6af9bff0a8a373c"
+		"1":"http://w.eydata.net/a43265d22d7d92e9",
+		"2":"http://w1.eydata.net/a43265d22d7d92e9",
+		"3":"http://w4.eydata.net/a43265d22d7d92e9",
+		"4":"http://w2.eydata.net/a43265d22d7d92e9",
+		"5":"http://w3.eydata.net/a43265d22d7d92e9",
+		"6":"http://w5.eydata.net/a43265d22d7d92e9"
 	},
 	"GetExpired":{
-		"1":"http://w.eydata.net/1f6208e5b7cc9208",
-		"2":"http://w1.eydata.net/1f6208e5b7cc9208",
-		"3":"http://w4.eydata.net/1f6208e5b7cc9208",
-		"4":"http://w2.eydata.net/1f6208e5b7cc9208",
-		"5":"http://w3.eydata.net/1f6208e5b7cc9208",
-		"6":"http://w5.eydata.net/1f6208e5b7cc9208"
+		"1":"http://w.eydata.net/8571fa5e8b585da2",
+		"2":"http://w1.eydata.net/8571fa5e8b585da2",
+		"3":"http://w4.eydata.net/8571fa5e8b585da2",
+		"4":"http://w2.eydata.net/8571fa5e8b585da2",
+		"5":"http://w3.eydata.net/8571fa5e8b585da2",
+		"6":"http://w5.eydata.net/8571fa5e8b585da2"
 	},
 	"CheckUserStatus":{
-		"1":"http://w.eydata.net/a246b5c4c26efc10",
-		"2":"http://w1.eydata.net/a246b5c4c26efc10",
-		"3":"http://w4.eydata.net/a246b5c4c26efc10",
-		"4":"http://w2.eydata.net/a246b5c4c26efc10",
-		"5":"http://w3.eydata.net/a246b5c4c26efc10",
-		"6":"http://w5.eydata.net/a246b5c4c26efc10"
+		"1":"http://w.eydata.net/7ca3bd1d623210b8",
+		"2":"http://w1.eydata.net/7ca3bd1d623210b8",
+		"3":"http://w4.eydata.net/7ca3bd1d623210b8",
+		"4":"http://w2.eydata.net/7ca3bd1d623210b8",
+		"5":"http://w3.eydata.net/7ca3bd1d623210b8",
+		"6":"http://w5.eydata.net/7ca3bd1d623210b8"
 	},
 	"LogOut":{
-		"1":"http://w.eydata.net/61b3173a01089775",
-		"2":"http://w1.eydata.net/61b3173a01089775",
-		"3":"http://w4.eydata.net/61b3173a01089775",
-		"4":"http://w2.eydata.net/61b3173a01089775",
-		"5":"http://w3.eydata.net/61b3173a01089775",
-		"6":"http://w5.eydata.net/61b3173a01089775"
+		"1":"http://w.eydata.net/7a2a6909eea0fa9c",
+		"2":"http://w1.eydata.net/7a2a6909eea0fa9c",
+		"3":"http://w4.eydata.net/7a2a6909eea0fa9c",
+		"4":"http://w2.eydata.net/7a2a6909eea0fa9c",
+		"5":"http://w3.eydata.net/7a2a6909eea0fa9c",
+		"6":"http://w5.eydata.net/7a2a6909eea0fa9c"
 	},
 	"GetAppCode":{//获取程序数据
-		"1":"http://w.eydata.net/4ec486e2143192d2",
-		"2":"http://w1.eydata.net/4ec486e2143192d2",
-		"3":"http://w4.eydata.net/4ec486e2143192d2",
-		"4":"http://w2.eydata.net/4ec486e2143192d2",
-		"5":"http://w3.eydata.net/4ec486e2143192d2",
-		"6":"http://w5.eydata.net/4ec486e2143192d2"
+		"1":"http://w.eydata.net/5e718ccb0b48b0c2",
+		"2":"http://w1.eydata.net/5e718ccb0b48b0c2",
+		"3":"http://w4.eydata.net/5e718ccb0b48b0c2",
+		"4":"http://w2.eydata.net/5e718ccb0b48b0c2",
+		"5":"http://w3.eydata.net/5e718ccb0b48b0c2",
+		"6":"http://w5.eydata.net/5e718ccb0b48b0c2"
 	},
 	"GetVariable":{//获取变量数据 
-		"1":"http://w.eydata.net/be75fabedfc71a0c",
-		"2":"http://w1.eydata.net/be75fabedfc71a0c",
-		"3":"http://w4.eydata.net/be75fabedfc71a0c",
-		"4":"http://w2.eydata.net/be75fabedfc71a0c",
-		"5":"http://w3.eydata.net/be75fabedfc71a0c",
-		"6":"http://w5.eydata.net/be75fabedfc71a0c"
+		"1":"http://w.eydata.net/8095011e06615632",
+		"2":"http://w1.eydata.net/8095011e06615632",
+		"3":"http://w4.eydata.net/8095011e06615632",
+		"4":"http://w2.eydata.net/8095011e06615632",
+		"5":"http://w3.eydata.net/8095011e06615632",
+		"6":"http://w5.eydata.net/8095011e06615632"
 	},
 	"GetBulletin":{//获取程序公告
-		"1":"http://w.eydata.net/a785c7d10885be26",
+		"1":"http://w.eydata.net/e5602511a521fe26",
 		"2":"http://w1.eydata.net/a785c7d10885be26",
 		"3":"http://w4.eydata.net/a785c7d10885be26",
 		"4":"http://w2.eydata.net/a785c7d10885be26",
@@ -76,36 +78,36 @@ let apiUrl = {
 		"6":"http://w5.eydata.net/a785c7d10885be26"
 	},
 	"UpdatePwd":{//修改用户密码
-		"1":"http://w.eydata.net/5ff969d2bef16403",
-		"2":"http://w1.eydata.net/5ff969d2bef16403",
-		"3":"http://w4.eydata.net/5ff969d2bef16403",
-		"4":"http://w2.eydata.net/5ff969d2bef16403",
-		"5":"http://w3.eydata.net/5ff969d2bef16403",
-		"6":"http://w5.eydata.net/5ff969d2bef16403"
+		"1":"http://w.eydata.net/2de81f59c9677f35",
+		"2":"http://w1.eydata.net/2de81f59c9677f35",
+		"3":"http://w4.eydata.net/2de81f59c9677f35",
+		"4":"http://w2.eydata.net/2de81f59c9677f35",
+		"5":"http://w3.eydata.net/2de81f59c9677f35",
+		"6":"http://w5.eydata.net/2de81f59c9677f35"
 	},
 	"UpdatePwdByEmail":{//用户密码找回
-		"1":"http://w.eydata.net/e82b0f76670b450a",
-		"2":"http://w1.eydata.net/e82b0f76670b450a",
-		"3":"http://w4.eydata.net/e82b0f76670b450a",
-		"4":"http://w2.eydata.net/e82b0f76670b450a",
-		"5":"http://w3.eydata.net/e82b0f76670b450a",
-		"6":"http://w5.eydata.net/e82b0f76670b450a"
+		"1":"http://w.eydata.net/687748aaa86ce6fe",
+		"2":"http://w1.eydata.net/687748aaa86ce6fe",
+		"3":"http://w4.eydata.net/687748aaa86ce6fe",
+		"4":"http://w2.eydata.net/687748aaa86ce6fe",
+		"5":"http://w3.eydata.net/687748aaa86ce6fe",
+		"6":"http://w5.eydata.net/687748aaa86ce6fe"
 	},
 	"GetUserData":{//获取用户数据
-		"1":"http://w.eydata.net/db32af340de43d3b",
-		"2":"http://w1.eydata.net/db32af340de43d3b",
-		"3":"http://w4.eydata.net/db32af340de43d3b",
-		"4":"http://w2.eydata.net/db32af340de43d3b",
-		"5":"http://w3.eydata.net/db32af340de43d3b",
-		"6":"http://w5.eydata.net/db32af340de43d3b"
+		"1":"http://w.eydata.net/c27eccecf2c84040",
+		"2":"http://w1.eydata.net/c27eccecf2c84040",
+		"3":"http://w4.eydata.net/c27eccecf2c84040",
+		"4":"http://w2.eydata.net/c27eccecf2c84040",
+		"5":"http://w3.eydata.net/c27eccecf2c84040",
+		"6":"http://w5.eydata.net/c27eccecf2c84040"
 	},
 	"SetUserData":{//设置用户数据
-		"1":"http://w.eydata.net/7a9c35a8934869a7",
-		"2":"http://w1.eydata.net/7a9c35a8934869a7",
-		"3":"http://w4.eydata.net/7a9c35a8934869a7",
-		"4":"http://w2.eydata.net/7a9c35a8934869a7",
-		"5":"http://w3.eydata.net/7a9c35a8934869a7",
-		"6":"http://w5.eydata.net/7a9c35a8934869a7"
+		"1":"http://w.eydata.net/e19e5d3a3b141b7b",
+		"2":"http://w1.eydata.net/e19e5d3a3b141b7b",
+		"3":"http://w4.eydata.net/e19e5d3a3b141b7b",
+		"4":"http://w2.eydata.net/e19e5d3a3b141b7b",
+		"5":"http://w3.eydata.net/e19e5d3a3b141b7b",
+		"6":"http://w5.eydata.net/e19e5d3a3b141b7b"
 	}
 	
 }
@@ -215,5 +217,6 @@ let errInfo = {
 export default {
     yiYouApiSelected:apiSelect,
 	yiYouApiUrl:apiUrl,
-	yiYouErrInfo:errInfo
+	yiYouErrInfo:errInfo,
+	version
 }

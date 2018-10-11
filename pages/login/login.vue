@@ -72,8 +72,8 @@
                 this.positionTop = uni.getSystemInfoSync().windowHeight - 100;
             },
             bindLogin() {
-                
-                if (this.account.length < 7) {
+                console.log("获取的账号名："+this.account.length);
+                if (this.account.length < 6) {
                     uni.showToast({
                         icon: 'none',
                         title: '账号最短为 6 个字符'
@@ -87,11 +87,12 @@
                     });
                     return;
                 }
-                this.account
-				this.password
+				
+				//显示加载提示框
+				uni.showLoading();
                 //获取登录接口url
 				let loginUrl = this.$myYiYouApi.yiYouApiUrl.UserLogin[this.$myYiYouApi.yiYouApiSelected];
-				console.log("获取的注册接口地址："+loginUrl);
+				console.log("获取的登录接口地址："+loginUrl);
 				//调用易游登录接口
 				
 				uni.request({
@@ -103,7 +104,8 @@
 					data:{
 						//return {
 						'UserName': this.account,
-						'UserPwd':this.password
+						'UserPwd':this.password,
+						'Version':this.$myYiYouApi.version
 						//}
 					},
 					success: (ret) => {
@@ -119,25 +121,14 @@
 								showCancel: false,
 								confirmText: "确定"
 							});
-							
-							
-							
-							
+
 						} else {
-							if(ret.data&&ret.data.length==32){//说明登录成功
+							//TODO 测试屏蔽
+							if(true){
+							//if(ret.data&&ret.data.length==32){//说明登录成功
 								//service.addUser(data);
-								//隐藏加载提示框
-								uni.hideLoading();
-								//登录成功做一些数据的存储
-								//将用户名、返回的状态码、过期时间、是否登录的标记存到本地
-								
-								
-								//给用户展示一段时间注册成功的提示后，在跳转页面
-								setTimeout(function(){
-									uni.navigateBack({
-										delta: 1
-									});
-								},1200)
+								//获取过期时间，缓存登陆数据等，由于都放在这太乱，所以抽出去
+								this.bindLogin2(ret.data);
 								
 								
 							}else{
@@ -167,6 +158,78 @@
 					}
 				});
             },
+			bindLogin2(statusCode){
+				//获取 超时时间url
+				let GetExpiredUrl = this.$myYiYouApi.yiYouApiUrl.GetExpired[this.$myYiYouApi.yiYouApiSelected];
+				console.log("获取的超时接口地址："+GetExpiredUrl);
+				
+				uni.request({
+					url: GetExpiredUrl,
+					method:'POST',
+					header:{
+						'content-type':'application/x-www-form-urlencoded'
+					},
+					data:{
+						//return {
+						'UserName': this.account
+						//}
+					},
+					success: (ret) => {
+						
+						if (ret.statusCode !== 200) {
+							//隐藏加载提示框
+							uni.hideLoading();
+							uni.showModal({
+								title: "温馨提示",
+								content: '获取超时时间失败['+ret.statusCode+']，请加QQ群联系群主',
+								showCancel: false,
+								confirmText: "确定"
+							});
+
+						} else {
+							console.log("看看获取的结果："+ret.data);
+							if(ret.data&&ret.data.length>8){//说明获取超时时间成功
+								
+								//登录成功做一些数据的存储
+								//将用户名、返回的状态码、过期时间、是否登录的标记存到本地
+								this.$myLocalStore.updateToMemoryDataAndLocalStore(this.UserName,statusCode,ret.data,true);
+								//隐藏加载提示框
+								uni.hideLoading();
+								//给用户展示一段时间注册成功的提示后，在跳转页面
+								uni.navigateBack({
+									delta: 1
+								});
+								
+								
+							}else{
+								//加载错误码对应的错误描述
+								let errInfo = "";
+								if(ret.data){
+									errInfo = this.$myYiYouApi.yiYouErrInfo[ret.data];
+									if(!errInfo){
+										errInfo = "未知错误";
+									}
+								}else{
+									errInfo == "未知错误";
+								}
+								console.log("获取的错误信息["+ret.data+"]:"+errInfo);
+								//隐藏加载提示框
+								uni.hideLoading();
+								
+								
+								uni.showToast({
+									title: errInfo,
+									duration: 2000,
+									icon:'none'
+								});
+							}
+							
+						}
+					}
+				});
+				
+				
+			},
             oauth(value) {
                 uni.login({
                     provider: value,

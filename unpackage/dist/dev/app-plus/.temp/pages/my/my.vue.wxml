@@ -2,14 +2,14 @@
   <view class="_view data-v-4987b52c content-1">
     <view class="_view data-v-4987b52c header-1">
       <view class="_view data-v-4987b52c header-1-login">
-        <view class="_view data-v-4987b52c header-1-login-button" wx:if="{{!hasLogin}}" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">登录</view>
-        <view class="_view data-v-4987b52c header-1-login-button" wx:if="{{hasLogin}}" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">登出</view>
+        <view class="_view data-v-4987b52c header-1-login-button" wx:if="{{!this.$myLocalStore.loginData.hasLogin}}" bindtap="handleProxy" data-eventid="{{'0'}}" data-comkey="{{$k}}">登录</view>
+        <view class="_view data-v-4987b52c header-1-login-button" wx:if="{{this.$myLocalStore.loginData.hasLogin}}" bindtap="handleProxy" data-eventid="{{'1'}}" data-comkey="{{$k}}">登出</view>
       </view>
       <view class="_view data-v-4987b52c header-1-image-card">
         <image class="_image data-v-4987b52c header-1-image" src="{{headStr}}" mode="widthFix" binderror="handleProxy" data-eventid="{{'2'}}" data-comkey="{{$k}}"></image>
       </view>
-      <view class="_view data-v-4987b52c header-1-account">欢迎,{{username}}</view>
-      <view class="_view data-v-4987b52c header-1-expire-time" wx:if="{{hasLogin}}">过期时间：{{expireTime}}</view>
+      <view class="_view data-v-4987b52c header-1-account">欢迎,{{this.$myLocalStore.loginData.username}}</view>
+      <view class="_view data-v-4987b52c header-1-expire-time" wx:if="{{this.$myLocalStore.loginData.hasLogin}}">过期时间：{{this.$myLocalStore.loginData.expireTime}}</view>
     </view>
     <view class="_view data-v-4987b52c bottom-1 uni-card-1">
       <view class="_view data-v-4987b52c uni-list-cell" hover-class="uni-list-cell-hover">
