@@ -11,13 +11,13 @@
 			<block v-for="(list, index) in currentMovieList" :key="index">
 				<div class="row row-extra">
 					<div class="card card-list2 card-extra" v-for="(item,key) in list" @click="goDetail(item)" :key="key">
-						<image class="card-img card-list2-img" :src="item.pic"></image>
+						<image class="card-img card-list2-img-1" :src="item.pic"></image>
 						<div class="card-num-view card-list2-num-view">
 							<text class="card-num card-list2-num-1">{{item.type}}</text>
 						</div>
 						<div class="card-bottm-1 column">
 							<div class="car-title-view-1 column">
-								<text class="card-title card-list2-title card-title-1">{{item.name}}[{{item.note}}]</span></text>
+								<text class="card-title-2 card-list2-title card-title-1">{{item.name}}[{{item.note}}]</span></text>
 								<text class="card-title card-list2-title-1">更新时间:{{item.updateTime}}</text>
 							</div>
 							<!--
@@ -550,15 +550,44 @@
 	
 	.card-title-1{
 		padding-bottom: 2px;
-		padding-left: 10px;
-		padding-right: 10px;
-		/*background-color: #4CD964;*/
-		width: 100%;
+		/*
+		padding-left: 20px;
+		padding-right: 20px;
+		background-color: #4CD964;*/
+		padding-left: 2%;
+		padding-right: 2%;
+		width: 96%;
+		/*text-align:left*/
+	}
+	
+	.card-title-2 {
+		
+		flex: 1;
+		font-size: 30px;
+		text-align: center;
+		color: #555555;
+		text-overflow: ellipsis;
+		lines: 2;
+		display: -webkit-box;
+		white-space: normal;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		
+		 
 	}
 	
 	.car-title-view-1 {
-		flex: 1;
+		
 		padding: 14px 0px 14px 0px;
+		/*background-color: #777777;*/
+		width: 100%;
+		
+	}
+	.card-list2-img-1 {
+		width: 345px;
+		height: 476px;
 	}
 
 </style>

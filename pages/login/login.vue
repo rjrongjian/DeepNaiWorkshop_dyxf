@@ -127,9 +127,7 @@
 							});
 
 						} else {
-							//TODO 测试屏蔽
-							if(true){
-							//if(ret.data&&ret.data.length==32){//说明登录成功
+							if(ret.data&&ret.data.length==32){//说明登录成功
 								//service.addUser(data);
 								//获取过期时间，缓存登陆数据等，由于都放在这太乱，所以抽出去
 								this.bindLogin2(ret.data);

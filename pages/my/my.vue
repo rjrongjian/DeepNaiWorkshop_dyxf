@@ -70,6 +70,7 @@
 		},
 		computed: mapState(['hasLogin', 'username', 'statusCode','expireTime']),
         methods: {
+			...mapMutations(['clearMemory']),
             loadImgErr:function(e){
 				 console.error('image发生error事件，携带值为' + e.detail.errMsg)
 			},
@@ -85,7 +86,76 @@
 					content: '确定要登出当前账号吗？',
 					success: function (res) {
 						if (res.confirm) {
-							console.log('用户点击确定');
+							//console.log('用户点击确定');
+							//显示加载提示框
+							uni.showLoading();
+							//获取登录接口url
+							let logoutUrl = this.$myYiYouApi.yiYouApiUrl.LogOut[this.$myYiYouApi.yiYouApiSelected];
+							console.log("获取的登录接口地址："+logoutUrl);
+							
+							//调用易游登录接口				
+							uni.request({
+								url: logoutUrl,
+								method:'POST',
+								header:{
+									'content-type':'application/x-www-form-urlencoded'
+								},
+								data:{
+									//return {
+									'UserName': this.username,
+									'StatusCode':this.statusCode
+									//}
+								},
+								success: (ret) => {
+									
+									if (ret.statusCode !== 200) {
+										//隐藏加载提示框
+										uni.hideLoading();
+										
+										
+										uni.showModal({
+											title: "温馨提示",
+											content: '登出失败['+ret.statusCode+']，请加QQ群联系群主',
+											showCancel: false,
+											confirmText: "确定"
+										});
+			
+									} else {
+										if(ret.data&&ret.data==1){//说明登出成功
+											//初始化本地存储
+											this.$myLocalStore.clearLocalStore();
+											//初始化内存存储
+											this.clearMemory();
+											//隐藏加载提示框
+											uni.hideLoading();
+											
+										}else{
+											//加载错误码对应的错误描述
+											let errInfo = "";
+											if(ret.data){
+												errInfo = this.$myYiYouApi.yiYouErrInfo[ret.data];
+												if(!errInfo){
+													errInfo = "未知错误";
+												}
+											}else{
+												errInfo == "未知错误";
+											}
+											console.log("获取的错误信息["+ret.data+"]:"+errInfo);
+											//隐藏加载提示框
+											uni.hideLoading();
+											
+											
+											uni.showToast({
+												title: errInfo,
+												duration: 2000,
+												icon:'none'
+											});
+										}
+										
+									}
+								}
+							});
+							
 						} else if (res.cancel) {
 							console.log('用户点击取消');
 						}

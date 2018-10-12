@@ -96,6 +96,14 @@
 	        padding-left: 30px;
 	        line-height: 50px;
 	    }
+			.input-row .title2 {
+					width: 30%;
+					height: 50px;
+					min-height: 50px;
+					padding: 15px 0;
+					padding-left: 30px;
+					line-height: 50px;
+			}
 	
 	    .input-row input {
 	        width: 80%;
