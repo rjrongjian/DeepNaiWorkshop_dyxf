@@ -2,7 +2,7 @@
   <view class="_view data-v-5a6b75ec content">
     <view class="_view data-v-5a6b75ec input-group">
       <view class="_view data-v-5a6b75ec input-row border">
-        <text class="_text data-v-5a6b75ec title">账号：</text>
+        <text class="_text data-v-5a6b75ec title2">用户名：</text>
         <input type="text" value="{{account}}" bindinput="handleProxy" placeholder="请输入账号" data-eventid="{{'0'}}" data-comkey="{{$k}}" class="_input data-v-5a6b75ec" />
       </view>
       <view class="_view data-v-5a6b75ec input-row">

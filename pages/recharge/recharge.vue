@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="input-group">
 			<view class="input-row border">
-				<text class="title">账号：</text>
+				<text class="title2">用户名：</text>
 				<input type="text" v-model="account" placeholder="请输入账号">
 			</view>
 			<view class="input-row">
