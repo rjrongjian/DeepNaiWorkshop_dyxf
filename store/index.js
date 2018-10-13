@@ -26,7 +26,7 @@ const store = new Vuex.Store({
             state.hasLogin = false;
         },
 		clearMemory(state){
-			state.userName = '游客';
+			state.username = '游客';
 			state.statusCode = "";
 			state.expireTime = "";
 			state.hasLogin = false;

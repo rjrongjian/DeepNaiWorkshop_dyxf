@@ -1,10 +1,10 @@
 //易游网络验证全在此
 //启用的接口线路(在登录界面选择)
-let apiSelect="1";
+let yiYouApiSelected="1";
 
 //目前不用版本相关接口和数据，在代码中写死了，不要改
 let version = "1.1";
-let apiUrl = {
+let yiYouApiUrl = {
 	"UserLogin":{
 		"1":"http://w.eydata.net/ecbbfd6f94a0ab84",
 		"2":"http://w1.eydata.net/ecbbfd6f94a0ab84",
@@ -112,7 +112,7 @@ let apiUrl = {
 	
 }
 
-let errInfo = {
+let yiYouErrInfo = {
 	"-1":"网络链接失败",
 	"-2":"请填写程序密钥",
 	"-3":"数据异常",
@@ -215,8 +215,8 @@ let errInfo = {
 }
 
 export default {
-    yiYouApiSelected:apiSelect,
-	yiYouApiUrl:apiUrl,
-	yiYouErrInfo:errInfo,
+    yiYouApiSelected,
+	yiYouApiUrl,
+	yiYouErrInfo,
 	version
 }
