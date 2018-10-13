@@ -37,6 +37,9 @@ const store = new Vuex.Store({
 			state.statusCode = loginData.statusCode || "";
 			state.expireTime = loginData.expireTime || "";
 			state.hasLogin = loginData.hasLogin || false;
+		},
+		resetExpireTime(state,expireTime){
+			state.expireTime = expireTime;
 		}
     }
 })

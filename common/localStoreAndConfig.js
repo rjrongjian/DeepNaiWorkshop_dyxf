@@ -74,6 +74,10 @@ let clearLocalStore = function(){
 	uni.setStorageSync(HAS_LOGIN_KEY,false);
 }
 
+let resetExpireTime = function(expireTime){
+	uni.setStorageSync(EXPIRE_TIME_KEY,expireTime);
+}
+
 //判断字符是否为空的方法
 //貌似直接if(test) 这样判断就行了
 let jugeStrEmpty = function(obj){
@@ -87,5 +91,6 @@ let jugeStrEmpty = function(obj){
 export default {
 	getLocalStoreData,
     updateToLocalStore,
-	clearLocalStore
+	clearLocalStore,
+	resetExpireTime
 }
