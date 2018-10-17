@@ -1,76 +1,85 @@
 <template>
-	<block v-if="isLoadedMovieData">
-		<view class="container">
-			
-				<view class="video-style">
-					<video id="myVideo" :src="src" @error="videoErrorCallback" controls class="video-style-inner" ></video>
-				</view>
-				<view class="info">电影名称：{{name}}</view>
-				<view class="info">电影简介：{{des}}</view>
-				<view class="info">更新时间：{{updateTime}}</view>
-				<view class="info">上映时间：{{year}}</view>
-				<view class="info">类型：{{type}}</view>
-				<view class="info">地区：{{area}}</view>
-				<view class="info">语言：{{language}}</view>
-				<!--//由于video组件同一个资源，用不同的协议http和https切换会报错，所以屏蔽此功能-->
-				<!--
-				<view class="info">
-					<view>资源线路：</view>
-					<radio-group class="radio-group" @change="radioChange">
-						<label class="radio" v-for="item in items" :key="item">
-							<radio :value="item.value" :checked="item.checked" class="radio-color" color="#24D197"/>{{item.name}}
-						</label>
-					</radio-group>
-					
-				</view>
-				-->
-				<view class="uni-card uni-card-1">
-					
-					<view class="uni-card-header-1">选集：</view>
-					<view class="uni-card-content uni-card-content-1">
-						<view class="label-list">
-							<block v-for="(movieUrl,index) in movieUrlArr" :key="index">
-								<view class="uni-label-1" :class="{resSelected: activeName == movieUrl.name}" @tap="updateRes(movieUrl)">{{movieUrl.name}}</view>
-								
-							</block>
-							
-							
-						</view>
+	<block v-if="hasLogin">
+		<block v-if="isLoadedMovieData">
+			<view class="container">
+				
+					<view class="video-style">
+						<video id="myVideo" :src="src" @error="videoErrorCallback" controls class="video-style-inner" ></video>
 					</view>
-					
-				</view>
-				<!--
-				<view class="info label-list">
-					<view class="uni-label uni-active">第一集</view>
-					<view class="uni-label">第二集</view>
-					<view class="uni-label">第三集</view>
-					<view class="uni-label">第四集</view>
-					<view class="uni-label">第五集</view>
-					<view class="uni-label">第六集</view>
-					<view class="uni-label">第七集</view>
-					<view class="uni-label">第八集</view>
-					<view class="uni-label">第九集</view>
-					<view class="uni-label">第十集</view>
-					<view class="uni-label">第十一集</view>
-					<view class="uni-label">第十二集</view>
-					<view class="uni-label">第十三集</view>
-					<view class="uni-label">第十四集</view>
-					<view class="uni-label">第十五集</view>
-				</view>
-				-->
-		</view>
+					<view class="info">电影名称：{{name}}</view>
+					<view class="info">电影简介：{{des}}</view>
+					<view class="info">更新时间：{{updateTime}}</view>
+					<view class="info">上映时间：{{year}}</view>
+					<view class="info">类型：{{type}}</view>
+					<view class="info">地区：{{area}}</view>
+					<view class="info">语言：{{language}}</view>
+					<!--//由于video组件同一个资源，用不同的协议http和https切换会报错，所以屏蔽此功能-->
+					<!--
+					<view class="info">
+						<view>资源线路：</view>
+						<radio-group class="radio-group" @change="radioChange">
+							<label class="radio" v-for="item in items" :key="item">
+								<radio :value="item.value" :checked="item.checked" class="radio-color" color="#24D197"/>{{item.name}}
+							</label>
+						</radio-group>
+						
+					</view>
+					-->
+					<view class="uni-card uni-card-1">
+						
+						<view class="uni-card-header-1">选集：</view>
+						<view class="uni-card-content uni-card-content-1">
+							<view class="label-list">
+								<block v-for="(movieUrl,index) in movieUrlArr" :key="index">
+									<view class="uni-label-1" :class="{resSelected: activeName == movieUrl.name}" @tap="updateRes(movieUrl)">{{movieUrl.name}}</view>
+									
+								</block>
+								
+								
+							</view>
+						</view>
+						
+					</view>
+					<!--
+					<view class="info label-list">
+						<view class="uni-label uni-active">第一集</view>
+						<view class="uni-label">第二集</view>
+						<view class="uni-label">第三集</view>
+						<view class="uni-label">第四集</view>
+						<view class="uni-label">第五集</view>
+						<view class="uni-label">第六集</view>
+						<view class="uni-label">第七集</view>
+						<view class="uni-label">第八集</view>
+						<view class="uni-label">第九集</view>
+						<view class="uni-label">第十集</view>
+						<view class="uni-label">第十一集</view>
+						<view class="uni-label">第十二集</view>
+						<view class="uni-label">第十三集</view>
+						<view class="uni-label">第十四集</view>
+						<view class="uni-label">第十五集</view>
+					</view>
+					-->
+			</view>
+		</block>
+		<block v-else>
+			<view class="container2">
+				
+				<text  class="loadMore loadMore-center">加载中...</text>
+				
+			</view>
+				
+		</block>
 	</block>
 	<block v-else>
-		<view class="container2">
-			
-			<text  class="loadMore loadMore-center">加载中...</text>
-			
-		</view>
-			
+		<navigator url="../login/login"></navigator>
 	</block>
 </template>
 
 <script>
+	import {
+		mapState,
+		mapMutations
+	} from 'vuex'
 	export default {
 		onLoad:function(e){
 			this.currentSelectedHttpOrHttps = this.$myMovieApi.currentSelectedHttpOrHttps;
@@ -155,6 +164,7 @@
 				movieUrlInfo:{}
 			}
 		},
+		computed: mapState(['hasLogin', 'username', 'statusCode','expireTime']),
 		methods:{
 			videoErrorCallback:function(res1){
 				console.log("视频播放错误，原因："+JSON.stringify(res1));
