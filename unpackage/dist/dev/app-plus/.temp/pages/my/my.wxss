@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 .header-1 {
   background-color: #79E8D0;

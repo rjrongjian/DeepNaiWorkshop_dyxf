@@ -93,6 +93,35 @@
         {
             "path" : "pages/recharge/recharge",
             "style" : {}
+        },
+        {
+            "path" : "pages/searchMovie/searchMovie",
+            "style" : {
+                "navigationBarTitleText" : "搜电影",
+                "enablePullDownRefresh" : true
+            }
+        },
+        {
+            "path" : "pages/webView/webView",
+            "style" : {}
+        },
+        {
+            "path" : "pages/mianze/mianze",
+            "style" : {
+                "navigationBarTitleText" : "免责声明"
+            }
+        },
+        {
+            "path" : "pages/callme/callme",
+            "style" : {
+				"navigationBarTitleText" : "联系我"
+			}
+        },
+        {
+            "path" : "pages/becomeAgent/becomeAgent",
+            "style" : {
+				"navigationBarTitleText" : "成为代理"
+			}
         }
     ],
     "globalStyle" : {
@@ -116,15 +145,21 @@
             {
                 "iconPath" : "static/bottom/video.png",
                 "selectedIconPath" : "static/bottom/video_fill.png",
-                "pagePath" : "pages/live/live",
-                "text" : "直播盒子"
+                "pagePath" : "pages/searchMovie/searchMovie",
+                "text" : "搜电影"
             },
-            {
-                "iconPath" : "static/bottom/live.png",
-                "selectedIconPath" : "static/bottom/live_fill.png",
-                "pagePath" : "pages/onlineTV/onlineTV",
-                "text" : "卫星电视"
-            },
+            //{
+            //    "iconPath" : "static/bottom/video.png",
+            //    "selectedIconPath" : "static/bottom/video_fill.png",
+            //    "pagePath" : "pages/live/live",
+            //    "text" : "直播盒子"
+            //},
+            //{
+            //    "iconPath" : "static/bottom/live.png",
+            //    "selectedIconPath" : "static/bottom/live_fill.png",
+            //    "pagePath" : "pages/onlineTV/onlineTV",
+            //    "text" : "卫星电视"
+            //},
             {
                 "iconPath" : "static/bottom/people.png",
                 "selectedIconPath" : "static/bottom/people_fill.png",

@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 view {
   display: -webkit-box;
@@ -103,4 +104,7 @@ view {
 }
 .radio-color {
   color: #24D197;
+}
+.color11 {
+  color: #007AFF;
 }

@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 .container {
   display: -webkit-box;

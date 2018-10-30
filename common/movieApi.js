@@ -19,6 +19,9 @@ let selectedApiType = 'kuYun';
  */
 let shieldingCatIds = {"catId_40":"伦理","catId_41":"微电影","catId_42":"纪录片","catId_2":"香港剧","catdId_3":"台湾剧","catId_4":"日本剧","catId_30":"综艺节目","catId_37":"剧情片"};
 
+/**
+ * 首页，最新电影中，哪类资源不展示
+ */
 let shieldingCatIdsForToday = {"catIdForToday_40":"伦理"};
 
 /**
@@ -38,6 +41,10 @@ let currentSelectedHttpOrHttps = null;
 //提示中使用的qq群
 let qqQun = {"qunNum":"807164767","qunName":"最新电影分享"};
 
+let qq = "1633545776";
+
+let rechargeUrl = "https://k.1ka123.com/shop-38782.html";
+
 //无需动态配置的选项-----------------------------------------------------------------
 
 let CMS_TYPE_SEA = 'seaCms';
@@ -49,7 +56,8 @@ let apiConfig = {
 			"movieTypeApi":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=list&url=&rid=sheser.com&t=1101&h=&pg=&wd=",//电影类别
 			"getMovieById":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com&pg=1&ids=",//搜片获取到id后，通过此接口获取详情 ids处填写电影id,
 			"todayMovieApi":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com&t=0&h=24&pg=",//今日最新电影,
-			"getMovieByCat":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com"//获取指定电影分类下的所有电影
+			"getMovieByCat":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com",//获取指定电影分类下的所有电影
+			"searchMovieIds":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com&pg=1&wd="//搜索电影资源
 		}
 	}
 	
@@ -123,6 +131,8 @@ let isShieldingMovieId = function(movieId){
 	}
 }
 
+let jxParserUrl="https://jx.618g.com/?url=";
+
 
 export default {
     selectedCmsType,
@@ -134,5 +144,8 @@ export default {
 	isShieldingCatIdForToday,
 	m3u8OrOtherRes,
 	currentSelectedHttpOrHttps,
-	qqQun
+	qqQun,
+	jxParserUrl,
+	qq,
+	rechargeUrl
 }

@@ -1,3 +1,4 @@
+@import "common/vendor.wxss";
 
 @font-face {
   font-family: texticons;

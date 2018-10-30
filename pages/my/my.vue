@@ -34,13 +34,13 @@
 				<view class="uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" @tap="goRechargePage"> 去充值 </view>
 			</view>
 			<view class="uni-list-cell" hover-class="uni-list-cell-hover" >
-				<view class="uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color"> 联系我?! </view>
+				<view class="uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" @tap="goBecomeAgentPage"> 成为代理 </view>
 			</view>
 			<view class="uni-list-cell" hover-class="uni-list-cell-hover" >
-				<view class="uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color"> 免责声明</view>
+				<view class="uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" @tap="goCallmePage">联系我?! </view>
 			</view>
 			<view class="uni-list-cell" hover-class="uni-list-cell-hover" >
-				<view class="uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color"> 成为代理</view>
+				<view class="uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" @tap="goMianzePage">免责声明 </view>
 			</view>
 		</view>
 		
@@ -188,6 +188,21 @@
 				uni.navigateTo({
 					url:"../login/login"
 				});
+			},
+			goMianzePage(){
+				uni.navigateTo({
+					url:"../mianze/mianze"
+				});
+			},
+			goCallmePage(){
+				uni.navigateTo({
+					url:"../callme/callme"
+				})
+			},
+			goBecomeAgentPage(){
+				uni.navigateTo({
+					url:"../becomeAgent/becomeAgent"
+				})
 			}
         }
     }

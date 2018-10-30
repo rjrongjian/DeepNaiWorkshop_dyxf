@@ -1,3 +1,4 @@
+@import "../../common/vendor.wxss";
 
 .btn-row-1 {
   margin-top: 50rpx;

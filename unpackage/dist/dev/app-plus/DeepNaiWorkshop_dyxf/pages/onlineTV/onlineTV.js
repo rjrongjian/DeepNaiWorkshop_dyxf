@@ -1,7 +1,7 @@
 
       !(function(){
         var uniAppViewReadyCallback = function(){
-          setCssToHead([],undefined,{path:"./pages/onlineTV/onlineTV.wxss"})();
+          setCssToHead([[2,1],],undefined,{path:"./pages/onlineTV/onlineTV.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/onlineTV/onlineTV.wxml') } }));
         }
         if(window.__uniAppViewReady__){

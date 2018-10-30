@@ -3,7 +3,7 @@
         <view v-if="showMask" class="uni-drawer-mask" @tap="close"></view>
         <view class="uni-drawer-content">
             <view class="drawer-content">
-            	<view class="title">电影分类</view>
+            	<!--<view class="title">电影分类</view>-->
             	<view class="uni-list">
             		<block v-for="(movieCat,index) in movieCatsIntoSon" :key="movieCat.id">
             			
@@ -93,7 +93,10 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.4);
+		/*测试屏蔽*/
+        /*background: rgba(0, 0, 0, 0.4);*/
+		background-color: #0FAEFF;
+		
     }
 
     .uni-drawer>.uni-drawer-content {

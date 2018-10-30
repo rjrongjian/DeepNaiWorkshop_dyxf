@@ -41,7 +41,9 @@
                 hasProvider: false,
                 account: '',
                 password: '',
-                positionTop: 0
+                positionTop: 0,
+				fromMovieDetailPage:false,
+				movieDetails:""
             }
         },
         methods: {
@@ -207,9 +209,17 @@
 									delta: 1
 								});
 								*/
-								uni.reLaunch({
-									url: '../my/my',
-								});
+							   if(this.fromMovieDetailPage){//说明是从详情页面登录的
+								   uni.redirectTo({
+								   	url:"../movieDetail/movieDetail?data=" + this.movieDetails
+								   })
+								   uni.redirect
+							   }else{
+								   uni.reLaunch({
+								   	url: '../my/my',
+								   });
+							   }
+								
 								
 							}else{
 								//加载错误码对应的错误描述
@@ -276,9 +286,15 @@
 
             }
         },
-        onLoad() {
+        onLoad(e) {
             this.initPosition();
             //this.initProvider(); //不使用第三方登录
+			
+			//判断，是否是从电影详情页跳过来的
+			if(e.data&&e.data.length>5){//说明是从电影详情页面跳转过来的
+				this.fromMovieDetailPage = true;
+				this.movieDetails = e.data;
+			}
         }
     }
 </script>
@@ -288,6 +304,7 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+		margin-top: 10px;
     }
 
     .action-row navigator {

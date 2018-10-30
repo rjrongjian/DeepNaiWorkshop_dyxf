@@ -1,9 +1,9 @@
 <template name="461a1416">
   <view class="_view data-v-6a5141ac index">
-    <swiper current="{{currentTab}}" class="_swiper data-v-6a5141ac swiper-box" duration="300" bindchange="handleProxy" data-eventid="{{'a4B-1'}}" data-comkey="{{$k}}">
+    <swiper current="{{currentTab}}" class="_swiper data-v-6a5141ac swiper-box" duration="300" bindchange="handleProxy" data-eventid="{{'L7h-1'}}" data-comkey="{{$k}}">
       <block wx:key="index1" key="{{index1}}" wx:for="{{newsitems}}" wx:for-index="index1" wx:for-item="tab">
         <swiper-item class="_swiper-item data-v-6a5141ac">
-          <scroll-view class="_scroll-view data-v-6a5141ac index-bd" scroll-y bindscrolltolower="handleProxy" data-eventid="{{'AvY-0-'+index1}}" data-comkey="{{$k}}">
+          <scroll-view class="_scroll-view data-v-6a5141ac index-bd" scroll-y bindscrolltolower="handleProxy" data-eventid="{{'RyO-0-'+index1}}" data-comkey="{{$k}}">
             <block wx:key="index2" key="{{index2}}" wx:for="{{tab}}" wx:for-index="index2" wx:for-item="newsitem">
               <view class="_view data-v-6a5141ac tab-list">{{newsitem.name}}-{{newsitem.label}}</view>
             </block>

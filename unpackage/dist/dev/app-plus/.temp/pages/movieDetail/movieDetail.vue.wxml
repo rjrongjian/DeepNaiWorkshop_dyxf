@@ -1,36 +1,34 @@
 <template name="2414ccc0">
-  <block wx:if="{{hasLogin}}">
-    <block wx:if="{{isLoadedMovieData}}">
-      <view class="_view data-v-d5683c24 container">
-        <view class="_view data-v-d5683c24 video-style">
-          <video id="myVideo" src="{{src}}" binderror="handleProxy" controls class="_video data-v-d5683c24 video-style-inner" data-eventid="{{'1Gx-0'}}" data-comkey="{{$k}}"></video>
-        </view>
-        <view class="_view data-v-d5683c24 info">电影名称：{{name}}</view>
-        <view class="_view data-v-d5683c24 info">电影简介：{{des}}</view>
-        <view class="_view data-v-d5683c24 info">更新时间：{{updateTime}}</view>
-        <view class="_view data-v-d5683c24 info">上映时间：{{year}}</view>
-        <view class="_view data-v-d5683c24 info">类型：{{type}}</view>
-        <view class="_view data-v-d5683c24 info">地区：{{area}}</view>
-        <view class="_view data-v-d5683c24 info">语言：{{language}}</view>
-        <view class="_view data-v-d5683c24 uni-card uni-card-1">
-          <view class="_view data-v-d5683c24 uni-card-header-1">选集：</view>
-          <view class="_view data-v-d5683c24 uni-card-content uni-card-content-1">
-            <view class="_view data-v-d5683c24 label-list">
-              <block wx:key="index" key="{{index}}" wx:for="{{movieUrlArr}}" wx:for-index="index" wx:for-item="movieUrl">
-                <view class="_view data-v-d5683c24 uni-label-1 {{[activeName == movieUrl.name ? 'resSelected' : '']}}" bindtap="handleProxy" data-eventid="{{'zaN-1-'+index}}" data-comkey="{{$k}}">{{movieUrl.name}}</view>
-              </block>
-            </view>
+  <block wx:if="{{isLoadedMovieData}}">
+    <view class="_view data-v-d5683c24 container">
+      <view class="_view data-v-d5683c24 video-style">
+        <video id="myVideo" src="{{src}}" binderror="handleProxy" controls class="_video data-v-d5683c24 video-style-inner" data-eventid="{{'A7I-0'}}" data-comkey="{{$k}}"></video>
+      </view>
+      <view class="_view data-v-d5683c24 info">电影名称：{{name}}</view>
+      <view class="_view data-v-d5683c24 info">电影简介：{{des}}</view>
+      <view class="_view data-v-d5683c24 info">更新时间：{{updateTime}}</view>
+      <view class="_view data-v-d5683c24 info">上映时间：{{year}}</view>
+      <view class="_view data-v-d5683c24 info">类型：{{type}}</view>
+      <view class="_view data-v-d5683c24 info">地区：{{area}}</view>
+      <view class="_view data-v-d5683c24 info">语言：{{language}}</view>
+      <view class="_view data-v-d5683c24 info">
+        <button bindtap="handleProxy" class="_button data-v-d5683c24 color11" data-eventid="{{'o8k-1'}}" data-comkey="{{$k}}">视频很卡？点我！</button>
+      </view>
+      <view class="_view data-v-d5683c24 uni-card uni-card-1">
+        <view class="_view data-v-d5683c24 uni-card-header-1">选集：</view>
+        <view class="_view data-v-d5683c24 uni-card-content uni-card-content-1">
+          <view class="_view data-v-d5683c24 label-list">
+            <block wx:key="index" key="{{index}}" wx:for="{{movieUrlArr}}" wx:for-index="index" wx:for-item="movieUrl">
+              <view class="_view data-v-d5683c24 uni-label-1 {{[activeName == movieUrl.name ? 'resSelected' : '']}}" bindtap="handleProxy" data-eventid="{{'dYP-2-'+index}}" data-comkey="{{$k}}">{{movieUrl.name}}</view>
+            </block>
           </view>
         </view>
       </view>
-    </block>
-    <block wx:else>
-      <view class="_view data-v-d5683c24 container2">
-        <text class="_text data-v-d5683c24 loadMore loadMore-center">加载中...</text>
-      </view>
-    </block>
+    </view>
   </block>
   <block wx:else>
-    <navigator url="../login/login" class="_navigator data-v-d5683c24"></navigator>
+    <view class="_view data-v-d5683c24 container2">
+      <text class="_text data-v-d5683c24 loadMore loadMore-center">加载中...</text>
+    </view>
   </block>
 </template>

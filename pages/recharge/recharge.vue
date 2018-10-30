@@ -13,7 +13,11 @@
 		<view class="btn-row-1">
 			<button type="primary" class="primary" @tap="rechargeTime">充值</button>
 		</view>
-		
+		<view class="action-row ">
+				<view class="color12" @tap="goYiRechargePage">获取充值码</view>
+				<text>|</text>
+				<view class="color12" @tap="addQunRecharge">加群充值</view>
+		</view>
 		<!--
 		<view class="oauth-row" v-if="hasProvider" v-bind:style="{top: positionTop + 'px'}">
 			<view class="oauth-image" v-for="provider in providerList" :key="provider.value">
@@ -210,6 +214,18 @@
 				});
 				
 				
+			},
+			goYiRechargePage(){
+				console.log("进来了");
+				plus.runtime.openURL(this.$myMovieApi.rechargeUrl);
+			},
+			addQunRecharge(){
+				uni.showModal({
+					title: "温馨提示",
+					content: "充值可联系，QQ："+this.$myMovieApi.qq+",QQ群["+this.$myMovieApi.qqQun.qunName+"]:"+this.$myMovieApi.qqQun.qunNum,
+					showCancel: false,
+					confirmText: "我知道了"
+				});
 			}
 		}
 	}
@@ -220,12 +236,9 @@
         display: flex;
         flex-direction: row;
         justify-content: center;
+		margin-top: 10px;
     }
 
-    .action-row navigator {
-        color: #007aff;
-        padding: 0 20px;
-    }
 
     .oauth-row {
         display: flex;
@@ -255,5 +268,8 @@
 	.btn-row-1 {
 		margin-top: 50px;
 		/*padding: 20px;*/
+	}
+	.color12{
+		color: #007aff;
 	}
 </style>

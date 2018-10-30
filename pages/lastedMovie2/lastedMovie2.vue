@@ -1,11 +1,13 @@
 <template>
 	<view class="container">
-		<swiper :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration" class="swiper-box">
-            <swiper-item v-for="item in itemList" :key="item" class="swiper-item">
-                <text>{{item}}</text>
-            </swiper-item>
-        </swiper>
-		
+		<!--是否显示banner，通过分类进入时，不显示banner-->
+		<block v-if="isDisplayBanner">
+			<swiper :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration" class="swiper-box">
+				<swiper-item v-for="item in itemList" :key="item" class="swiper-item">
+					<text>{{item}}</text>
+				</swiper-item>
+			</swiper>
+		</block>
 		<view class="index movie-list">
 			
 			<block v-for="(list, index) in currentMovieList" :key="index">
@@ -49,6 +51,7 @@
 		},
 		data() {
 			return {
+				isDisplayBanner:true,
 				itemList: [
 					'item1',
 					'item2',
@@ -102,6 +105,7 @@
 			this.totalPage = 1;
 			this.currentCat = -1; //-1 代表查询今日更新
 			this.currentCatName = null;
+			this.isDisplayBanner = true;
 			
 			//加载电影，默认是今日电影
 			this.getMovies();
@@ -402,6 +406,8 @@
 				if(this.currentCat==-1){ //今日最新
 					this.getTodayMovies();
 				}else{//按分类查找
+					//按分类查找，屏蔽banner
+					this.isDisplayBanner = false;
 					if(catName&&""!=catName.trim()){
 						this.currentCatName = catName;
 						uni.setNavigationBarTitle({
