@@ -79,12 +79,13 @@
 				})
 			},
 			searchMovie(){
+				
 				var movieApiConfig = this.$myMovieApi.getMovieApi();
 				if(movieApiConfig){
 					var searchMovieIdsUrl = movieApiConfig['searchMovieIds']+this.searchKey;
 					//显示加载提示框
 					uni.showLoading();
-					
+					this.currentMovieList = [];
 					console.log("获取的搜索url："+searchMovieIdsUrl);
 					
 					uni.request({

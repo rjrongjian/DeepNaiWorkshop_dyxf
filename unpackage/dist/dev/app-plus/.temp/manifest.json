@@ -48,5 +48,8 @@
     "mp-weixin" : {
         /* 小程序特有相关 */
         "appid" : ""
-    }
+    },
+	"networkTimeout":{
+		"request":6000 //请求接口超时时间
+	}
 }

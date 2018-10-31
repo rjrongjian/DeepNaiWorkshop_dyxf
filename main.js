@@ -19,6 +19,9 @@ Vue.prototype.$myYiYouApi = YiYouApi;
 import LocalStore from './common/localStoreAndConfig';
 Vue.prototype.$myLocalStore = LocalStore;
 
+import DateUtils from './common/util';
+Vue.prototype.$myDateUtils = DateUtils;
+
 Vue.prototype.$store = store;
 
 //Vue.config.productionTip = false

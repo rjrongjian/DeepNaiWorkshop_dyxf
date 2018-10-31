@@ -4,6 +4,8 @@
         <view class="uni-drawer-content">
             <view class="drawer-content">
             	<!--<view class="title">电影分类</view>-->
+				<button type="primary" class="primary btn-extra" @tap="switchCatsInSon">换一批</button>
+							
             	<view class="uni-list">
             		<block v-for="(movieCat,index) in movieCatsIntoSon" :key="movieCat.id">
             			
@@ -46,6 +48,10 @@
 			getMoviesByCatInSon:{
 				type:Function,
 				default:null
+			},
+			switchCatsInSon:{
+				type:Function,
+				default:null
 			}
         },
         data() {
@@ -65,10 +71,10 @@
             close() {
                 this.$emit('close')
             },
-			loadMovieByCat(catId,catName){
-				this.close();//关闭弹出窗
-				this.getMoviesByCatInSon(catId,catName);
-			}
+						loadMovieByCat(catId,catName){
+							this.close();//关闭弹出窗
+							this.getMoviesByCatInSon(catId,catName);
+						}
         }
     }
 </script>
@@ -93,9 +99,9 @@
         left: 0;
         width: 100%;
         height: 100%;
-		/*测试屏蔽*/
-        /*background: rgba(0, 0, 0, 0.4);*/
-		background-color: #0FAEFF;
+		
+        background: rgba(0, 0, 0, 0.4);
+
 		
     }
 
@@ -128,4 +134,12 @@
     .uni-drawer.uni-drawer-visible>.uni-drawer-content {
         transform: translatex(0);
     }
+
+		.btn-extra{
+			width:60%;
+			font-size: 26px;
+		}
+		.button {
+			font-size: 14px;
+		}
 </style>

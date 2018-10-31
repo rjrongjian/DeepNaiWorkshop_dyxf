@@ -5,9 +5,6 @@ view {
   display: -webkit-flex;
   display: flex;
 }
-.swiper-box {
-  background-color: #4CD964;
-}
 .container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -23,9 +20,9 @@ view {
 }
 .swiper-item {
   display: block;
-  height: 300rpx;
+  height: 306rpx;
+  width: 750rpx;
   text-align: center;
-  background-color: #007AFF;
 }
 .color1 {
   background-color: #FF0000;
@@ -55,6 +52,7 @@ view {
   -webkit-flex: 1;
   flex: 1;
   overflow: scroll;
+  height: 100%;
 }
 .drawer-content>.title {
   font-size: 18rpx;
@@ -146,7 +144,7 @@ view {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0FAEFF;
+  background: rgba(0, 0, 0, 0.4);
 }
 .uni-drawer>.uni-drawer-content.data-v-b994e6e6 {
   display: block;
@@ -176,4 +174,11 @@ view {
 .uni-drawer.uni-drawer-visible>.uni-drawer-content.data-v-b994e6e6 {
   -webkit-transform: translatex(0);
   transform: translatex(0);
+}
+.btn-extra.data-v-b994e6e6 {
+  width: 60%;
+  font-size: 26rpx;
+}
+.button.data-v-b994e6e6 {
+  font-size: 14rpx;
 }

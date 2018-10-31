@@ -3,7 +3,7 @@
 	<block v-if="isLoadedMovieData">
 		<view class="container">
 			
-				<view class="video-style">
+				<view v-if="!isOutOfDate" class="video-style">
 					<video id="myVideo" :src="src" @error="videoErrorCallback" controls class="video-style-inner" ></video>
 				</view>
 				<view class="info">电影名称：{{name}}</view>
@@ -13,7 +13,7 @@
 				<view class="info">类型：{{type}}</view>
 				<view class="info">地区：{{area}}</view>
 				<view class="info">语言：{{language}}</view>
-				<view class="info">
+				<view v-if="!isOutOfDate" class="info">
 					<button @tap="confirmPlayInBroswer" class="color11">视频很卡？点我！</button>
 				</view>
 				<!--//由于video组件同一个资源，用不同的协议http和https切换会报错，所以屏蔽此功能-->
@@ -28,7 +28,7 @@
 					
 				</view>
 				-->
-				<view class="uni-card uni-card-1">
+				<view v-if="!isOutOfDate" class="uni-card uni-card-1">
 					
 					<view class="uni-card-header-1">选集：</view>
 					<view class="uni-card-content uni-card-content-1">
@@ -88,6 +88,58 @@
 					url: '../login/login?data='+e.data
 				})
 			}else{
+				//校验会员是否过期，目前不直接调用易游接口
+				let expireTimeTemp = this.expireTime;
+				
+				let expireDate = this.$myDateUtils.dateUtils.parse(expireTimeTemp);
+				let expireTimes = expireDate.getTime();//过期毫秒数
+				console.log("会员过期时间："+expireTimeTemp+"，毫秒数："+expireTimes);
+				let currentTime = new Date();
+				currentTime = currentTime.getTime();
+				let sysTime = 0;//当前系统时间
+				
+				uni.request({
+					url: 'http://api.m.taobao.com/rest/api3.do?api=mtop.common.getTimestamp',
+					success: (ret) => {
+						if (ret.statusCode !== 200) {//获取系统时间失败，用本地时间
+							console.log("请求失败:", ret)
+							sysTime = currentTime;
+						} else {
+							let result = ret.data;
+							try{
+								
+								if(result.ret.indexOf("SUCCESS")!=-1){//获取时间成功
+									console.log("接口返回的时间戳："+result.data.t);
+									sysTime = result.data.t;
+								}else{//获取系统时间失败，用本地时间
+									sysTime = currentTime;
+								}
+							}catch(e){//获取系统时间失败，用本地时间
+								console.log("获取当前时间失败："+e);
+								sysTime = currentTime;
+							}
+						}
+						console.log("会员到期时间："+expireTimes+",系统时间："+sysTime);
+						if(expireTimes<sysTime){//说明会员到期
+						
+							this.isOutOfDate = true;
+							console.log("会员到期");
+							uni.showModal({
+								title: "温馨提示",
+								content: "您的会员已到期，请到个人中心进行充值",
+								showCancel: false,
+								confirmText: "我知道了",
+								fail:function(res){
+									console.log("弹窗出错");
+								}
+							});
+						}else{
+							this.isOutOfDate = false;
+							console.log("会员未到期");
+						}
+					}
+				});
+				
 				this.currentSelectedHttpOrHttps = this.$myMovieApi.currentSelectedHttpOrHttps;
 				//获取传进来的电影详情
 				//this.des = e.data;
@@ -180,7 +232,8 @@
 				movieUrlArr:[],
 				activeName:"",
 				movieUrlInfo:{},
-				urlInWeb:""//在网页中播放地址
+				urlInWeb:"",//在网页中播放地址
+				isOutOfDate:false //会员是否到期
 			}
 		},
 		computed: mapState(['hasLogin', 'username', 'statusCode','expireTime']),

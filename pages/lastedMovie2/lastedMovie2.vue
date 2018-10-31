@@ -34,7 +34,7 @@
 			</block>
 			<text class="loadMore">{{loadMoreText}}</text>
 		</view>
-		<uni-drawer :visible="rightDrawerVisible" mode="right" @close="closeRightDrawer" :movieCatsIntoSon="movieCats" :getMoviesByCatInSon="getMovies">
+		<uni-drawer :visible="rightDrawerVisible" mode="right" @close="closeRightDrawer" :movieCatsIntoSon="miniCats" :getMoviesByCatInSon="getMovies" :switchCatsInSon="switchCats">
 			
 		</uni-drawer>
 	</view>
@@ -57,21 +57,24 @@
 					'item2',
 					'item3'
 				],
-				indicatorDots: false,
-				autoplay: false,
-				interval: 5000,
+				indicatorDots: true,
+				autoplay: true,
+				interval: 3000,
 				duration: 300,
 				refreshing: false,
 				isPullDownRefresh:false,
 				//lists: [],
 				rightDrawerVisible: false,
 				movieCats:[],
+				miniCats:[],
 				loadMoreText:"",
 				currentMovieList:[],
 				fetchPageNum: 1,
 				totalPage:1,
 				currentCat:-1, //-1 代表查询今日更新,
-				currentCatName:null
+				currentCatName:null,
+				pageSize:9,
+				arrIndex:0
 			}
 		},
 		onLoad() {
@@ -437,17 +440,39 @@
 									var allCatArr = this.$myXml2Json.asArray(jsonObj.rss.class.ty);
 									
 									let tabsTemp = [];
-									for(var i = 0;i<allCatArr.length;i++){
+									let tabsTemp2 = [];
+									let allCatArrTemp = [];
+									for(var i = 0;i<allCatArr.length;i++){//过滤分类
 										if(!this.$myMovieApi.isShieldingCatId(allCatArr[i]._id)){
-											var movieJson = {name:allCatArr[i].__text,id:allCatArr[i]._id};
-											//console.log("解析出的分类名："+allCatArr[i].__text+",catId:"+allCatArr[i]._id);
-											tabsTemp.push(movieJson);
+											allCatArrTemp.push(allCatArr[i]);
+											//tabsTemp.push(movieJson);
 											
 										}
 										
 									}
+									//console.log("生成后数组大小："+allCatArrTemp.length);
+									for(var i = 0;i<allCatArrTemp.length;i++){
+										var movieJson = {name:allCatArrTemp[i].__text,id:allCatArr[i]._id};
+										//console.log("解析出的分类名："+allCatArr[i].__text+",catId:"+allCatArr[i]._id);
+										if(tabsTemp2.length>=this.pageSize){
+											tabsTemp.push(tabsTemp2);
+											tabsTemp2 = [];
+											tabsTemp2.push(movieJson);
+										}else{
+											//console.log(""+i+"-"+(allCatArrTemp.length-1));
+											if(i==allCatArrTemp.length-1){//到最后一个了
+												tabsTemp2.push(movieJson);
+												tabsTemp.push(tabsTemp2);
+												tabsTemp2 = [];
+											}else{
+												tabsTemp2.push(movieJson);
+											}
+											
+										}
+									}
 									this.movieCats = tabsTemp;
-									
+									this.miniCats = this.movieCats[this.arrIndex];
+									//console.log("初始化后分组数："+this.movieCats.length+"，当前组元素数："+this.miniCats.length);
 								}
 							}
 						});
@@ -456,6 +481,17 @@
 					}
 				}catch(e){
 					console.log("加载电影分类出现异常",e);
+				}
+			},
+			switchCats(){
+				//console.log("开始切换cats");-->
+				let nextIndex = this.arrIndex+1;
+				if(nextIndex> Math.ceil(this.movieCats.length/this.pageSize)){
+					this.miniCats = this.movieCats[0];
+					this.arrIndex = 0;
+				}else{
+					this.arrIndex = nextIndex;
+					this.miniCats = this.movieCats[nextIndex];
 				}
 			}
 		}
@@ -467,7 +503,7 @@
 		display: flex;
 	}
 	.swiper-box{
-		background-color: #4CD964;
+		/*background-color: #4CD964;*/
 	}
 	.container{
 		display: flex;
@@ -478,9 +514,10 @@
 	}
 	.swiper-item {
 		display: block;
-		height: 300px;
+		height: 306upx;
+		width:750upx;
 		text-align: center;
-		background-color: #007AFF;
+		/*background-color: #007AFF;*/
 	}
 	.color1{
 		background-color: #FF0000;/*红色*/
@@ -507,6 +544,7 @@
 		flex: 1;
 		/*background-color: #2782D7;*/
 		overflow: scroll;
+		height: 100%;
 		
 	}
 
