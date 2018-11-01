@@ -42,8 +42,13 @@ let currentSelectedHttpOrHttps = null;
 let qqQun = {"qunNum":"807164767","qunName":"最新电影分享"};
 
 let qq = "1633545776";
-
+//解析接口
 let rechargeUrl = "https://k.1ka123.com/shop-38782.html";
+
+//初始banner
+//openType 1 webview打开 2 浏览器打开
+let banners = [{url:"https://tbq283.zetianhui.net/wx/index.html",imgUrl:"../../static/banner/tbq.jpg",openType:1}]
+
 
 //无需动态配置的选项-----------------------------------------------------------------
 
@@ -147,5 +152,6 @@ export default {
 	qqQun,
 	jxParserUrl,
 	qq,
-	rechargeUrl
+	rechargeUrl,
+	banners
 }

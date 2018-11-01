@@ -1,10 +1,11 @@
 <template>
 	<view class="container">
 		<!--是否显示banner，通过分类进入时，不显示banner-->
-		<block v-if="isDisplayBanner">
+		<block v-if="isDisplayBanner&itemList.length>0">
 			<swiper :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration" class="swiper-box">
-				<swiper-item v-for="item in itemList" :key="item" class="swiper-item">
-					<text>{{item}}</text>
+				<swiper-item v-for="item in itemList" :key="item" class="swiper-item" @tap="openBanner(item)">
+					<image :src="item.imgUrl" mode="aspectFit" style="width: 100% ; height: 100%;"></image>
+					
 				</swiper-item>
 			</swiper>
 		</block>
@@ -53,9 +54,7 @@
 			return {
 				isDisplayBanner:true,
 				itemList: [
-					'item1',
-					'item2',
-					'item3'
+					
 				],
 				indicatorDots: true,
 				autoplay: true,
@@ -78,7 +77,9 @@
 			}
 		},
 		onLoad() {
-			
+			//获取banner数据
+			this.itemList = this.$myMovieApi.banners;
+			console.log("banner大小："+this.itemList.length);
 			//加载电影分类
 			setTimeout(() => { //防止app里由于渲染导致转场动画卡顿
 				this.getMovieCat();
@@ -492,6 +493,15 @@
 				}else{
 					this.arrIndex = nextIndex;
 					this.miniCats = this.movieCats[nextIndex];
+				}
+			},
+			openBanner(item){
+				if(item.openType==1){//webview打开
+					plus.runtime.openWeb(item.url);
+				}
+				
+				if(item.openType==2){//自带浏览器打开
+					plus.runtime.openURL(item.url);
 				}
 			}
 		}
