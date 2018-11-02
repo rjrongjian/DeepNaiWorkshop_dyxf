@@ -41,14 +41,17 @@ let currentSelectedHttpOrHttps = null;
 //提示中使用的qq群
 let qqQun = {"qunNum":"807164767","qunName":"最新电影分享"};
 
-let qq = "1633545776";
+let qq = "237476618";
+let wx = "darong2485";
 //解析接口
 let rechargeUrl = "https://k.1ka123.com/shop-38782.html";
 
 //初始banner
-//openType 1 webview打开 2 浏览器打开
-let banners = [{url:"https://tbq283.zetianhui.net/wx/index.html",imgUrl:"../../static/banner/tbq.jpg",openType:1}]
-
+//openType 1 webview打开 2 浏览器打开 3 native打开，根据url的key，决定跳哪页
+let banners = [{url:"lingquansonghuiyuan",imgUrl:"../../static/banner/song.png",openType:3},{url:"https://tbq283.zetianhui.net/wx/index.html",imgUrl:"../../static/banner/tbq.jpg",openType:1}];
+//领券地址
+//注意：在banners里也配置了
+let lingquanUrl = "https://tbq283.zetianhui.net/wx/index.html";
 
 //无需动态配置的选项-----------------------------------------------------------------
 
@@ -153,5 +156,7 @@ export default {
 	jxParserUrl,
 	qq,
 	rechargeUrl,
-	banners
+	banners,
+	lingquanUrl,
+	wx
 }

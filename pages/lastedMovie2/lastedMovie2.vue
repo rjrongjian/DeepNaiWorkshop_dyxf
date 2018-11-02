@@ -2,10 +2,9 @@
 	<view class="container">
 		<!--是否显示banner，通过分类进入时，不显示banner-->
 		<block v-if="isDisplayBanner&itemList.length>0">
-			<swiper :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration" class="swiper-box">
+			<swiper :indicator-dots="indicatorDots" indicator-active-color="#79E8D0" :autoplay="autoplay" :interval="interval" :duration="duration" class="swiper-box">
 				<swiper-item v-for="item in itemList" :key="item" class="swiper-item" @tap="openBanner(item)">
 					<image :src="item.imgUrl" mode="aspectFit" style="width: 100% ; height: 100%;"></image>
-					
 				</swiper-item>
 			</swiper>
 		</block>
@@ -496,12 +495,23 @@
 				}
 			},
 			openBanner(item){
+				console.log(item.openType+","+item.url+","+item.imgUrl);
 				if(item.openType==1){//webview打开
 					plus.runtime.openWeb(item.url);
 				}
 				
 				if(item.openType==2){//自带浏览器打开
 					plus.runtime.openURL(item.url);
+				}
+				
+				if(item.openType==3){//native打开
+					 if("lingquansonghuiyuan"==item.url){
+						 //console.log("进来了准备跳转")
+						 //uni.reLaunch("../activity/lingquansonghuiyuan/lingquansonghuiyuan");
+						 uni.navigateTo({
+						 	url:"../activity/lingquansonghuiyuan/lingquansonghuiyuan"
+						 })
+					 }
 				}
 			}
 		}
@@ -514,6 +524,8 @@
 	}
 	.swiper-box{
 		/*background-color: #4CD964;*/
+		height: 306upx;
+		width:750upx;
 	}
 	.container{
 		display: flex;
@@ -524,8 +536,8 @@
 	}
 	.swiper-item {
 		display: block;
-		height: 306upx;
-		width:750upx;
+		height: 100%;
+		width:100%;
 		text-align: center;
 		/*background-color: #007AFF;*/
 	}

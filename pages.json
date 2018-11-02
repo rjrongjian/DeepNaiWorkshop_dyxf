@@ -49,6 +49,7 @@
             "style" : {
                 "navigationBarTitleText" : "网络电视",
                 "navigationBarBackgroundColor" : "#79E8D0",
+				
                 "enablePullDownRefresh" : true, //是否开启下拉刷新
 
                 //"backgroundTextStyle":"light",//下拉刷新样式,
@@ -114,13 +115,27 @@
         {
             "path" : "pages/callme/callme",
             "style" : {
-				"navigationBarTitleText" : "联系我"
-			}
+                "navigationBarTitleText" : "联系我"
+            }
         },
         {
             "path" : "pages/becomeAgent/becomeAgent",
             "style" : {
-				"navigationBarTitleText" : "成为代理"
+                "navigationBarTitleText" : "成为代理"
+            }
+        },
+        {
+            "path" : "pages/activity/lingquansonghuiyuan/lingquansonghuiyuan",
+            "style" : {
+                "navigationBarTitleText" : "领淘宝优惠券下单送会员",
+				"navigationBarBackgroundColor" : "#242449"
+            }
+        },
+        {
+            "path" : "pages/lingquanTutorial/lingquanTutorial",
+            "style" : {
+				"navigationBarTitleText" : "领优惠券并下单教程",
+				"navigationBarBackgroundColor" : "#242449"
 			}
         }
     ],

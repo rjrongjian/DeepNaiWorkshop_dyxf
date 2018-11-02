@@ -5,6 +5,10 @@ view {
   display: -webkit-flex;
   display: flex;
 }
+.swiper-box {
+  height: 306rpx;
+  width: 750rpx;
+}
 .container {
   display: -webkit-box;
   display: -webkit-flex;
@@ -20,8 +24,8 @@ view {
 }
 .swiper-item {
   display: block;
-  height: 306rpx;
-  width: 750rpx;
+  height: 100%;
+  width: 100%;
   text-align: center;
 }
 .color1 {
