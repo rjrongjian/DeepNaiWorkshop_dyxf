@@ -33,7 +33,7 @@
 }
 .header-1-image {
   border-radius: 50% 50%;
-  border: 15rpx solid rgba(111,111,111,0.1);
+  border: 15rpx solid rgba(111, 111, 111, 0.1);
   height: 180rpx;
   width: 180rpx;
   box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);

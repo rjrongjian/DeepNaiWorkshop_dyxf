@@ -76,9 +76,13 @@
 			}
 		},
 		onLoad() {
+			if(this.$myMovieApi.appUpdate.method==2||this.$myMovieApi.appUpdate.method==4){//如果是强制更新或退出状态，将不加载数据
+				return;
+			}
 			//获取banner数据
 			this.itemList = this.$myMovieApi.banners;
-			console.log("banner大小："+this.itemList.length);
+			console.debug("banner大小："+this.itemList.length);
+			
 			//加载电影分类
 			setTimeout(() => { //防止app里由于渲染导致转场动画卡顿
 				this.getMovieCat();
@@ -322,6 +326,20 @@
 									   	desTemp = desTemp.replace(new RegExp("&mdash;",'g'),"-");
 									   	desTemp = desTemp.replace(new RegExp("&",'g'),"");
 									   }
+										 
+										 
+										 if(directorTemp){
+										 	directorTemp = directorTemp.replace(new RegExp("<div>",'g'),"");
+										 	directorTemp = directorTemp.replace(new RegExp("</div>",'g'),"");
+										 	directorTemp = directorTemp.replace(new RegExp("&mdash;",'g'),"-");
+										 	directorTemp = directorTemp.replace(new RegExp("&",'g'),"");
+										 }
+										 if(actorTemp){
+										 	actorTemp = actorTemp.replace(new RegExp("<div>",'g'),"");
+										 	actorTemp = actorTemp.replace(new RegExp("</div>",'g'),"");
+										 	actorTemp = actorTemp.replace(new RegExp("&mdash;",'g'),"-");
+										 	actorTemp = actorTemp.replace(new RegExp("&",'g'),"");
+										 }
 										let resUrl = {};
 										for(var j = 0;j<movieUrlArrTemp.length;j++){
 											var isM3U8Temp = movieUrlArrTemp[j]._flag;
@@ -388,7 +406,7 @@
 				}
 				
 				this.refreshing = true;
-				console.log("调用getMovies传进来的值，catId:"+catId+",catName:"+catName);
+				console.debug("调用getMovies传进来的值，catId:"+catId+",catName:"+catName);
 				if(catId){
 					try{
 						var gotCatId = parseInt(catId);

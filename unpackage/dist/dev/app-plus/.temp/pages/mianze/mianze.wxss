@@ -1,0 +1,5 @@
+@import "../../common/vendor.wxss";
+
+.color4 {
+  color: #888888;
+}

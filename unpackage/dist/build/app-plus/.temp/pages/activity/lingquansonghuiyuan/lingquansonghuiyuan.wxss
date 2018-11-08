@@ -1,0 +1,2 @@
+@import "../../../common/vendor.wxss";
+.container{background-color:#242449;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;justify-content:center}.header{height:306rpx;width:750rpx}.content{background-color:#242449}.backColor2{background-color:#efeff4}.color4{color:#888}.title1{text-align:center}._button.btn-extra{margin-top:10rpx;width:100%;background-color:#242449;color:#fff}

@@ -4,6 +4,10 @@ let yiYouApiSelected="1";
 
 //目前不用版本相关接口和数据，在代码中写死了，不要改
 let version = "1.1";
+
+//接口反回来的用户状态
+let userStatus = 1;//1是成功
+
 let yiYouApiUrl = {
 	"UserLogin":{
 		"1":"http://w.eydata.net/ecbbfd6f94a0ab84",
@@ -218,5 +222,6 @@ export default {
     yiYouApiSelected,
 	yiYouApiUrl,
 	yiYouErrInfo,
-	version
+	version,
+	userStatus
 }

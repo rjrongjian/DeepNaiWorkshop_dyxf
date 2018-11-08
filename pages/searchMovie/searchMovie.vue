@@ -73,7 +73,7 @@
 				this.searchMovie();
 			},
 			goDetail(e) {
-				console.log("看看传进来的值："+JSON.stringify(e));
+				//console.log("看看传进来的值："+JSON.stringify(e));
 				uni.navigateTo({
 					url:"../movieDetail/movieDetail?data=" + JSON.stringify(e)
 				})
@@ -140,8 +140,9 @@
 													var directorTemp = movieXml.director;
 													var desTemp = movieXml.des;
 													var movieUrlArrTemp = this.$myXml2Json.asArray(movieXml.dl.dd);
-													console.log("name:"+nameTemp);
 													/*
+													console.log("name:"+nameTemp);
+													
 													console.log("updateTime："+updateTimeTemp);
 													console.log("id:"+idTemp);
 													console.log("name:"+nameTemp);
@@ -162,6 +163,20 @@
 														desTemp = desTemp.replace(new RegExp("</div>",'g'),"");
 														desTemp = desTemp.replace(new RegExp("&mdash;",'g'),"-");
 														desTemp = desTemp.replace(new RegExp("&",'g'),"");
+													}
+													
+													
+													if(directorTemp){
+														directorTemp = directorTemp.replace(new RegExp("<div>",'g'),"");
+														directorTemp = directorTemp.replace(new RegExp("</div>",'g'),"");
+														directorTemp = directorTemp.replace(new RegExp("&mdash;",'g'),"-");
+														directorTemp = directorTemp.replace(new RegExp("&",'g'),"");
+													}
+													if(actorTemp){
+														actorTemp = actorTemp.replace(new RegExp("<div>",'g'),"");
+														actorTemp = actorTemp.replace(new RegExp("</div>",'g'),"");
+														actorTemp = actorTemp.replace(new RegExp("&mdash;",'g'),"-");
+														actorTemp = actorTemp.replace(new RegExp("&",'g'),"");
 													}
 													let resUrl = {};
 													for(var j = 0;j<movieUrlArrTemp.length;j++){

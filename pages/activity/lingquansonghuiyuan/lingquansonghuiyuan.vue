@@ -69,6 +69,10 @@
 
 <script>
 	export default {
+		onLoad(){
+			this.qq = this.$myMovieApi.qq;
+			this.wx = this.$myMovieApi.wx;
+		},
 		data() {
 			return {
 				qq:"",

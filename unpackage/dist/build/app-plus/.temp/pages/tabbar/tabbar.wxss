@@ -1,0 +1,2 @@
+@import "../../common/vendor.wxss";
+.container{display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;width:100%;overflow:hidden}

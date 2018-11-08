@@ -133,7 +133,7 @@
 								//service.addUser(data);
 								//获取过期时间，缓存登陆数据等，由于都放在这太乱，所以抽出去
 								this.bindLogin2(ret.data);
-								
+								this.$myYiYouApi.userStatus = 1;
 								
 							}else{
 								//加载错误码对应的错误描述

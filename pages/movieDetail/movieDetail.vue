@@ -10,9 +10,26 @@
 				<view class="info">电影简介：{{des}}</view>
 				<view class="info">更新时间：{{updateTime}}</view>
 				<view class="info">上映时间：{{year}}</view>
+				
 				<view class="info">类型：{{type}}</view>
 				<view class="info">地区：{{area}}</view>
 				<view class="info">语言：{{language}}</view>
+				<block v-if="ads.length>0">
+					<view class="grace-padding">
+						<view class="grace-swiper-msg">
+							<view class="grace-swiper-msg-icon">
+								<image src="../../static/laba.png" mode="widthFix"></image>
+							</view>
+							
+							<swiper vertical="true" autoplay="true" circular="true" interval="3000">
+								<swiper-item v-for="item in ads" :key="item" @tap="clickScrollAd(item)">
+									{{item.notify}}
+								</swiper-item>
+							</swiper>
+							
+						</view>
+					</view>
+				</block>
 				<view v-if="!isOutOfDate" class="info">
 					<button @tap="confirmPlayInBroswer" class="color11">视频很卡？点我！</button>
 				</view>
@@ -28,6 +45,8 @@
 					
 				</view>
 				-->
+				
+				
 				<view v-if="!isOutOfDate" class="uni-card uni-card-1">
 					
 					<view class="uni-card-header-1">选集：</view>
@@ -82,6 +101,25 @@
 	} from 'vuex'
 	export default {
 		onLoad:function(e){
+			this.ads = this.$myMovieApi.detailAds;
+			
+			if (this.$myYiYouApi.userStatus != 1) {
+			
+				let notify = this.$myYiYouApi.yiYouErrInfo[this.$myYiYouApi.userStatus];
+				let goLoginPageTemp = this.goLoginPage;
+				uni.showToast({
+					title:notify,
+					icon:"none"
+				})
+				//初始化本地存储
+				this.$myLocalStore.clearLocalStore();
+				//初始化内存存储
+				this.clearMemory();
+			}
+			
+			
+			
+			
 			//在详情页面跳登录页面
 			if(!this.hasLogin){
 				uni.redirectTo({
@@ -119,11 +157,11 @@
 								sysTime = currentTime;
 							}
 						}
-						console.log("会员到期时间："+expireTimes+",系统时间："+sysTime);
+						console.debug("会员到期时间："+expireTimes+",系统时间："+sysTime);
 						if(expireTimes<sysTime){//说明会员到期
 						
 							this.isOutOfDate = true;
-							console.log("会员到期");
+							console.debug("会员到期");
 							uni.showModal({
 								title: "温馨提示",
 								content: "您的会员已到期，请到个人中心进行充值",
@@ -135,7 +173,7 @@
 							});
 						}else{
 							this.isOutOfDate = false;
-							console.log("会员未到期");
+							console.debug("会员未到期");
 						}
 					}
 				});
@@ -233,11 +271,13 @@
 				activeName:"",
 				movieUrlInfo:{},
 				urlInWeb:"",//在网页中播放地址
-				isOutOfDate:false //会员是否到期
+				isOutOfDate:false ,//会员是否到期,
+				ads:[]
 			}
 		},
 		computed: mapState(['hasLogin', 'username', 'statusCode','expireTime']),
 		methods:{
+			...mapMutations(['syncLocalStoreToMemory','clearMemory']),
 			videoErrorCallback:function(res1){
 				
 				console.log("视频播放错误，原因："+JSON.stringify(res1));
@@ -282,7 +322,9 @@
 			},
 			confirmPlayInBroswer(){
 				let playInWebViewTemp = this.playInWebView;
-				let videoUrl = this.$myMovieApi.jxParserUrl+this.src;
+				console.debug("准备使用的解析接口："+this.$myMovieApi.jxParserUrlForHttp);
+				console.debug("准备使用的解析接口："+this.$myMovieApi.jxParserUrlForHttps);
+				let videoUrl = this.$myMovieApi.jxM3U8(this.$myMovieApi.jxParserUrlForHttp,this.$myMovieApi.jxParserUrlForHttps,this.src);
 				uni.showModal({
 						title: '说明',
 						content: '通过解析接口对数据做了一次处理，“确定”将跳转到“浏览器”观看当前选中链接！！',
@@ -299,6 +341,26 @@
 						}
 				});
 			},
+			clickScrollAd(item){
+				console.log(item.openType+","+item.url+","+item.imgUrl);
+				if(item.openType==1){//webview打开
+					plus.runtime.openWeb(item.url);
+				}
+				
+				if(item.openType==2){//自带浏览器打开
+					plus.runtime.openURL(item.url);
+				}
+				
+				if(item.openType==3){//native打开
+					if("lingquansonghuiyuan"==item.url){
+						//console.log("进来了准备跳转")
+						//uni.reLaunch("../activity/lingquansonghuiyuan/lingquansonghuiyuan");
+						uni.navigateTo({
+							url:"../activity/lingquansonghuiyuan/lingquansonghuiyuan"
+						})
+					}
+				}
+			},
 			playInWebView(){
 				console.log("在网页中播放");
 				/*
@@ -309,7 +371,9 @@
 				//显示加载提示框
 				uni.showLoading();
 				//先利用suo.im生成短链接
-				let playUrl = this.$myMovieApi.jxParserUrl+this.src;
+				console.debug("准备使用的解析接口："+this.$myMovieApi.jxParserUrlForHttp);
+				console.debug("准备使用的解析接口："+this.$myMovieApi.jxParserUrlForHttps);
+				let playUrl = this.$myMovieApi.jxM3U8(this.$myMovieApi.jxParserUrlForHttp,this.$myMovieApi.jxParserUrlForHttps,this.src);
 				let duanUrl = playUrl;
 				uni.request({
 									url: "http://suo.im/api.php?format=json&url="+playUrl,
@@ -436,7 +500,7 @@
 	
 	.info{
 		color: #555;
-		padding: 10px 20px;
+		padding: 10upx 20upx 0upx 20upx;
 		font-size: 28px;
 		/*background-color: #4CD964;*/
 	}
@@ -495,4 +559,12 @@
 		color:#007AFF;
 	}
 	
+	
+	.grace-padding{padding:2%; width:96%;color:#FFB8B8;}
+	/*view{display:flex; flex-wrap:wrap; font-size:28upx; height:auto; width:100%;}*/
+	.grace-swiper-msg{width:100%; padding:12rpx 0; flex-wrap:nowrap;}
+	.grace-swiper-msg-icon{width:50upx; margin-right:20upx;}
+	.grace-swiper-msg-icon image{width:100%; flex-shrink:0;}
+	.grace-swiper-msg swiper{width:100%; height:50upx;}
+	.grace-swiper-msg swiper-item{line-height:50upx;}
 </style>

@@ -16,8 +16,10 @@ let selectedApiType = 'kuYun';
 /**
  * 当前cms和资源下，屏蔽的电影分类,对应分类的电影还是能搜的到
  * 同时，由于分类导航页面最多只能有12个分类，这里也要屏蔽一些
+ * drawer中不显示哪些分类
  */
-let shieldingCatIds = {"catId_40":"伦理","catId_41":"微电影","catId_42":"纪录片","catId_2":"香港剧","catdId_3":"台湾剧","catId_4":"日本剧","catId_30":"综艺节目","catId_37":"剧情片"};
+//let shieldingCatIds = {"catId_40":"伦理","catId_41":"微电影","catId_42":"纪录片","catId_2":"香港剧","catdId_3":"台湾剧","catId_4":"日本剧","catId_30":"综艺节目","catId_37":"剧情片"};
+let shieldingCatIds = {"catId_40":"伦理"};
 
 /**
  * 首页，最新电影中，哪类资源不展示
@@ -28,10 +30,15 @@ let shieldingCatIdsForToday = {"catIdForToday_40":"伦理"};
  * 当前cms和资源下，屏蔽的电影编号
  */
 //举例
-//var shieldingMovieId = {"movieId_123","色戒"}
+//var shieldingMovieId = {"movieId_123":"色戒"}
 let shieldingMovieId = {}
 
 let m3u8OrOtherRes = "m3u8";//使用哪种资源 目前酷云只有一种
+
+//app更新策略
+//method 1 不更新 2 强制更新 3 普通更新 4 停止使用
+//全部采取打开第三方链接方式
+let appUpdate = {method:1,url:"",note:""}
 
 //资源用哪种协议，http https null（代表资源本身是什么就是什么）
 //注意：通过接口获取的最新的资源，也有可能播放不了，因为在转码
@@ -43,12 +50,16 @@ let qqQun = {"qunNum":"807164767","qunName":"最新电影分享"};
 
 let qq = "237476618";
 let wx = "darong2485";
-//解析接口
-let rechargeUrl = "https://k.1ka123.com/shop-38782.html";
+//充值接口
+let rechargeUrl = "http://pr.kuaifaka.com/item/5LkJv3";
 
 //初始banner
 //openType 1 webview打开 2 浏览器打开 3 native打开，根据url的key，决定跳哪页
 let banners = [{url:"lingquansonghuiyuan",imgUrl:"../../static/banner/song.png",openType:3},{url:"https://tbq283.zetianhui.net/wx/index.html",imgUrl:"../../static/banner/tbq.jpg",openType:1}];
+//电影详情页文字广告
+//[{"url":"https://tbq283.zetianhui.net/wx/index.html","notify":"淘宝天猫福利券！点我领取！！","openType":1},{"url":"https://tbq283.zetianhui.net/wx/index.html","notify":"淘宝天猫福利券！点我领取！！","openType":1}]
+let detailAds = [];
+
 //领券地址
 //注意：在banners里也配置了
 let lingquanUrl = "https://tbq283.zetianhui.net/wx/index.html";
@@ -76,6 +87,7 @@ let apiConfig = {
  * 获取当前选择的api接口
  */
 let getMovieApi = function(){
+	//直接用定死的值，就不用加this
 	let apiJson = apiConfig[selectedCmsType][selectedApiType];
 	if(!apiJson){
 		return null;
@@ -89,7 +101,7 @@ let getMovieApi = function(){
  */
 let isShieldingCatId = function(catId){
 	try{
-		let temp = shieldingCatIds["catId_"+catId];
+		let temp = this.shieldingCatIds["catId_"+catId];
 		if(temp){
 			return true;
 		}else{
@@ -107,7 +119,7 @@ let isShieldingCatId = function(catId){
  */
 let isShieldingCatIdForToday = function(catId){
 	try{
-		let temp = shieldingCatIdsForToday["catIdForToday_"+catId];
+		let temp = this.shieldingCatIdsForToday["catIdForToday_"+catId];
 		if(temp){
 			return true;
 		}else{
@@ -125,7 +137,7 @@ let isShieldingCatIdForToday = function(catId){
  */
 let isShieldingMovieId = function(movieId){
 	try{
-		let temp = shieldingMovieId["movieId_"+movieId];
+		let temp = this.shieldingMovieId["movieId_"+movieId];
 		if(temp){
 			return true;
 		}else{
@@ -138,9 +150,29 @@ let isShieldingMovieId = function(movieId){
 		return false;
 	}
 }
+//http://api.vsvc.cc/index.php?url=http://videos.fjhps.com/20170924/yM8zfY6N/index.m3u8
+//http://cn.bjbanshan.cn/jiexi.php?url=http://videos.fjhps.com/20170924/yM8zfY6N/index.m3u8 都能看
+//http://jx.ledboke.com 这个需要包装一层
+//let jxParserUrl="http://cn.bjbanshan.cn/jiexi.php?url="; 需要包一层
+//备用解析接口
+//冰柠云解析 https://www.jisyi.com/?url= 只能在手机上
+let jxParserUrlForHttp = "http://cn.bjbanshan.cn/jiexi.php?url=";
+let jxParserUrlForHttps = "http://cn.bjbanshan.cn/jiexi.php?url=";
+let jxM3U8 = function (forHttp,forHttps,src){//直接使用这两个变量，他们的值不变，不知道为啥,使用此js中定义的变量得加this就好了
+	//console.debug("当前使用的解析接口："+src);
+	let srcTemp = src.substr(0,8).toLowerCase();
+	if(srcTemp.startsWith("https://")){
+		console.debug("使用的解析接口："+forHttps);
+		return forHttps+src;
+	}else if(srcTemp.startsWith("http://")){
+		console.debug("使用的解析接口："+forHttp);
+		return forHttp+src;
+	}else{
+		return src;
+	}
+}
 
-let jxParserUrl="https://jx.618g.com/?url=";
-
+let isDisplayPoxy = false;
 
 export default {
     selectedCmsType,
@@ -153,10 +185,15 @@ export default {
 	m3u8OrOtherRes,
 	currentSelectedHttpOrHttps,
 	qqQun,
-	jxParserUrl,
 	qq,
 	rechargeUrl,
 	banners,
 	lingquanUrl,
-	wx
+	wx,
+	appUpdate,
+	jxParserUrlForHttp,
+	jxParserUrlForHttps,
+	jxM3U8,
+	isDisplayPoxy,
+	detailAds
 }

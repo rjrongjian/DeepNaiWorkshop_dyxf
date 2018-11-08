@@ -1,0 +1,8 @@
+@import "../../common/vendor.wxss";
+
+.color4 {
+  color: #888888;
+}
+.title1 {
+  text-align: center;
+}
