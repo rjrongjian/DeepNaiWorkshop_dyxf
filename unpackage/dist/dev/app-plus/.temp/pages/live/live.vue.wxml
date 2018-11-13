@@ -1,15 +1,11 @@
 <template name="461a1416">
-  <view class="_view data-v-6a5141ac index">
-    <swiper current="{{currentTab}}" class="_swiper data-v-6a5141ac swiper-box" duration="300" bindchange="handleProxy" data-eventid="{{'BYt-1'}}" data-comkey="{{$k}}">
-      <block wx:key="index1" key="{{index1}}" wx:for="{{newsitems}}" wx:for-index="index1" wx:for-item="tab">
-        <swiper-item class="_swiper-item data-v-6a5141ac">
-          <scroll-view class="_scroll-view data-v-6a5141ac index-bd" scroll-y bindscrolltolower="handleProxy" data-eventid="{{'gE6-0-'+index1}}" data-comkey="{{$k}}">
-            <block wx:key="index2" key="{{index2}}" wx:for="{{tab}}" wx:for-index="index2" wx:for-item="newsitem">
-              <view class="_view data-v-6a5141ac tab-list">{{newsitem.name}}-{{newsitem.label}}</view>
-            </block>
-          </scroll-view>
-        </swiper-item>
-      </block>
-    </swiper>
+  <view class="_view data-v-6a5141ac container">
+    <block wx:key="index" key="{{index}}" wx:for="{{itemList}}" wx:for-index="index" wx:for-item="item">
+      <view class="_view data-v-6a5141ac cell" bindtap="handleProxy" data-eventid="{{'GAw-0-'+index}}" data-comkey="{{$k}}">
+        <image class="_image data-v-6a5141ac cell-img" mode="aspectFit" style="width: 230rpx;height: 190rpx;" src="{{item.xinimg}}" lazy-load="true"></image>
+        <view class="_view data-v-6a5141ac">{{item.title}}</view>
+        <view class="_view data-v-6a5141ac cell-online">在线[{{item.Number}}]</view>
+      </view>
+    </block>
   </view>
 </template>

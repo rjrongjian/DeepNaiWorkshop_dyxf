@@ -49,7 +49,6 @@
             "style" : {
                 "navigationBarTitleText" : "网络电视",
                 "navigationBarBackgroundColor" : "#79E8D0",
-				
                 "enablePullDownRefresh" : true, //是否开启下拉刷新
 
                 //"backgroundTextStyle":"light",//下拉刷新样式,
@@ -128,15 +127,23 @@
             "path" : "pages/activity/lingquansonghuiyuan/lingquansonghuiyuan",
             "style" : {
                 "navigationBarTitleText" : "领淘宝优惠券下单送会员",
-				"navigationBarBackgroundColor" : "#242449"
+                "navigationBarBackgroundColor" : "#242449"
             }
         },
         {
             "path" : "pages/lingquanTutorial/lingquanTutorial",
             "style" : {
-				"navigationBarTitleText" : "领优惠券并下单教程",
-				"navigationBarBackgroundColor" : "#242449"
-			}
+                "navigationBarTitleText" : "领优惠券并下单教程",
+                "navigationBarBackgroundColor" : "#242449"
+            }
+        },
+        {
+            "path" : "pages/liveDetails/liveDetails",
+            "style" : {}
+        },
+        {
+            "path" : "pages/playLive/playLive",
+            "style" : {}
         }
     ],
     "globalStyle" : {
@@ -151,6 +158,12 @@
         "backgroundColor" : "#ffffff",
         "color" : "#79E8D0",
         "list" : [
+            {
+                "iconPath" : "static/bottom/video.png",
+                "selectedIconPath" : "static/bottom/video_fill.png",
+                "pagePath" : "pages/live/live",
+                "text" : "直播盒子"
+            },
             {
                 "iconPath" : "static/bottom/playon.png",
                 "selectedIconPath" : "static/bottom/playon_fill.png",

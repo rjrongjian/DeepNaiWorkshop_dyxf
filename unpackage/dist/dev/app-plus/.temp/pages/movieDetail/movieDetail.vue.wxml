@@ -2,7 +2,7 @@
   <block wx:if="{{isLoadedMovieData}}">
     <view class="_view data-v-d5683c24 container">
       <view wx:if="{{!isOutOfDate}}" class="_view data-v-d5683c24 video-style">
-        <video id="myVideo" src="{{src}}" binderror="handleProxy" controls class="_video data-v-d5683c24 video-style-inner" data-eventid="{{'seA-0'}}" data-comkey="{{$k}}"></video>
+        <video id="myVideo" src="{{src}}" binderror="handleProxy" controls class="_video data-v-d5683c24 video-style-inner" data-eventid="{{'ebK-0'}}" data-comkey="{{$k}}"></video>
       </view>
       <view class="_view data-v-d5683c24 info">电影名称：{{name}}</view>
       <view class="_view data-v-d5683c24 info">电影简介：{{des}}</view>
@@ -18,20 +18,20 @@
               <image src="../../static/laba.png" mode="widthFix" class="_image data-v-d5683c24"></image>
             </view>
             <swiper vertical="true" autoplay="true" circular="true" interval="3000" class="_swiper data-v-d5683c24">
-              <swiper-item wx:key="item" key="{{item}}" bindtap="handleProxy" data-eventid="{{'cTB-1-'+index}}" data-comkey="{{$k}}" wx:for="{{ads}}" wx:for-index="index" wx:for-item="item" class="_swiper-item data-v-d5683c24"> {{item.notify}} </swiper-item>
+              <swiper-item wx:key="item" key="{{item}}" bindtap="handleProxy" data-eventid="{{'vG9-1-'+index}}" data-comkey="{{$k}}" wx:for="{{ads}}" wx:for-index="index" wx:for-item="item" class="_swiper-item data-v-d5683c24"> {{item.notify}} </swiper-item>
             </swiper>
           </view>
         </view>
       </block>
       <view wx:if="{{!isOutOfDate}}" class="_view data-v-d5683c24 info">
-        <button bindtap="handleProxy" class="_button data-v-d5683c24 color11" data-eventid="{{'UKC-2'}}" data-comkey="{{$k}}">视频很卡？点我！</button>
+        <button bindtap="handleProxy" class="_button data-v-d5683c24 color11" data-eventid="{{'GPy-2'}}" data-comkey="{{$k}}">视频很卡？点我！</button>
       </view>
       <view wx:if="{{!isOutOfDate}}" class="_view data-v-d5683c24 uni-card uni-card-1">
         <view class="_view data-v-d5683c24 uni-card-header-1">选集：</view>
         <view class="_view data-v-d5683c24 uni-card-content uni-card-content-1">
           <view class="_view data-v-d5683c24 label-list">
             <block wx:key="index" key="{{index}}" wx:for="{{movieUrlArr}}" wx:for-index="index" wx:for-item="movieUrl">
-              <view class="_view data-v-d5683c24 uni-label-1 {{[activeName == movieUrl.name ? 'resSelected' : '']}}" bindtap="handleProxy" data-eventid="{{'Ggg-3-'+index}}" data-comkey="{{$k}}">{{movieUrl.name}}</view>
+              <view class="_view data-v-d5683c24 uni-label-1 {{[activeName == movieUrl.name ? 'resSelected' : '']}}" bindtap="handleProxy" data-eventid="{{'RW5-3-'+index}}" data-comkey="{{$k}}">{{movieUrl.name}}</view>
             </block>
           </view>
         </view>

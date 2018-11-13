@@ -13,7 +13,7 @@
 			<block v-for="(list, index) in currentMovieList" :key="index">
 				<div class="row row-extra">
 					<div class="card card-list2 card-extra" v-for="(item,key) in list" @click="goDetail(item)" :key="key">
-						<image class="card-img card-list2-img-1" :src="item.pic"></image>
+						<image lazy-load=true class="card-img card-list2-img-1" :src="item.pic"></image>
 						<div class="card-num-view card-list2-num-view">
 							<text class="card-num card-list2-num-1">{{item.type}}</text>
 						</div>

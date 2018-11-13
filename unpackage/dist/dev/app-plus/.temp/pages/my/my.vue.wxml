@@ -2,27 +2,27 @@
   <view class="_view data-v-4987b52c content-1">
     <view class="_view data-v-4987b52c header-1">
       <view class="_view data-v-4987b52c header-1-login">
-        <view class="_view data-v-4987b52c header-1-login-button" wx:if="{{!hasLogin}}" bindtap="handleProxy" data-eventid="{{'nIn-0'}}" data-comkey="{{$k}}">登录</view>
-        <view class="_view data-v-4987b52c header-1-login-button" wx:if="{{hasLogin}}" bindtap="handleProxy" data-eventid="{{'9Si-1'}}" data-comkey="{{$k}}">登出</view>
+        <view class="_view data-v-4987b52c header-1-login-button" wx:if="{{!hasLogin}}" bindtap="handleProxy" data-eventid="{{'m1E-0'}}" data-comkey="{{$k}}">登录</view>
+        <view class="_view data-v-4987b52c header-1-login-button" wx:if="{{hasLogin}}" bindtap="handleProxy" data-eventid="{{'WIy-1'}}" data-comkey="{{$k}}">登出</view>
       </view>
       <view class="_view data-v-4987b52c header-1-image-card">
-        <image class="_image data-v-4987b52c header-1-image" src="{{headStr}}" mode="widthFix" binderror="handleProxy" data-eventid="{{'hd1-2'}}" data-comkey="{{$k}}"></image>
+        <image class="_image data-v-4987b52c header-1-image" src="{{headStr}}" mode="widthFix" binderror="handleProxy" data-eventid="{{'9Kg-2'}}" data-comkey="{{$k}}"></image>
       </view>
       <view class="_view data-v-4987b52c header-1-account">欢迎,{{username}}</view>
       <view class="_view data-v-4987b52c header-1-expire-time" wx:if="{{hasLogin}}">过期时间：{{expireTime}}</view>
     </view>
     <view class="_view data-v-4987b52c bottom-1 uni-card-1">
       <view class="_view data-v-4987b52c uni-list-cell" hover-class="uni-list-cell-hover">
-        <view class="_view data-v-4987b52c uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" bindtap="handleProxy" data-eventid="{{'aFo-3'}}" data-comkey="{{$k}}"> 去充值 </view>
+        <view class="_view data-v-4987b52c uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" bindtap="handleProxy" data-eventid="{{'ZvQ-3'}}" data-comkey="{{$k}}"> 去充值 </view>
       </view>
       <view wx:if="{{this.$myMovieApi.isDisplayPoxy}}" class="_view data-v-4987b52c uni-list-cell" hover-class="uni-list-cell-hover">
-        <view class="_view data-v-4987b52c uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" bindtap="handleProxy" data-eventid="{{'uhR-4'}}" data-comkey="{{$k}}"> 成为代理 </view>
+        <view class="_view data-v-4987b52c uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" bindtap="handleProxy" data-eventid="{{'cwX-4'}}" data-comkey="{{$k}}"> 成为代理 </view>
       </view>
       <view class="_view data-v-4987b52c uni-list-cell" hover-class="uni-list-cell-hover">
-        <view class="_view data-v-4987b52c uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" bindtap="handleProxy" data-eventid="{{'o2F-5'}}" data-comkey="{{$k}}">联系我?! </view>
+        <view class="_view data-v-4987b52c uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" bindtap="handleProxy" data-eventid="{{'phD-5'}}" data-comkey="{{$k}}">联系我?! </view>
       </view>
       <view class="_view data-v-4987b52c uni-list-cell" hover-class="uni-list-cell-hover">
-        <view class="_view data-v-4987b52c uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" bindtap="handleProxy" data-eventid="{{'CVO-6'}}" data-comkey="{{$k}}">免责声明 </view>
+        <view class="_view data-v-4987b52c uni-list-cell-navigate-1 uni-navigate-right uni-list-cell-font-color" bindtap="handleProxy" data-eventid="{{'AFt-6'}}" data-comkey="{{$k}}">免责声明 </view>
       </view>
     </view>
   </view>

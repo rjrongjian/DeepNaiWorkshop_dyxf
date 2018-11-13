@@ -156,6 +156,7 @@ let isShieldingMovieId = function(movieId){
 //let jxParserUrl="http://cn.bjbanshan.cn/jiexi.php?url="; 需要包一层
 //备用解析接口
 //冰柠云解析 https://www.jisyi.com/?url= 只能在手机上
+//17kyun视频解析 http://17kyun.com/api.php?url=
 let jxParserUrlForHttp = "http://cn.bjbanshan.cn/jiexi.php?url=";
 let jxParserUrlForHttps = "http://cn.bjbanshan.cn/jiexi.php?url=";
 let jxM3U8 = function (forHttp,forHttps,src){//直接使用这两个变量，他们的值不变，不知道为啥,使用此js中定义的变量得加this就好了
