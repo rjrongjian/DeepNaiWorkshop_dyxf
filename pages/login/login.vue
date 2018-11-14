@@ -43,6 +43,7 @@
                 password: '',
                 positionTop: 0,
 				fromMovieDetailPage:false,
+				fromDetail:0,
 				movieDetails:""
             }
         },
@@ -210,10 +211,16 @@
 								});
 								*/
 							   if(this.fromMovieDetailPage){//说明是从详情页面登录的
-								   uni.redirectTo({
-								   	url:"../movieDetail/movieDetail?data=" + this.movieDetails
-								   })
-								   uni.redirect
+									 if(this.fromDetail==1){//直播页面调过来的
+										 uni.redirectTo({
+										 	url:"../playLive/playLive?data=" + this.movieDetails
+										 })
+									 }else{//电影详情页调过来的
+										 uni.redirectTo({
+												url:"../movieDetail/movieDetail?data=" + this.movieDetails
+										 })
+									 }
+								   
 							   }else{
 								   uni.reLaunch({
 								   	url: '../my/my',
@@ -293,6 +300,8 @@
 			//判断，是否是从电影详情页跳过来的
 			if(e.data&&e.data.length>5){//说明是从电影详情页面跳转过来的
 				this.fromMovieDetailPage = true;
+				this.fromDetail = e.type;
+				
 				this.movieDetails = e.data;
 			}
         }

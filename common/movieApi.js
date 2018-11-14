@@ -66,6 +66,8 @@ let lingquanUrl = "https://tbq283.zetianhui.net/wx/index.html";
 
 //无需动态配置的选项-----------------------------------------------------------------
 
+let hasInfo = 0;
+
 let CMS_TYPE_SEA = 'seaCms';
 let API_TYPE_KUYUN = 'kuYun';
 
@@ -196,5 +198,6 @@ export default {
 	jxParserUrlForHttps,
 	jxM3U8,
 	isDisplayPoxy,
-	detailAds
+	detailAds,
+	hasInfo
 }

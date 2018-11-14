@@ -123,7 +123,7 @@
 			//在详情页面跳登录页面
 			if(!this.hasLogin){
 				uni.redirectTo({
-					url: '../login/login?data='+e.data
+					url: '../login/login?data='+e.data+"&type=2"
 				})
 			}else{
 				//校验会员是否过期，目前不直接调用易游接口

@@ -214,6 +214,8 @@
 			}
 		},
 		onLoad() {
+			let clearLocalStoreTemp = this.$myLocalStore.clearLocalStore;
+			let clearMemoryTemp = this.clearMemory;
 			if (this.$myYiYouApi.userStatus != 1) {
 
 				let notify = this.$myYiYouApi.yiYouErrInfo[this.$myYiYouApi.userStatus];
@@ -226,9 +228,9 @@
 					cancelText: "取消",
 					success: function(res) {
 						//初始化本地存储
-						this.$myLocalStore.clearLocalStore();
+						clearLocalStoreTemp();
 						//初始化内存存储
-						this.clearMemory();
+						clearMemoryTemp();
 						if (res.confirm) {
 							goLoginPageTemp();
 						} else if (res.cancel) {

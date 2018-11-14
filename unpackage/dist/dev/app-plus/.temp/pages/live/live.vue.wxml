@@ -1,11 +1,13 @@
 <template name="461a1416">
   <view class="_view data-v-6a5141ac container">
-    <block wx:key="index" key="{{index}}" wx:for="{{itemList}}" wx:for-index="index" wx:for-item="item">
-      <view class="_view data-v-6a5141ac cell" bindtap="handleProxy" data-eventid="{{'GAw-0-'+index}}" data-comkey="{{$k}}">
-        <image class="_image data-v-6a5141ac cell-img" mode="aspectFit" style="width: 230rpx;height: 190rpx;" src="{{item.xinimg}}" lazy-load="true"></image>
-        <view class="_view data-v-6a5141ac">{{item.title}}</view>
-        <view class="_view data-v-6a5141ac cell-online">在线[{{item.Number}}]</view>
-      </view>
+    <block wx:if="{{hasInfo==1}}">
+      <block wx:key="index" key="{{index}}" wx:for="{{itemList}}" wx:for-index="index" wx:for-item="item">
+        <view class="_view data-v-6a5141ac cell" bindtap="handleProxy" data-eventid="{{'dnR-0-'+index}}" data-comkey="{{$k}}">
+          <image class="_image data-v-6a5141ac cell-img" mode="aspectFit" style src="{{item.xinimg}}" lazy-load="true"></image>
+          <view class="_view data-v-6a5141ac">{{item.title}}</view>
+          <view class="_view data-v-6a5141ac cell-online">在线[{{item.Number}}]</view>
+        </view>
+      </block>
     </block>
   </view>
 </template>

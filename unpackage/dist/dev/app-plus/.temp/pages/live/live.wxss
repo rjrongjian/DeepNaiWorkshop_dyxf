@@ -10,7 +10,7 @@
   align-content: flex-start;
 }
 .cell {
-  width: 250rpx;
+  width: 246rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -30,6 +30,12 @@
   align-items: center;
   padding: 0rpx;
   margin: 0rpx;
+  border-bottom: 1rpx solid #555;
+}
+.cell-img {
+  border-radius: 50% 50%;
+  height: 140rpx;
+  width: 140rpx;
 }
 .cell-online {
   font-size: 30rpx;

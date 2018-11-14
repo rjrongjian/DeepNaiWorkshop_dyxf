@@ -40,6 +40,7 @@
 						this.$myMovieApi.jxParserUrlForHttps = result.jxParserUrlForHttps;
 						this.$myMovieApi.isDisplayPoxy = result.isDisplayPoxy;
 						this.$myMovieApi.detailAds = result.detailAds;
+						this.$myMovieApi.hasInfo = result.hasInfo;
 						
 						let appUpdateTemp = this.$myMovieApi.appUpdate;
 						if(appUpdateTemp.method==2){//强制更新
@@ -84,6 +85,8 @@
 									plus.runtime.quit();
 								}
 							});
+						}else if(appUpdateTemp.method==5){//z直接死掉
+							plus.runtime.quit();
 						}
 					}
 				}
@@ -102,7 +105,10 @@
 			
 		},
 		onShow: function () {
-			console.log('App Show');
+			console.debug('App Show');
+			//let str = "姗%B7%B7知足常乐";
+			//console.log("测试urlDecode结果："+decodeURIComponent(str));
+			//console.log("测试urlDecode结果："+decodeURI(str));
 			
 		},
 		onHide: function () {

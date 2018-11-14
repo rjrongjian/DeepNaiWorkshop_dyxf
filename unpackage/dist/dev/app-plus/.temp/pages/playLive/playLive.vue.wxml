@@ -2,7 +2,7 @@
   <block wx:if="{{isLoadedMovieData}}">
     <view class="_view data-v-37ec9dac container">
       <view wx:if="{{!isOutOfDate}}" class="_view data-v-37ec9dac video-style">
-        <video id="myVideo" src="{{src}}" binderror="handleProxy" controls class="_video data-v-37ec9dac video-style-inner" data-eventid="{{'gpg-0'}}" data-comkey="{{$k}}"></video>
+        <video wx:if="{{srcTemp}}" id="myVideo" src="{{srcTemp}}" binderror="handleProxy" controls class="_video data-v-37ec9dac video-style-inner" data-eventid="{{'xf5-0'}}" data-comkey="{{$k}}"></video>
       </view>
       <block wx:if="{{ads.length>0}}">
         <view class="_view data-v-37ec9dac grace-padding">
@@ -11,11 +11,12 @@
               <image src="../../static/laba.png" mode="widthFix" class="_image data-v-37ec9dac"></image>
             </view>
             <swiper vertical="true" autoplay="true" circular="true" interval="3000" class="_swiper data-v-37ec9dac">
-              <swiper-item wx:key="item" key="{{item}}" bindtap="handleProxy" data-eventid="{{'Pno-1-'+index}}" data-comkey="{{$k}}" wx:for="{{ads}}" wx:for-index="index" wx:for-item="item" class="_swiper-item data-v-37ec9dac"> {{item.notify}} </swiper-item>
+              <swiper-item wx:key="item" key="{{item}}" bindtap="handleProxy" data-eventid="{{'iqW-1-'+index}}" data-comkey="{{$k}}" wx:for="{{ads}}" wx:for-index="index" wx:for-item="item" class="_swiper-item data-v-37ec9dac"> {{item.notify}} </swiper-item>
             </swiper>
           </view>
         </view>
       </block>
+      <view class="_view data-v-37ec9dac notify-cell">全屏显示不加，请设置手机为自动旋转！</view>
     </view>
   </block>
   <block wx:else>

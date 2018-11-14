@@ -2,9 +2,9 @@
 	
 	<block v-if="isLoadedMovieData">
 		<view class="container">
-			
+			 
 				<view v-if="!isOutOfDate" class="video-style">
-					<video id="myVideo" :src="src" @error="videoErrorCallback" controls class="video-style-inner" ></video>
+					<video v-if="srcTemp" id="myVideo" :src="srcTemp" @error="videoErrorCallback" controls class="video-style-inner" ></video>
 				</view>
 				
 				<block v-if="ads.length>0">
@@ -23,7 +23,7 @@
 						</view>
 					</view>
 				</block>
-				
+				<view class="notify-cell">全屏显示不加，请设置手机为自动旋转！</view>
 				
 		</view>
 	</block>
@@ -45,6 +45,7 @@
 	} from 'vuex'
 	export default {
 		onLoad:function(e){
+			
 			this.ads = this.$myMovieApi.detailAds;
 			
 			if (this.$myYiYouApi.userStatus != 1) {
@@ -67,7 +68,7 @@
 			//在详情页面跳登录页面
 			if(!this.hasLogin){
 				uni.redirectTo({
-					url: '../login/login?data='+e.data
+					url: '../login/login?data='+e.data+"&type=1"
 				})
 			}else{
 				//校验会员是否过期，目前不直接调用易游接口
@@ -123,7 +124,10 @@
 				});
 				console.debug("要播放的资源啊："+e.data)
 				//let data = JSON.parse(e.data);
-				this.src = e.data;
+				this.srcTemp = e.data;
+				console.log("替换前："+this.srcTemp);
+				this.srcTemp = this.srcTemp.replace(/\"/g, "");
+				console.log("替换后："+this.srcTemp);
 				
 				this.isLoadedMovieData = true;
 			}
@@ -134,7 +138,7 @@
 			
 			return {
 				isLoadedMovieData:false,
-				src: '',
+				srcTemp: '',
 				
 				isOutOfDate:false ,//会员是否到期,
 				ads:[]
@@ -144,67 +148,18 @@
 		methods:{
 			...mapMutations(['syncLocalStoreToMemory','clearMemory']),
 			videoErrorCallback:function(res1){
-				
+				/*
 				console.log("视频播放错误，原因："+JSON.stringify(res1));
 				uni.showModal({
-					title: "不能正常播放说明",
-					content: "不能正常播放原因（"+res1.target.errMsg+"），请加群,"+((this.$myMovieApi.qqQun)? ("群名："+this.$myMovieApi.qqQun.qunName+",群号："+this.$myMovieApi.qqQun.qunNum):""),
+					title: "主播已下播",
+					content: "主播已下播",
 					showCancel: false,
 					confirmText: "确定",
 					fail:function(res){
 						console.log("播放视频出错，原因："+JSON.stringify(res));
 					}
 				});
-			},
-			//由于video组件同一个资源，用不同的协议http和https切换会报错，所以屏蔽此功能
-			/*
-			radioChange: function (e) {
-				//console.log('radio发生change事件，携带value值为：' + e.detail.value)
-				this.currentSelectedHttpOrHttps = e.detail.value
-				//this.updateRes(this.movieUrlInfo);
-				
-			},*/
-			updateRes:function(movieUrl){
-				this.activeName = movieUrl.name;
-				var finalUrl = movieUrl.url;
-				if(this.currentSelectedHttpOrHttps){
-					if(!movieUrl.url.startsWith(this.currentSelectedHttpOrHttps+"://")){//不以指定的协议开头，更换
-						var replaceBefore = this.httpOrHttps[this.currentSelectedHttpOrHttps+"://"];
-						var replaceAfter = this.currentSelectedHttpOrHttps+"://";
-						finalUrl = replaceAfter+movieUrl.url.substring(replaceBefore.length);
-						
-					}
-					console.log("当前选中协议："+this.currentSelectedHttpOrHttps+"替换后的链接："+finalUrl);
-				}else{
-					console.log("不更改资源本身的http或者https:"+finalUrl);
-				}
-				
-				this.src = finalUrl;
-				this.movieUrlInfo.url = finalUrl;
-				//this.urlInWeb = this.$myMovieApi.jxParserUrl+finalUrl;
-				//console.log("在网页中的播放地址："+this.urlInWeb);
-				return finalUrl;
-			},
-			confirmPlayInBroswer(){
-				let playInWebViewTemp = this.playInWebView;
-				console.debug("准备使用的解析接口："+this.$myMovieApi.jxParserUrlForHttp);
-				console.debug("准备使用的解析接口："+this.$myMovieApi.jxParserUrlForHttps);
-				let videoUrl = this.$myMovieApi.jxM3U8(this.$myMovieApi.jxParserUrlForHttp,this.$myMovieApi.jxParserUrlForHttps,this.src);
-				uni.showModal({
-						title: '说明',
-						content: '通过解析接口对数据做了一次处理，“确定”将跳转到“浏览器”观看当前选中链接！！',
-						success: function (res) {
-								if (res.confirm) {
-									//需要用户手动跳转浏览器复制
-										/*playInWebViewTemp();*/
-									//直接跳网页
-										plus.runtime.openURL(videoUrl);
-										
-								} else if (res.cancel) {
-										console.log('用户点击取消');
-								}
-						}
-				});
+				*/
 			},
 			clickScrollAd(item){
 				console.log(item.openType+","+item.url+","+item.imgUrl);
@@ -225,105 +180,8 @@
 						})
 					}
 				}
-			},
-			playInWebView(){
-				console.log("在网页中播放");
-				/*
-				uni.navigateTo({
-					url:"../webView/webView"
-				})
-				*/
-				//显示加载提示框
-				uni.showLoading();
-				//先利用suo.im生成短链接
-				console.debug("准备使用的解析接口："+this.$myMovieApi.jxParserUrlForHttp);
-				console.debug("准备使用的解析接口："+this.$myMovieApi.jxParserUrlForHttps);
-				let playUrl = this.$myMovieApi.jxM3U8(this.$myMovieApi.jxParserUrlForHttp,this.$myMovieApi.jxParserUrlForHttps,this.src);
-				let duanUrl = playUrl;
-				uni.request({
-									url: "http://suo.im/api.php?format=json&url="+playUrl,
-									//method:'POST',
-									//header:{
-									//	'content-type':'application/json; charset=UTF-8'
-									//},
-									//data:{
-										//return {
-									//	'url': playUrl
-										//}
-									//},
-									success: (ret) => {
-										
-										if (ret.statusCode !== 200) {
-											console.log("短链接口返回的http code不为200");
-											
-											
-											
-											uni.setClipboardData({
-													data: duanUrl,
-													success: function () {
-															//隐藏加载提示框
-															uni.hideLoading();
-															uni.showToast({
-																title: "复制链接成功",
-																duration: 2000,
-																icon:'none'
-															});
-													},
-													fail:function(){
-														//隐藏加载提示框
-														uni.hideLoading();
-														uni.showToast({
-															title: "复制链接失败",
-															duration: 2000,
-															icon:'none'
-														});
-													}
-											});
-				
-										} else {
-											try{
-													//console.log("获取转链后的数据："+ret.data);
-													//let jsonObj = JSON.parse(ret.data);
-													//let jsonObj = ret.data;
-													if(!ret.data.err){
-														console.log("返回的结果"+ret.data.url);
-														duanUrl = ret.data.url;
-														console.log("短链接转换成功");
-													}else{
-														console.log("短链接转换失败，原因："+ret.data.err);
-													}
-													
-											}catch(e){//转短链失败，直接返回长链
-												console.log("短链接转换失败，原因："+e);
-											}	
-											
-											
-											
-											uni.setClipboardData({
-													data: duanUrl,
-													success: function () {
-														//隐藏加载提示框
-														uni.hideLoading();
-														uni.showToast({
-															title: "复制链接成功",
-															duration: 2000,
-															icon:'none'
-														});
-													},
-													fail:function(){
-														//隐藏加载提示框
-														uni.hideLoading();
-														uni.showToast({
-															title: "复制链接失败",
-															duration: 2000,
-															icon:'none'
-														});
-													}
-											});	
-										}
-									}
-								});
 			}
+			
 		}
 	}
 </script>
@@ -337,7 +195,7 @@
 		flex-direction: column;
 		flex-wrap: wrap;
 		width: 100%;
-
+		
 	}
 	.container2{
 		display: flex;
@@ -350,13 +208,16 @@
 	.video-style{
 		display: flex;
 		width:100%;
-		height:90%;
-		/*height: 450px;
-		background-color: #007AFF;*/
+		
+		height:1100upx;
+		background-color: #007AFF;
 	}
 	
 	.video-style-inner{
-		flex: 1;
+		/*flex: 1;*/
+		height:1100upx;
+		width:750upx;
+		
 	}
 	
 	.loadMore-center{
@@ -424,7 +285,11 @@
 	.color11{
 		color:#007AFF;
 	}
-	
+	.notify-cell{
+		font-size:38upx;
+		color: #007AFF;
+		text-align: center;
+	}
 	
 	.grace-padding{padding:2%; width:96%;color:#FFB8B8;}
 	/*view{display:flex; flex-wrap:wrap; font-size:28upx; height:auto; width:100%;}*/

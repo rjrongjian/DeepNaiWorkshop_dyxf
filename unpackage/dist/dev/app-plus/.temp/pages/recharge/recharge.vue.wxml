@@ -3,20 +3,20 @@
     <view class="_view data-v-5a6b75ec input-group">
       <view class="_view data-v-5a6b75ec input-row border">
         <text class="_text data-v-5a6b75ec title2">用户名：</text>
-        <input type="text" value="{{account}}" bindinput="handleProxy" placeholder="请输入账号" data-eventid="{{'nkA-0'}}" data-comkey="{{$k}}" class="_input data-v-5a6b75ec" />
+        <input type="text" value="{{account}}" bindinput="handleProxy" placeholder="请输入账号" data-eventid="{{'bcx-0'}}" data-comkey="{{$k}}" class="_input data-v-5a6b75ec" />
       </view>
       <view class="_view data-v-5a6b75ec input-row">
         <text class="_text data-v-5a6b75ec title2">充值码：</text>
-        <input type="text" value="{{rechargeCode}}" bindinput="handleProxy" placeholder="请输入充值码" data-eventid="{{'mKz-1'}}" data-comkey="{{$k}}" class="_input data-v-5a6b75ec" />
+        <input type="text" value="{{rechargeCode}}" bindinput="handleProxy" placeholder="请输入充值码" data-eventid="{{'hsQ-1'}}" data-comkey="{{$k}}" class="_input data-v-5a6b75ec" />
       </view>
     </view>
     <view class="_view data-v-5a6b75ec btn-row-1">
-      <button type="primary" class="_button data-v-5a6b75ec primary" bindtap="handleProxy" data-eventid="{{'4ZA-2'}}" data-comkey="{{$k}}">充值</button>
+      <button type="primary" class="_button data-v-5a6b75ec primary" bindtap="handleProxy" data-eventid="{{'Jgd-2'}}" data-comkey="{{$k}}">充值</button>
     </view>
     <view class="_view data-v-5a6b75ec action-row ">
-      <view class="_view data-v-5a6b75ec color12" bindtap="handleProxy" data-eventid="{{'IiD-3'}}" data-comkey="{{$k}}">获取充值码</view>
+      <view class="_view data-v-5a6b75ec color12" bindtap="handleProxy" data-eventid="{{'XoE-3'}}" data-comkey="{{$k}}">获取充值码</view>
       <text class="_text data-v-5a6b75ec">|</text>
-      <view class="_view data-v-5a6b75ec color12" bindtap="handleProxy" data-eventid="{{'St3-4'}}" data-comkey="{{$k}}">加群充值</view>
+      <view class="_view data-v-5a6b75ec color12" bindtap="handleProxy" data-eventid="{{'vj0-4'}}" data-comkey="{{$k}}">加群充值</view>
     </view>
   </view>
 </template>

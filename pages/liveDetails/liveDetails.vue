@@ -18,28 +18,49 @@
 		data() {
 			return {
 				itemList:[],
-				
+				isPullDownRefresh:false,
+				param:""
 			};
 		},
 		onLoad(e){
-			console.debug("传进来的数据："+e.data);
+			//console.debug("传进来的数据："+e.data);
+			this.isPullDownRefresh = false;
 			let data = JSON.parse(e.data);
+			this.param = data;
 			this.loadLives(data);
 		},
 		methods:{
 			loadLives(item){
+				uni.showLoading({
+					title:"正在加载"
+				});
+				this.itemList = [];
+				//let ua = this.$myDateUtils.myUserAgent.getRandomUserAgent();
+				//console.debug("获取的ua："+ua);
 				uni.request({
 					url: item.address,
+					header: {
+						//'User-Agent': ua //自定义请求头信息
+					},
 					success: (ret) => {
+						if(this.isPullDownRefresh){
+							uni.stopPullDownRefresh();
+						}
+						uni.hideLoading();
 						if (ret.statusCode !== 200) {
-							console.log("请求失败:", ret)
+							console.log("请求失败:"+ ret);
+							uni.showToast({
+								title:"限制抓取，请稍后重试",
+								icon:"none"
+							})
 						} else {
 							try{
-								console.log("获取的所有主播："+JSON.stringify(ret.data));
+								//console.log("获取的所有主播："+JSON.stringify(ret.data));
 								//this.itemList = ret.data.zhubo;
 								for(let i = 0;i<ret.data.zhubo.length;i++){
+									//console.log("转化前："+ret.data.zhubo[i].title);
 									ret.data.zhubo[i].title = this.parseTitle(ret.data.zhubo[i].title);
-									//console.log("转化前："+ret.data.zhubo[i].title+"标题转化后的结果："+uni.URLUnencoded(ret.data.zhubo[i].title));
+									//console.log("标题转化后的结果："+ret.data.zhubo[i].title);
 									
 								}
 								this.itemList = ret.data.zhubo;
@@ -52,14 +73,40 @@
 				});
 			},
 			playLive(item){
+				console.debug("进来了"+item.address);
+				/*
+				uni.reLaunch({
+					url:"../onlineTV/onlineTV?data="+JSON.stringify(item.address)
+				})*/
+				
 				uni.navigateTo({
 					url:"../playLive/playLive?data="+JSON.stringify(item.address)
 				})
+				/*
+			   uni.reLaunch({
+			   	url:"../playLive/playLive?data="+JSON.stringify(item.address)
+			   })
+			   
+			  uni.redirectTo({
+			  	url:"../playLive/playLive?data="+JSON.stringify(item.address)
+			  })
+			  */
 			},
 			parseTitle(title){
 				
-				return title.replace(/%20/g, " ").replace(/%21/g, "!").replace(/%23/g, "#").replace(/%24/g, "$").replace(/%25/g, "%").replace(/%2B/g, "+").replace(/%40/g, "@").replace(/%3A/g, ":").replace(/%3D/g, "=").replace(/%3F/g, "?");
+				//return title.replace(/%20/g, " ").replace(/%21/g, "!").replace(/%23/g, "#").replace(/%24/g, "$").replace(/%25/g, "%").replace(/%2B/g, "+").replace(/%40/g, "@").replace(/%3A/g, ":").replace(/%3D/g, "=").replace(/%3F/g, "?");
+				try{
+					return decodeURIComponent(title);
+				}catch(e){
+					console.debug("不能转化的标题："+title);
+					return title;
+				}
+				
 			}
+		},
+		onPullDownRefresh() {
+			this.isPullDownRefresh = true;
+			this.loadLives(this.param);
 		}
 	}
 </script>
@@ -71,7 +118,7 @@
 		 align-content:
 	}
 	.cell{
-		width:248upx;
+		width:241upx;
 		/*background-color: #4CD964;*/
 		display: flex;
 		justify-content: center;

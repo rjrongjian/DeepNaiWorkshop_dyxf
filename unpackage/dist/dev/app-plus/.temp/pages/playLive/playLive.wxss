@@ -31,12 +31,12 @@ view {
   display: -webkit-flex;
   display: flex;
   width: 100%;
-  height: 90%;
+  height: 1100rpx;
+  background-color: #007AFF;
 }
 .video-style-inner {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-  flex: 1;
+  height: 1100rpx;
+  width: 750rpx;
 }
 .info {
   color: #555;
@@ -108,6 +108,11 @@ view {
 }
 .color11 {
   color: #007AFF;
+}
+.notify-cell {
+  font-size: 38rpx;
+  color: #007AFF;
+  text-align: center;
 }
 .grace-padding {
   padding: 2%;

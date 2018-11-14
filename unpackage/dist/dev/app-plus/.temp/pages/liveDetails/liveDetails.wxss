@@ -10,7 +10,7 @@
   align-content: ;
 }
 .cell {
-  width: 248rpx;
+  width: 241rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
