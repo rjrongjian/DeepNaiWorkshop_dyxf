@@ -2,10 +2,10 @@
   <view class="_view data-v-6a5141ac container">
     <block wx:if="{{hasInfo==1}}">
       <block wx:key="index" key="{{index}}" wx:for="{{itemList}}" wx:for-index="index" wx:for-item="item">
-        <view class="_view data-v-6a5141ac cell" bindtap="handleProxy" data-eventid="{{'dnR-0-'+index}}" data-comkey="{{$k}}">
+        <view class="_view data-v-6a5141ac cell" bindtap="handleProxy" data-eventid="{{'rPs-0-'+index}}" data-comkey="{{$k}}">
           <image class="_image data-v-6a5141ac cell-img" mode="aspectFit" style src="{{item.xinimg}}" lazy-load="true"></image>
           <view class="_view data-v-6a5141ac">{{item.title}}</view>
-          <view class="_view data-v-6a5141ac cell-online">在线[{{item.Number}}]</view>
+          <view class="_view data-v-6a5141ac cell-online">{{item.Number}}</view>
         </view>
       </block>
     </block>

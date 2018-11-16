@@ -4,7 +4,7 @@
 		<view class="container">
 			 
 				<view v-if="!isOutOfDate" class="video-style">
-					<video v-if="srcTemp" id="myVideo" :src="srcTemp" @error="videoErrorCallback" controls class="video-style-inner" ></video>
+					<video v-if="srcTemp" direction="-90" id="myVideo" :src="srcTemp" @error="videoErrorCallback" controls class="video-style-inner" ></video>
 				</view>
 				
 				<block v-if="ads.length>0">
@@ -23,7 +23,7 @@
 						</view>
 					</view>
 				</block>
-				<view class="notify-cell">全屏显示不加，请设置手机为自动旋转！</view>
+				
 				
 		</view>
 	</block>
@@ -128,7 +128,11 @@
 				console.log("替换前："+this.srcTemp);
 				this.srcTemp = this.srcTemp.replace(/\"/g, "");
 				console.log("替换后："+this.srcTemp);
-				
+				let titleTemp2 = e.title;
+				titleTemp2 = titleTemp2.replace(/\"/g, "");
+				uni.setNavigationBarTitle({
+					title:titleTemp2
+				})
 				this.isLoadedMovieData = true;
 			}
 			
@@ -189,12 +193,15 @@
 <style>
 	view{
 		display: flex;
+		background-color: #000000;
 	}
 	.container{
 		display: flex;
 		flex-direction: column;
 		flex-wrap: wrap;
 		width: 100%;
+		height:1210upx;
+		background-color: #000000;
 		
 	}
 	.container2{
@@ -210,7 +217,7 @@
 		width:100%;
 		
 		height:1100upx;
-		background-color: #007AFF;
+		/*background-color: #007AFF;*/
 	}
 	
 	.video-style-inner{

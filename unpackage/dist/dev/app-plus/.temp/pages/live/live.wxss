@@ -10,7 +10,7 @@
   align-content: flex-start;
 }
 .cell {
-  width: 246rpx;
+  width: 236rpx;
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
@@ -24,19 +24,27 @@
   text-align: center;
   font-size: 40rpx;
   color: #6D6D72;
-  height: 300rpx;
+  height: 280rpx;
   -webkit-box-align: center;
   -webkit-align-items: center;
   align-items: center;
   padding: 0rpx;
-  margin: 0rpx;
-  border-bottom: 1rpx solid #555;
+  margin: 5rpx;
+  border-radius: 20rpx 20rpx;
+  background-color: #FFFFFF;
 }
 .cell-img {
   border-radius: 50% 50%;
-  height: 140rpx;
-  width: 140rpx;
+  height: 130rpx;
+  width: 130rpx;
+  border: 10rpx solid rgba(111, 111, 111, 0.1);
+  box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, .3);
 }
 .cell-online {
   font-size: 30rpx;
+  border-radius: 30rpx;
+  color: #FFFFFF;
+  background-color: #FF80AB;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
 }

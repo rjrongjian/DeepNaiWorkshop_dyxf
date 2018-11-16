@@ -3,8 +3,8 @@
 		<!--<scroll-view scroll-y style="height: 100%;" class="container">-->
 		<block v-for="(item, index) in itemList" :key="index">
 			<view class="cell" @tap="playLive(item)">
-				<image class="cell-img" mode="aspectFit" style="width: 200upx;height: 100upx;" :src="item.img" lazy-load="true"></image>
-				<view>{{item.title}}</view>
+				<image class="cell-img" mode="aspectFill" style="" :src="item.img" lazy-load="true"></image>
+				<view class="cell-online 	">{{item.title}}</view>
 				
 			</view>
 			
@@ -26,8 +26,13 @@
 			//console.debug("传进来的数据："+e.data);
 			this.isPullDownRefresh = false;
 			let data = JSON.parse(e.data);
+			let titleTemp = data.title;
+			uni.setNavigationBarTitle({
+				title:titleTemp
+			})
 			this.param = data;
 			this.loadLives(data);
+			
 		},
 		methods:{
 			loadLives(item){
@@ -50,7 +55,7 @@
 						if (ret.statusCode !== 200) {
 							console.log("请求失败:"+ ret);
 							uni.showToast({
-								title:"限制抓取，请稍后重试",
+								title:"请下拉刷新，以便解决问题",
 								icon:"none"
 							})
 						} else {
@@ -80,7 +85,7 @@
 				})*/
 				
 				uni.navigateTo({
-					url:"../playLive/playLive?data="+JSON.stringify(item.address)
+					url:"../playLive/playLive?data="+JSON.stringify(item.address)+"&title="+JSON.stringify(item.title)
 				})
 				/*
 			   uni.reLaunch({
@@ -115,28 +120,50 @@
 	.container{
 		 display: flex;
 		 flex-wrap:wrap;
-		 align-content:
+		 align-content: flex-start;
 	}
 	.cell{
-		width:241upx;
+		width:220upx;
 		/*background-color: #4CD964;*/
 		display: flex;
-		justify-content: center;
+		/*justify-content: center;*/
 		flex-direction: column;
 		text-align: center;
 		font-size: 40upx;
 		color: #6D6D72;
-		height: 250upx;
+		height: 240upx;
 		align-items:center;
 		padding: 0upx;
-		margin: 0upx;
+		margin: 10upx;
 		border: 1upx #D9D9D9 solid;
+		background-color: #FFFFFF;
+		border-radius: 10upx 10upx;
 	}
 	.cell-img{
 		/*background-color: #007AFF;*/
+		width: 200upx;
+		height: 200upx;
+		/*background-color: #24D197;
+		border-top-left-radius:10upx;
+		border-top-right-radius:10upx;*/
+		padding-top:10upx;
+		
 	}
 	
 	.cell-online{
-		font-size:30upx;
+		font-size:24upx;
+		word-break: break-all;
+		display: -webkit-box;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		padding-left: 8upx;
+		padding-right: 8upx;
+		padding-bottom: 12upx;
+		text-align: left;
+		/*background-color: #FF80AB;*/
+		width:184upx;
+		/*color: #FF80AB;*/
 	}
 </style>

@@ -6,7 +6,7 @@
 				<view class="cell" @tap="loadOneLive(item)">
 					<image class="cell-img" mode="aspectFit" style="" :src="item.xinimg" lazy-load="true"></image>
 					<view>{{item.title}}</view>
-					<view class="cell-online">在线[{{item.Number}}]</view>
+					<view class="cell-online">{{item.Number}}</view>
 				</view>
 				
 			</block>	
@@ -44,7 +44,7 @@
 							console.log("请求失败:"+ ret)
 							uni.hideLoading();
 							uni.showToast({
-								title:"限制抓取，请稍后重试",
+								title:"请下拉刷新，以便解决问题",
 								icon:"none"
 							})
 						} else {
@@ -95,7 +95,7 @@
 		 align-content:flex-start;
 	}
 	.cell{
-		width:246upx;
+		width:236upx;
 		/*background-color: #4CD964;*/
 		display: flex;
 		justify-content: center;
@@ -103,23 +103,32 @@
 		text-align: center;
 		font-size: 40upx;
 		color: #6D6D72;
-		height: 300upx;
+		height: 280upx;
 		align-items:center;
 		padding: 0upx;
-		margin: 0upx;
-		border-bottom: 1px solid #555;
-		
+		margin: 5upx;
+		/*border: 1upx solid #FF80AB;*/
+		border-radius: 20upx 20upx;
+		background-color: #FFFFFF;
 	}
 	.cell-img{
 		/*background-color: #007AFF;*/
 		border-radius: 50% 50%;
-		height:140upx;
-		width:140upx;
+		height:130upx;
+		width:130upx;
+		border: 10upx solid rgba(111, 111, 111, 0.1);
+		box-shadow: 0 2upx 4upx rgba(0, 0, 0, .3);
 		/*background-color: #007AFF*/;
+		
 	}
 	
 	.cell-online{
 		font-size:30upx;
+		border-radius: 30upx;
+		color:#FFFFFF;
+		background-color: #FF80AB;
+		padding-left:25upx ;
+		padding-right:25upx ;
 	}
 	
 </style>

@@ -1,9 +1,9 @@
 <template name="2b26ed4a">
   <view class="_view data-v-5b0594d0 container">
     <block wx:key="index" key="{{index}}" wx:for="{{itemList}}" wx:for-index="index" wx:for-item="item">
-      <view class="_view data-v-5b0594d0 cell" bindtap="handleProxy" data-eventid="{{'9Lm-0-'+index}}" data-comkey="{{$k}}">
-        <image class="_image data-v-5b0594d0 cell-img" mode="aspectFit" style="width: 200rpx;height: 100rpx;" src="{{item.img}}" lazy-load="true"></image>
-        <view class="_view data-v-5b0594d0">{{item.title}}</view>
+      <view class="_view data-v-5b0594d0 cell" bindtap="handleProxy" data-eventid="{{'kYe-0-'+index}}" data-comkey="{{$k}}">
+        <image class="_image data-v-5b0594d0 cell-img" mode="aspectFill" style src="{{item.img}}" lazy-load="true"></image>
+        <view class="_view data-v-5b0594d0 cell-online \t">{{item.title}}</view>
       </view>
     </block>
   </view>

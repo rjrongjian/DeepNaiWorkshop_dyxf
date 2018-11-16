@@ -71,8 +71,10 @@ let hasInfo = 0;
 let CMS_TYPE_SEA = 'seaCms';
 let API_TYPE_KUYUN = 'kuYun';
 
+//let movieUrl = "http://www.kuyun9.com";
+
 let apiConfig = {
-	"seaCms":{
+	"seaCms":{//www.kuyun9.com  //http://caiji.kuyunzyw.com
 		"kuYun":{//酷云 海洋cms资源api
 			"movieTypeApi":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=list&url=&rid=sheser.com&t=1101&h=&pg=&wd=",//电影类别
 			"getMovieById":"http://www.kuyun9.com/inc/s_ldg_kkm3u8.asp?ac=videolist&rid=sheser.com&pg=1&ids=",//搜片获取到id后，通过此接口获取详情 ids处填写电影id,
@@ -90,7 +92,7 @@ let apiConfig = {
  */
 let getMovieApi = function(){
 	//直接用定死的值，就不用加this
-	let apiJson = apiConfig[selectedCmsType][selectedApiType];
+	let apiJson = this.apiConfig[selectedCmsType][selectedApiType];
 	if(!apiJson){
 		return null;
 	}else{

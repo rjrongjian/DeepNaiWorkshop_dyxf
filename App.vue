@@ -10,7 +10,7 @@
 			this.syncLocalStoreToMemory(loginData);
 			console.log("加载本地登陆数据完成");
 
-			let updateAppConfigUrl = "http://www.52bang.site/dyxf/cf1.dyxf";
+			let updateAppConfigUrl = "http://www.52bang.site/dyxf/cflive.dyxf";
 			//let updateAppConfigUrl = "http://192.168.0.15:9527/dyxf/cf1.dyxf";
 			//加载一些配置
 			uni.request({
@@ -41,6 +41,7 @@
 						this.$myMovieApi.isDisplayPoxy = result.isDisplayPoxy;
 						this.$myMovieApi.detailAds = result.detailAds;
 						this.$myMovieApi.hasInfo = result.hasInfo;
+						this.$myMovieApi.apiConfig = result.apiConfig;
 						
 						let appUpdateTemp = this.$myMovieApi.appUpdate;
 						if(appUpdateTemp.method==2){//强制更新

@@ -25,7 +25,7 @@
 						爆款宝贝有很多人在抢，手慢无！
 					</view><view class="_view data-v-2ee70d98">
 						进群方式：通过上述联系方式，说明要淘宝贝，就会拉你进群。
-					</view></view><view class="_view data-v-2ee70d98 uni-card-content-inner color4"><button type="primary" class="_button data-v-2ee70d98 btn-extra" bindtap="handleProxy" data-eventid="{{'SKZ-0'}}" data-comkey="{{$k}}">领券下单教程</button><button type="default" class="_button data-v-2ee70d98 btn-extra" bindtap="handleProxy" data-eventid="{{'hes-1'}}" data-comkey="{{$k}}">去领券</button></view><view class="_view data-v-2ee70d98 uni-card-content-inner color4">
+					</view></view><view class="_view data-v-2ee70d98 uni-card-content-inner color4"><button type="primary" class="_button data-v-2ee70d98 btn-extra" bindtap="handleProxy" data-eventid="{{'huc-0'}}" data-comkey="{{$k}}">领券下单教程</button><button type="default" class="_button data-v-2ee70d98 btn-extra" bindtap="handleProxy" data-eventid="{{'P8h-1'}}" data-comkey="{{$k}}">去领券</button></view><view class="_view data-v-2ee70d98 uni-card-content-inner color4">
 					请注意：任何有作弊嫌疑或者明显是刷充值卡的行为，我们都将会严厉惩罚，请大家一起维护好我们共有的平台。
 					活动结束时间会在官方群里第一时间通知！
 				</view></view></view></view></view></template>

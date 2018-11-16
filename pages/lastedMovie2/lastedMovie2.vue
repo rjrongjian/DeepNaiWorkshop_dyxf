@@ -268,7 +268,11 @@
 					url: apiUrl,
 					success: (ret) => {
 						if (ret.statusCode !== 200) {
-							console.log("获取今天更新的电影失败", ret)
+							console.log("获取今天更新的电影失败"+ ret)
+							uni.showToast({
+								title:"限制抓取，请退出重试",
+								icon:"none"
+							})
 						} else {
 							
 							try{
@@ -392,6 +396,12 @@
 							}
 							
 						}
+					},
+					fail(ret){
+						uni.showToast({
+							title:"限制抓取，请重新尝试",
+							icon:"none"
+						})
 					}
 				});
 				
